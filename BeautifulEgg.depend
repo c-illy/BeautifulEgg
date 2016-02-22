@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1456173186 source:/home/elie/cpp/ascreb/BeautifulEgg/Personnage.cpp
+
+1456171335 source:/home/elie/cpp/ascreb/BeautifulEgg/main.cpp
+	<iostream>
+
