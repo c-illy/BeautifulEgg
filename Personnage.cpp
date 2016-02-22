@@ -14,3 +14,7 @@ void Personnage::deplacement(Direction dir)
 {
 }
 
+void Personnage::attaque(Personnage &autre)
+{
+    autre.perdreSante(m_degats);
+}
