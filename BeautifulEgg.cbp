@@ -39,10 +39,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="SFML-2.3.2/include" />
+			<Add directory="SFML-2.3.2-w/include" />
+			<Add directory="SFML-2.3.2-l/include" />
 		</Compiler>
 		<Linker>
-			<Add directory="SFML-2.3.2/lib" />
+			<Add directory="SFML-2.3.2-w/lib" />
+			<Add directory="SFML-2.3.2-l/lib" />
 		</Linker>
 		<Unit filename="main.cpp" />
 		<Extensions>
