@@ -21,7 +21,18 @@ int main()
         window.display();
     }
 */
-    Personnage perso1();
-//    Personnage perso2;
+
+
+/*
+
+    Personnage perso1("p1"),perso2("p2");
+
+    perso1.attaquer(perso2);
+
+    perso1.afficher();
+*/
+
+
+
     return 0;
 }
