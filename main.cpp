@@ -3,7 +3,7 @@
 
 int main()
 {
-/*   sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
@@ -20,6 +20,7 @@ int main()
         window.draw(shape);
         window.display();
     }
+<<<<<<< HEAD
 */
 
 
@@ -34,5 +35,10 @@ int main()
 
 
 
+=======
+
+    Personnage perso1();
+//    Personnage perso2;
+>>>>>>> 3946cd9727d47154dd96566895209082949d0009
     return 0;
 }
