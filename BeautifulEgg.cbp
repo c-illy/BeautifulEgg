@@ -42,6 +42,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
 			<Add directory="SFML-2.3.2-l/include" />
 			<Add directory="SFML-2.3.2-w/include" />
@@ -52,12 +53,22 @@
 		</Linker>
 		<Unit filename="Case.cpp" />
 		<Unit filename="Case.h" />
+		<Unit filename="IHMView.cpp" />
+		<Unit filename="IHMView.h" />
 		<Unit filename="Modeles.cpp" />
 		<Unit filename="Modeles.h" />
 		<Unit filename="Personnage.cpp" />
 		<Unit filename="Personnage.h" />
+		<Unit filename="PersonnageView.cpp" />
+		<Unit filename="PersonnageView.h" />
 		<Unit filename="Royaume.cpp" />
 		<Unit filename="Royaume.h" />
+		<Unit filename="RoyaumeView.cpp" />
+		<Unit filename="RoyaumeView.h" />
+		<Unit filename="View.cpp" />
+		<Unit filename="View.h" />
+		<Unit filename="Vues.cpp" />
+		<Unit filename="Vues.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

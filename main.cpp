@@ -1,11 +1,10 @@
-#include <SFML/Graphics.hpp>
-#include "Personnage.h"
+#include "Modeles.h"
+#include "Vues.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    /*
+
 
     while (window.isOpen())
     {
@@ -19,9 +18,9 @@ int main()
         window.clear();
         window.draw(shape);
         window.display();
-    }
+    }*/
+    for(int i=0; i<10000; i++)
+        Vues::draw();
 
-    Personnage perso1();
-//    Personnage perso2;
     return 0;
 }
