@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="../BeautifullEgg" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
@@ -27,6 +29,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="../BeautifullEgg" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -46,8 +50,14 @@
 			<Add directory="SFML-2.3.2-l/lib" />
 			<Add directory="SFML-2.3.2-w/lib" />
 		</Linker>
+		<Unit filename="Case.cpp" />
+		<Unit filename="Case.h" />
+		<Unit filename="Modeles.cpp" />
+		<Unit filename="Modeles.h" />
 		<Unit filename="Personnage.cpp" />
 		<Unit filename="Personnage.h" />
+		<Unit filename="Royaume.cpp" />
+		<Unit filename="Royaume.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
