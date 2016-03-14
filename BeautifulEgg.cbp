@@ -59,13 +59,10 @@
 		<Unit filename="Modeles.h" />
 		<Unit filename="Personnage.cpp" />
 		<Unit filename="Personnage.h" />
-<<<<<<< HEAD
-		<Unit filename="Position.cpp" />
-		<Unit filename="Position.h" />
-=======
 		<Unit filename="PersonnagesView.cpp" />
 		<Unit filename="PersonnagesView.h" />
->>>>>>> 475a1ba5c51699c2514961557c8b79ce02eb857a
+		<Unit filename="Position.cpp" />
+		<Unit filename="Position.h" />
 		<Unit filename="Royaume.cpp" />
 		<Unit filename="Royaume.h" />
 		<Unit filename="RoyaumeView.cpp" />
