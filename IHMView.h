@@ -3,6 +3,9 @@
 
 #include "Vue.h"
 
+#define TAILLE_BARRE_X 100
+#define TAILLE_BARRE_Y 10
+
 class IHMView : public Vue
 {
     public:
@@ -12,7 +15,10 @@ class IHMView : public Vue
         void draw() const;
 
     private:
-        sf::CircleShape m_shape;
+        sf::Texture m_tex_barreDeVieVariable;
+        sf::Texture m_tex_barreDeVie;
+
+        sf::RectangleShape m_fond;
 };
 
 #endif // IHMVIEW_H

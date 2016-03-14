@@ -69,7 +69,7 @@ int a(10);
 
 
     }*/
-    for(int i=0; i<2000; i++)
+    for(int i=0; i<4000; i++)
         Vues::draw();
 
 
