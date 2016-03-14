@@ -2,32 +2,28 @@
 #define PERSONNAGE_H_INCLUDED
 
 #include <string>
-//#include "Case.h"
+#include "Case.h"
+#include "Position.h"
+//#include "Modeles.h"
+
+
+
+class Modeles;
+
 
 
 
 enum Direction {haut, bas, gauche, droite};
-enum Action {deplacer, actionner, attaquer, sortFeu, sortGlace, sortFoudre};
-struct Position {int x,y;};
 
 
 
-class Personnage;
-
-class Case
+enum Action
 {
-    public :
-     Case();
-     ~Case();
-     Position getPosition();
-     void setPersonnage();
-     Personnage getPersonnage();
-
-    private :
-
-    Position m_position;
-    Personnage *m_perso;
+    DEPLACER,
+    ATTAQUER,
+    ACTIONNER
 };
+
 
 
 
@@ -36,23 +32,27 @@ class Personnage
     public:
 
 
-        Personnage(std::string nom);
+        Personnage(std::string nom="joueur", int x=0, int y=0);
+        ~Personnage();
 
         void afficher();
         void setAction(Action action);
         void executerAction();
         std::string getNom();
+        void setCaseCible(Case *caseCible);
+        void setPosition(int x, int y);
+        Position getPosition();
+
+
 
 
 
     protected:
 
+
+
         void perdreSante(int degats);
-        void deplacer(Direction dir);
         void attaquer(Personnage &autre);
-        void sortFeu(Personnage &autre);
-        void sortFoudre(Personnage &autre);
-        void sortGlace(Personnage &autre);
         //void interragir(Objet obj);
 
 
@@ -63,7 +63,9 @@ class Personnage
         std::string m_nom;
         Direction m_directionActuelle;
         Action m_actionCourante;
-        Case m_caseCible;
+        Case *m_caseCible;
+        bool m_vivant;
+
 };
 
 

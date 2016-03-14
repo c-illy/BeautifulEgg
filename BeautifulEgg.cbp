@@ -56,6 +56,8 @@
 		<Unit filename="Modeles.h" />
 		<Unit filename="Personnage.cpp" />
 		<Unit filename="Personnage.h" />
+		<Unit filename="Position.cpp" />
+		<Unit filename="Position.h" />
 		<Unit filename="Royaume.cpp" />
 		<Unit filename="Royaume.h" />
 		<Unit filename="main.cpp" />

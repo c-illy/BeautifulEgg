@@ -7,20 +7,29 @@
 #include "Personnage.h"
 //#include "Objet.h"
 
-enum Action
-{
-    DEPLACER,
-    ATTAQUER,
-    ACTIONNER
-};
+
+
+//class Personnage;
+
 
 class Modeles
 {
-    public:
+
+  public:
+
+        struct Position {int x,y;};
+
+
         static Royaume m_royaume;
         static Personnage m_joueur;
         static std::vector<Personnage*> m_monstres;
-        //static std::vector<Objet*> m_objets;
+
+       // static std::vector<Objet*> m_objets;
+
+
+
+
+
 };
 
 #endif // MODELES_H

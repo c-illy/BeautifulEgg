@@ -1,7 +1,10 @@
 #include "Case.h"
 
-Case::Case()
+
+Case::Case(int x, int y)
 {
+    m_position.setPositionX(x);
+    m_position.setPositionY(y);
     //ctor
 }
 
@@ -30,4 +33,10 @@ Personnage* Case::getPersonnage()
 void Case::setPersonnage(Personnage* personnage)
 {
     m_personnage = personnage;
+}
+
+
+Position Case::getPosition()
+{
+    return m_position;
 }

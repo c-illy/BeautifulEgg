@@ -3,29 +3,13 @@
 
 
 
-Case::Case()
-{
-
-}
-
-void Case::setPersonnage()
-{
-    m_perso=new Personnage("a");
-}
-
-Personnage Case::getPersonnage()
-{
-    return *m_perso;
-}
-
-Position Case::getPosition()
-{
-    return m_position;
-}
 
 
 
-Personnage::Personnage(std::string nom) : m_nom(nom), m_santeMax(100), m_sante(100), m_degats(20), m_directionActuelle(droite)
+
+
+Personnage::Personnage(std::string nom, int x, int y) : m_nom(nom), m_santeMax(100), m_sante(100), m_degats(20), m_directionActuelle(droite),
+                                            m_caseCible(NULL), m_vivant(true), m_position(x,y)
 {
 
 }
@@ -34,17 +18,24 @@ Personnage::Personnage(std::string nom) : m_nom(nom), m_santeMax(100), m_sante(1
 
 void Personnage::perdreSante(int degats)
 {
-    m_sante -= degats;
-    if (m_sante == 0)
+
+    if(m_sante>0)
     {
-        std::cout << "Game over" << std::endl;
+         m_sante -= degats;
+
+
+        if (m_sante == 0)
+        {
+
+            m_vivant=true;
+            std::cout << "Game over" << std::endl;
+        }
     }
+
+
 }
 
-void Personnage::deplacer(Direction dir)
-{
-    m_directionActuelle=dir;
-}
+
 
 void Personnage::attaquer(Personnage &autre)
 {
@@ -57,31 +48,11 @@ void Personnage::attaquer(Personnage &autre)
 }
 
 
-void Personnage::sortFeu(Personnage &autre)
+
+void Personnage::setCaseCible(Case *caseCible)
 {
-    autre.perdreSante(10);
+    m_caseCible=caseCible;
 }
-
-void Personnage::sortFoudre(Personnage &autre)
-{
-    autre.perdreSante(10);
-}
-
-void Personnage::sortGlace(Personnage &autre)
-{
-    autre.perdreSante(10);
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
@@ -91,12 +62,28 @@ void Personnage::interragir(Objet obj)
 }
 */
 
-void Personnage::afficher()
+void Personnage::setPosition(int x, int y)
 {
-    std::cout<<m_nom<<" a "<<m_sante<<" points de vie"<<std::endl;
+    m_position.setPositionX(x);
+    m_position.setPositionY(y);
 }
 
 
+Position Personnage::getPosition()
+{
+    return m_position;
+}
+
+
+
+
+void Personnage::afficher()
+{
+    std::cout<<m_nom<<" a "<<m_sante<<" points de vie"<<std::endl;
+    std::cout<<m_nom<<" est sur la case ("<<m_position.getPositionX()<<","<<m_position.getPositionY()<<")"<<std::endl;
+
+
+}
 
 
 
@@ -114,35 +101,38 @@ void Personnage::setAction(Action action)
 
 void Personnage::executerAction()
 {
+
+
     switch(m_actionCourante)
     {
-        case deplacer :  m_position=m_caseCible.getPosition();
+        case DEPLACER :
 
-            break;
-
-        case actionner :
-
-            break;
-
-        case attaquer :  attaquer(m_caseCible.getPersonnage());
-
-            break;
-
-        case sortFeu :  sortFeu(m_caseCible.getPersonnage());
-
-            break;
-
-        case sortFoudre :  sortFoudre(m_caseCible.getPersonnage());
-
-            break;
-
-        case sortGlace :  sortGlace(m_caseCible.getPersonnage());
+            std::cout<<m_nom<<" se deplace"<<std::endl;
+            setPosition(m_caseCible->getPosition().getPositionX(),m_caseCible->getPosition().getPositionY());
 
             break;
 
 
+      case ACTIONNER :
 
+            break;
+
+        case ATTAQUER :
+
+            Personnage *cible;
+            cible=m_caseCible->getPersonnage();
+
+            attaquer(*cible);
+
+            break;
 
     }
+
+
+
 }
 
+Personnage::~Personnage()
+{
+    delete m_caseCible;
+}
