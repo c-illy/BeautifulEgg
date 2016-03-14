@@ -15,5 +15,5 @@ IHMView::~IHMView()
 void IHMView::draw() const
 {
     const Personnage& joueur = Modeles::m_joueur;
-    m_window.draw(m_shape);
+    //m_window.draw(m_shape);
 }

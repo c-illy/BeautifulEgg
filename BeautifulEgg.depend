@@ -6,7 +6,7 @@
 1456175769 source:/home/elie/cpp/ascreb/BeautifulEgg/main.cpp
 	"Personnage.h"
 
-1457387221 source:h:\creajeu\codeblocks\beautifullegg\main.cpp
+1457987902 source:h:\creajeu\codeblocks\beautifullegg\main.cpp
 	"Modeles.h"
 	"Vues.h"
 
@@ -1165,29 +1165,30 @@
 	<vector>
 	"Case.h"
 
-1456779842 source:h:\creajeu\codeblocks\beautifullegg\case.cpp
+1457987302 source:h:\creajeu\codeblocks\beautifullegg\case.cpp
 	"Case.h"
 
-1456779152 h:\creajeu\codeblocks\beautifullegg\case.h
+1457987263 h:\creajeu\codeblocks\beautifullegg\case.h
 	"Personnage.h"
 
-1456777597 source:h:\creajeu\codeblocks\beautifullegg\royaume.cpp
+1457987477 source:h:\creajeu\codeblocks\beautifullegg\royaume.cpp
 	"Royaume.h"
 
-1456779842 h:\creajeu\codeblocks\beautifullegg\royaume.h
+1457984423 h:\creajeu\codeblocks\beautifullegg\royaume.h
 	<vector>
 	"Case.h"
 
 1456779881 source:h:\creajeu\codeblocks\beautifullegg\modeles.cpp
 	"Modeles.h"
 
-1456779842 h:\creajeu\codeblocks\beautifullegg\modeles.h
+1457987938 h:\creajeu\codeblocks\beautifullegg\modeles.h
 	<vector>
 	"Royaume.h"
 	"Personnage.h"
 
-1457389386 source:h:\creajeu\codeblocks\beautifullegg\ihmview.cpp
+1457987517 source:h:\creajeu\codeblocks\beautifullegg\ihmview.cpp
 	"IHMView.h"
+	"Modeles.h"
 
 1457389386 h:\creajeu\codeblocks\beautifullegg\ihmview.h
 	"Vue.h"
@@ -1208,11 +1209,11 @@
 	"Vue.h"
 	"Personnage.h"
 
-1457389204 source:h:\creajeu\codeblocks\beautifullegg\royaumeview.cpp
+1457987872 source:h:\creajeu\codeblocks\beautifullegg\royaumeview.cpp
 	"RoyaumeView.h"
 	"Modeles.h"
 
-1457389186 h:\creajeu\codeblocks\beautifullegg\royaumeview.h
+1457986934 h:\creajeu\codeblocks\beautifullegg\royaumeview.h
 	"Vue.h"
 	"Royaume.h"
 
@@ -1228,16 +1229,17 @@
 	"IHMView.h"
 	"PersonnagesView.h"
 
-1457387903 h:\creajeu\codeblocks\beautifullegg\vue.h
+1457986219 h:\creajeu\codeblocks\beautifullegg\vue.h
 	<SFML/Graphics.hpp>
 
 1457387911 source:h:\creajeu\codeblocks\beautifullegg\vue.cpp
 	"Vue.h"
 
-1457389445 h:\creajeu\codeblocks\beautifullegg\personnagesview.h
+1457985321 h:\creajeu\codeblocks\beautifullegg\personnagesview.h
 	"Vue.h"
 	"Personnage.h"
 
-1457389430 source:h:\creajeu\codeblocks\beautifullegg\personnagesview.cpp
+1457985527 source:h:\creajeu\codeblocks\beautifullegg\personnagesview.cpp
 	"PersonnagesView.h"
+	"Modeles.h"
 

@@ -1,6 +1,7 @@
 #include "Case.h"
 
-Case::Case()
+Case::Case(bool navigable, Personnage* personnage/*, Objet* objet*/) :
+    m_navigable(navigable), m_personnage(personnage)
 {
     //ctor
 }

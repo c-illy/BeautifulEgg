@@ -7,7 +7,7 @@
 class Case
 {
     public:
-        Case();
+        Case(bool navigable, Personnage* personnage/*, Objet* objet*/);
         virtual ~Case();
 
         bool navigable() const;

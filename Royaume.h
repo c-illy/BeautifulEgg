@@ -11,6 +11,9 @@ class Royaume
         virtual ~Royaume();
 
         Case& get(int i, int j);
+        const Case& get(int i, int j) const;
+        int getLargeur() const;
+        int getHauteur() const;
 
     private:
         std::vector<std::vector<Case> > m_cases;

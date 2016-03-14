@@ -19,7 +19,7 @@ int main()
         window.draw(shape);
         window.display();
     }*/
-    for(int i=0; i<10000; i++)
+    for(int i=0; i<2000; i++)
         Vues::draw();
 
     return 0;
