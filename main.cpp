@@ -19,6 +19,13 @@ int main()
         window.draw(shape);
         window.display();
     }*/
+    sf::Image image;
+    image.create(200, 200);
+    image.loadFromFile("ParserTest.png");
+
+    MapParser::parseAndInit(image, 100, 100);
+
+
     for(int i=0; i<10000; i++)
         Vues::draw();
 
