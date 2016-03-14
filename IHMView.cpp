@@ -2,9 +2,16 @@
 #include "Modeles.h"
 
 IHMView::IHMView(sf::RenderWindow& window) :
-    Vue(window),
-    m_fond(sf::Vector2f(100.f, 10.f))
+    Vue(window), m_fond(sf::Vector2f(TAILLE_BARRE_X, TAILLE_BARRE_Y))
 {
+    if (!m_tex_barreDeVieVariable.loadFromFile(RESSOURCES "barre_variable.png"))
+    {
+        // erreur...
+    }
+    if (!m_tex_barreDeVie.loadFromFile(RESSOURCES "barre.png"))
+    {
+        // erreur...
+    }
     m_fond.setFillColor(sf::Color::Green);
 }
 
@@ -17,8 +24,10 @@ void IHMView::draw() const
 {
     const Personnage& joueur = Modeles::m_joueur;
 
-    sf::Sprite variable;
-    sf::Sprite barreDeVie;
+    sf::Sprite barreDeVieVariable(m_tex_barreDeVieVariable, sf::IntRect(0, 0, 100, 10));
+    sf::Sprite barreDeVie(m_tex_barreDeVie);
 
     m_window.draw(m_fond);
+    m_window.draw(barreDeVieVariable);
+    m_window.draw(barreDeVie);
 }
