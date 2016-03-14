@@ -1,10 +1,12 @@
 # depslib dependency file v1.0
-<<<<<<< HEAD
-1457990046 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\main.cpp
-	<SFML/Graphics.hpp>
-	"Personnage.h"
-	"Case.h"
-=======
+538992756 
+
+1457991417 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\main.cpp
+	"Modeles.h"
+	"Vues.h"
+
+1457990046 e.h"
+
 1456175511 source:/home/elie/cpp/ascreb/BeautifulEgg/Personnage.cpp
 	<iostream>
 	"Personnage.h"
@@ -15,7 +17,8 @@
 1457987902 source:h:\creajeu\codeblocks\beautifullegg\main.cpp
 	"Modeles.h"
 	"Vues.h"
->>>>>>> 475a1ba5c51699c2514961557c8b79ce02eb857a
+
+1457987902 a1ba5c51699c2514961557c8b79ce02eb857a
 
 1456176781 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\sfml-2.3.2-l\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -395,25 +398,26 @@
 	<string>
 	<vector>
 
-1457990446 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\personnage.h
+1457992392 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\personnage.h
 	<string>
 	"Case.h"
 	"Position.h"
+	"Modeles.h"
 
-1457387271 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\modeles.h
+1457992401 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\modeles.h
 	<vector>
 	"Royaume.h"
 	"Personnage.h"
 
-1457384328 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\royaume.h
+1457990941 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\royaume.h
 	<vector>
 	"Case.h"
 
-1457988888 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\case.h
+1457992501 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\case.h
 	<iostream>
 	"Position.h"
 
-1457988998 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\case.cpp
+1457992504 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\case.cpp
 	"Case.h"
 
 1457384741 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\modeles.cpp
@@ -423,7 +427,7 @@
 	<iostream>
 	"Personnage.h"
 
-1457382687 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\royaume.cpp
+1457992776 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\royaume.cpp
 	"Royaume.h"
 
 1457989052 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\position.h
@@ -521,4 +525,42 @@
 1457985527 source:h:\creajeu\codeblocks\beautifullegg\personnagesview.cpp
 	"PersonnagesView.h"
 	"Modeles.h"
+
+1457990941 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\ihmview.cpp
+	"IHMView.h"
+	"Modeles.h"
+
+1457990941 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\ihmview.h
+	"Vue.h"
+
+1457990941 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\vue.h
+	<SFML/Graphics.hpp>
+
+1457990941 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\vues.h
+	<SFML/Graphics.hpp>
+	"RoyaumeView.h"
+	"IHMView.h"
+	"PersonnagesView.h"
+
+1457990941 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\royaumeview.h
+	"Vue.h"
+	"Royaume.h"
+
+1457990941 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\personnagesview.h
+	"Vue.h"
+	"Personnage.h"
+
+1457990941 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\personnagesview.cpp
+	"PersonnagesView.h"
+	"Modeles.h"
+
+1457990941 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\royaumeview.cpp
+	"RoyaumeView.h"
+	"Modeles.h"
+
+1457990941 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\vue.cpp
+	"Vue.h"
+
+1457990941 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\vues.cpp
+	"Vues.h"
 
