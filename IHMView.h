@@ -12,7 +12,7 @@ class IHMView : public Vue
         void draw() const;
 
     private:
-        sf::CircleShape m_shape;
+        sf::RectangleShape m_fond;
 };
 
 #endif // IHMVIEW_H
