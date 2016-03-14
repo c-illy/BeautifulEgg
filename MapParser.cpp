@@ -17,7 +17,7 @@ void MapParser::parseAndInit(const sf::Image& grid,
 		for(unsigned i=0; i<nLine; ++i) {
 			sf::Color color = grid.getPixel(x + i*width,
 			                                y + j*height);
-			init(code.at(color.toInteger()), x + i*width, y + j*height);
+			init(code.at(color.toInteger()), i, j);
 
 		}
 	}
