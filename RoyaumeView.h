@@ -13,6 +13,8 @@ class RoyaumeView : public Vue
         void draw() const;
 
     private:
+        sf::Texture m_tex_caseNavigable;
+        sf::Texture m_tex_caseNonNavigable;
 };
 
 #endif // ROYAUMEVIEW_H

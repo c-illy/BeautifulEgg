@@ -11,6 +11,7 @@ class PersonnagesView : public Vue
         virtual ~PersonnagesView();
 
         void draw() const;
+        void drawPersonnage(const Personnage& personnage) const;
 
     private:
 };

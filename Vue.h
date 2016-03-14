@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#define RESSOURCES "./"
+
 class Vue
 {
     public:

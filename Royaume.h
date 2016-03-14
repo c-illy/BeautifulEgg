@@ -12,6 +12,9 @@ class Royaume
 
         void  set(Case c, int i, int j);
         Case& get(int i, int j);
+        const Case& get(int i, int j) const;
+        int getLargeur() const;
+        int getHauteur() const;
 
     private:
         std::vector<std::vector<Case> > m_cases;

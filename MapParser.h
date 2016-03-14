@@ -20,7 +20,7 @@ public:
 private:
 	static void init(CaseType type, unsigned x, unsigned y);
 
-	static const std::map<sf::Color, CaseType> code;
+	static const std::map<sf::Uint32, CaseType> code;
 
 };
 
