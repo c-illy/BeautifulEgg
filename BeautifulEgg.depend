@@ -1,8 +1,21 @@
 # depslib dependency file v1.0
+<<<<<<< HEAD
 1457990046 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\main.cpp
 	<SFML/Graphics.hpp>
 	"Personnage.h"
 	"Case.h"
+=======
+1456175511 source:/home/elie/cpp/ascreb/BeautifulEgg/Personnage.cpp
+	<iostream>
+	"Personnage.h"
+
+1456175769 source:/home/elie/cpp/ascreb/BeautifulEgg/main.cpp
+	"Personnage.h"
+
+1457987902 source:h:\creajeu\codeblocks\beautifullegg\main.cpp
+	"Modeles.h"
+	"Vues.h"
+>>>>>>> 475a1ba5c51699c2514961557c8b79ce02eb857a
 
 1456176781 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\sfml-2.3.2-l\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -417,4 +430,95 @@
 
 1457989083 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\position.cpp
 	"Position.h"
+
+1456776412 source:h:\creajeu\codeblocks\beautifullegg\src\case.cpp
+	"Case.h"
+
+1456776841 h:\creajeu\codeblocks\beautifullegg\include\case.h
+	"Personnage.h"
+
+1456776040 source:h:\creajeu\codeblocks\beautifullegg\src\royaume.cpp
+	"Royaume.h"
+
+1456776406 h:\creajeu\codeblocks\beautifullegg\include\royaume.h
+	<vector>
+	"Case.h"
+
+1457987302 source:h:\creajeu\codeblocks\beautifullegg\case.cpp
+	"Case.h"
+
+1457987263 h:\creajeu\codeblocks\beautifullegg\case.h
+	"Personnage.h"
+
+1457987477 source:h:\creajeu\codeblocks\beautifullegg\royaume.cpp
+	"Royaume.h"
+
+1457984423 h:\creajeu\codeblocks\beautifullegg\royaume.h
+	<vector>
+	"Case.h"
+
+1456779881 source:h:\creajeu\codeblocks\beautifullegg\modeles.cpp
+	"Modeles.h"
+
+1457987938 h:\creajeu\codeblocks\beautifullegg\modeles.h
+	<vector>
+	"Royaume.h"
+	"Personnage.h"
+
+1457987517 source:h:\creajeu\codeblocks\beautifullegg\ihmview.cpp
+	"IHMView.h"
+	"Modeles.h"
+
+1457389386 h:\creajeu\codeblocks\beautifullegg\ihmview.h
+	"Vue.h"
+
+1457384824 source:h:\creajeu\codeblocks\beautifullegg\mainview.cpp
+	"MainView.h"
+
+1457384984 h:\creajeu\codeblocks\beautifullegg\mainview.h
+	"View.h"
+
+1457386853 h:\creajeu\codeblocks\beautifullegg\view.h
+	<SFML/Graphics.hpp>
+
+1457389323 source:h:\creajeu\codeblocks\beautifullegg\personnageview.cpp
+	"PersonnageView.h"
+
+1457389323 h:\creajeu\codeblocks\beautifullegg\personnageview.h
+	"Vue.h"
+	"Personnage.h"
+
+1457987872 source:h:\creajeu\codeblocks\beautifullegg\royaumeview.cpp
+	"RoyaumeView.h"
+	"Modeles.h"
+
+1457986934 h:\creajeu\codeblocks\beautifullegg\royaumeview.h
+	"Vue.h"
+	"Royaume.h"
+
+1457386857 source:h:\creajeu\codeblocks\beautifullegg\view.cpp
+	"View.h"
+
+1457389510 source:h:\creajeu\codeblocks\beautifullegg\vues.cpp
+	"Vues.h"
+
+1457389500 h:\creajeu\codeblocks\beautifullegg\vues.h
+	<SFML/Graphics.hpp>
+	"RoyaumeView.h"
+	"IHMView.h"
+	"PersonnagesView.h"
+
+1457986219 h:\creajeu\codeblocks\beautifullegg\vue.h
+	<SFML/Graphics.hpp>
+
+1457387911 source:h:\creajeu\codeblocks\beautifullegg\vue.cpp
+	"Vue.h"
+
+1457985321 h:\creajeu\codeblocks\beautifullegg\personnagesview.h
+	"Vue.h"
+	"Personnage.h"
+
+1457985527 source:h:\creajeu\codeblocks\beautifullegg\personnagesview.cpp
+	"PersonnagesView.h"
+	"Modeles.h"
 

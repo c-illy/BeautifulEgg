@@ -1,21 +1,18 @@
-#include <SFML/Graphics.hpp>
-#include "Personnage.h"
-#include "Case.h"
+
+//#include <SFML/Graphics.hpp>
+//#include "Personnage.h"
+//#include "Case.h"
+
+#include "Modeles.h"
+#include "Vues.h"
+
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
+    /*
 
 
 int a(10);
-
-
-
-
-
 
 
     Personnage *perso1=new Personnage("p1");
@@ -23,12 +20,8 @@ int a(10);
     Case case1, case2(3,5);
 
 
-
-
-
     while (window.isOpen())
     {
-
 
 
         sf::Event event;
@@ -39,11 +32,7 @@ int a(10);
                 window.close();
 
 
-
-
-
         }
-
 
 
             std::cout<<std::endl;
@@ -52,13 +41,11 @@ int a(10);
             std::cout<<std::endl;
 
 
-
             perso1->setCaseCible(&case1);
             case1.setPersonnage(perso2);
 
             perso1->setAction(ATTAQUER);
             perso1->executerAction();
-
 
 
 
@@ -70,14 +57,6 @@ int a(10);
 
 
 
-
-
-
-
-
-
-
-
           std::cout<<"============================================="<<std::endl;
 
 
@@ -86,11 +65,12 @@ int a(10);
         window.display();
 
 
-
     }
 
 
-
+    }*/
+    for(int i=0; i<2000; i++)
+        Vues::draw();
 
 
     return 0;

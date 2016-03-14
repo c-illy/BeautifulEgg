@@ -8,8 +8,15 @@
 //#include "Objet.h"
 
 
+#define TAILLE_CASE_X 100
+#define TAILLE_CASE_Y 100
 
-//class Personnage;
+enum Action
+{
+    DEPLACER,
+    ATTAQUER,
+    ACTIONNER
+};
 
 
 class Modeles
@@ -25,9 +32,6 @@ class Modeles
         static std::vector<Personnage*> m_monstres;
 
        // static std::vector<Objet*> m_objets;
-
-
-
 
 
 };

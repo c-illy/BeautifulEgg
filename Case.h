@@ -18,7 +18,9 @@ class Modeles;
 class Case
 {
     public:
-        Case(int x=0, int y=0);
+
+        Case(int x, int y, bool navigable, Personnage* personnage/*, Objet* objet*/);
+
         virtual ~Case();
 
         bool navigable() const;

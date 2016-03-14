@@ -1,7 +1,8 @@
 #include "Case.h"
 
 
-Case::Case(int x, int y)
+Case::Case(int x, int y, bool navigable, Personnage* personnage/*, Objet* objet*/) :
+    m_navigable(navigable), m_personnage(personnage)
 {
     m_position.setPositionX(x);
     m_position.setPositionY(y);
