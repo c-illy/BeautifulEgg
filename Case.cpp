@@ -1,8 +1,11 @@
 #include "Case.h"
 
-Case::Case(bool navigable, Personnage* personnage/*, Objet* objet*/) :
+
+Case::Case(int x, int y, bool navigable, Personnage* personnage/*, Objet* objet*/) :
     m_navigable(navigable), m_personnage(personnage)
 {
+    m_position.setPositionX(x);
+    m_position.setPositionY(y);
     //ctor
 }
 
@@ -31,4 +34,10 @@ Personnage* Case::getPersonnage()
 void Case::setPersonnage(Personnage* personnage)
 {
     m_personnage = personnage;
+}
+
+
+Position Case::getPosition()
+{
+    return m_position;
 }
