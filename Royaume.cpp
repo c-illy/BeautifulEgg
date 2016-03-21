@@ -3,17 +3,17 @@
 Royaume::Royaume()
 {
     m_cases.push_back(std::vector<Case>());
-    m_cases.at(0).push_back(Case(true, 0));
-    m_cases.at(0).push_back(Case(true, 0));
-    m_cases.at(0).push_back(Case(true, 0));
+    m_cases.at(0).push_back(Case(true,0,0,0));
+    m_cases.at(0).push_back(Case(true, 0,0,0));
+    m_cases.at(0).push_back(Case(true, 0,0,0));
     m_cases.push_back(std::vector<Case>());
-    m_cases.at(1).push_back(Case(true, 0));
-    m_cases.at(1).push_back(Case(false, 0));
-    m_cases.at(1).push_back(Case(true, 0));
+    m_cases.at(1).push_back(Case(true, 0,0,0));
+    m_cases.at(1).push_back(Case(false, 0,0,0));
+    m_cases.at(1).push_back(Case(true, 0,0,0));
     m_cases.push_back(std::vector<Case>());
-    m_cases.at(2).push_back(Case(true, 0));
-    m_cases.at(2).push_back(Case(true, 0));
-    m_cases.at(2).push_back(Case(true, 0));
+    m_cases.at(2).push_back(Case(true, 0,0,0));
+    m_cases.at(2).push_back(Case(true, 0,0,0));
+    m_cases.at(2).push_back(Case(true, 0,0,0));
 }
 
 Royaume::~Royaume()

@@ -11,12 +11,6 @@
 #define TAILLE_CASE_X 100
 #define TAILLE_CASE_Y 100
 
-enum Action
-{
-    DEPLACER,
-    ATTAQUER,
-    ACTIONNER
-};
 
 
 class Modeles

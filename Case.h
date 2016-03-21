@@ -19,7 +19,7 @@ class Case
 {
     public:
 
-        Case(int x, int y, bool navigable, Personnage* personnage/*, Objet* objet*/);
+        Case(bool navigable, Personnage* personnage, int x, int y/*, Objet* objet*/);
 
         virtual ~Case();
 
