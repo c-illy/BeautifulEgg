@@ -2,14 +2,19 @@
 #include "Modeles.h"
 
 PersonnagesView::PersonnagesView(sf::RenderWindow& window) :
-    Vue(window)
+    Vue(window), m_debug(window, "testAnim")
 {
-    //ctor
+
 }
 
 PersonnagesView::~PersonnagesView()
 {
     //dtor
+}
+
+void PersonnagesView::update(sf::Time deltaTemps)
+{
+    m_debug.update(deltaTemps);
 }
 
 void PersonnagesView::draw() const
@@ -22,6 +27,8 @@ void PersonnagesView::draw() const
     {
         drawPersonnage(*p);
     }
+
+    m_debug.draw();///////////////////////////////FIXME
 }
 
 void PersonnagesView::drawPersonnage(const Personnage& personnage) const

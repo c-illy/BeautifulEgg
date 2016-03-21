@@ -10,6 +10,8 @@
 class Vues
 {
     public:
+        static void init();
+        static void update(sf::Time deltaTemps);
         static void draw();
 
     public:

@@ -4,7 +4,19 @@ RoyaumeView Vues::m_royaumeView(Vues::m_window);
 IHMView Vues::m_IHMView(Vues::m_window);
 PersonnagesView Vues::m_personnagesView(Vues::m_window);
 
-sf::RenderWindow Vues::m_window(sf::VideoMode(800, 600), "Vues works!");
+sf::RenderWindow Vues::m_window(sf::VideoMode(800, 600), "EGG");
+
+void Vues::init()
+{
+
+}
+
+void Vues::update(sf::Time deltaTemps)
+{
+    m_royaumeView.update(deltaTemps);
+    m_personnagesView.update(deltaTemps);
+    m_IHMView.update(deltaTemps);
+}
 
 void Vues::draw()
 {

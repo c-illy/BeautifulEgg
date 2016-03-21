@@ -12,6 +12,7 @@ class IHMView : public Vue
         IHMView(sf::RenderWindow& window);
         virtual ~IHMView();
 
+        void update(sf::Time deltaTemps);
         void draw() const;
 
     private:

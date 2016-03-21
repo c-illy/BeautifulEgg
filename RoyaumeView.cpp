@@ -19,6 +19,11 @@ RoyaumeView::~RoyaumeView()
     //dtor
 }
 
+void RoyaumeView::update(sf::Time deltaTemps)
+{
+
+}
+
 void RoyaumeView::draw() const
 {
     const Royaume& royaume = Modeles::m_royaume;

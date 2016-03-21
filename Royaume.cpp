@@ -2,6 +2,16 @@
 
 Royaume::Royaume()
 {
+
+}
+
+Royaume::~Royaume()
+{
+    //dtor
+}
+
+void Royaume::chargerFichier()
+{
     m_cases.push_back(std::vector<Case>());
     m_cases.at(0).push_back(Case(true,0,0,0));
     m_cases.at(0).push_back(Case(true, 0,0,0));
@@ -14,11 +24,6 @@ Royaume::Royaume()
     m_cases.at(2).push_back(Case(true, 0,0,0));
     m_cases.at(2).push_back(Case(true, 0,0,0));
     m_cases.at(2).push_back(Case(true, 0,0,0));
-}
-
-Royaume::~Royaume()
-{
-    //dtor
 }
 
 Case& Royaume::get(int i, int j)

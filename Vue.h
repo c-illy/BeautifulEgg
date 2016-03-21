@@ -11,6 +11,7 @@ class Vue
         Vue(sf::RenderWindow& window);
         virtual ~Vue();
 
+        virtual void update(sf::Time deltaTemps) = 0;
         virtual void draw() const = 0;
 
     protected:

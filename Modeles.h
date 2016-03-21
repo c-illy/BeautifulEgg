@@ -9,7 +9,7 @@
 
 
 #define TAILLE_CASE_X 100
-#define TAILLE_CASE_Y 100
+#define TAILLE_CASE_Y 50
 
 
 
@@ -19,6 +19,8 @@ class Modeles
   public:
 
         struct Position {int x,y;};
+
+        static void init();
 
 
         static Royaume m_royaume;

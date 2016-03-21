@@ -1,25 +1,28 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 
-#include <SFML/Graphics.hpp>
+#include "Vue.h"
 
-class Animation
+class Animation : public Vue
 {
     public:
-        Animation(std::string nom);
+        Animation(sf::RenderWindow& window, std::string nom);
         virtual ~Animation();
 
-        void animer(sf::Time deltaTemps);
+        void demarrer();
+        void update(sf::Time deltaTemps);
+        void draw() const;
 
     protected:
         const int m_spriteLargeur;
         const int m_spriteHauteur;
-        const float m_tempsIntervalle;
+        const sf::Time m_tempsIntervalle;
+        int m_totalFrames;
 
         sf::Texture m_texture;
         sf::Sprite m_sprite;
 
-        sf::Time m_debutAnimation;
+        sf::Clock m_clock;
         int m_frameCourante;
 
     private:

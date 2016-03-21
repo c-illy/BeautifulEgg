@@ -10,6 +10,8 @@ class Royaume
         Royaume();
         virtual ~Royaume();
 
+        void chargerFichier();
+
         Case& get(int i, int j);
         const Case& get(int i, int j) const;
         int getLargeur() const;

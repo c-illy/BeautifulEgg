@@ -8,8 +8,9 @@
 
 
 
-Personnage::Personnage(std::string nom, int x, int y) : m_nom(nom), m_santeMax(100), m_sante(100), m_degats(20), m_directionActuelle(droite),
-                                            m_caseCible(NULL), m_vivant(true), m_position(x,y)
+Personnage::Personnage(std::string nom, int x, int y) :
+    m_nom(nom), m_sante(100), m_santeMax(100), m_degats(20), m_position(x,y),
+    m_directionActuelle(droite), m_caseCible(NULL), m_vivant(true)
 {
 
 }

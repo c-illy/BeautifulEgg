@@ -13,7 +13,14 @@ class Modeles;
 
 
 
-enum Direction {haut, bas, gauche, droite};
+enum Direction
+{
+    HAUT,
+    BAS,
+    GAUCHE,
+    DROITE,
+    NOMBRE_DIRECTIONS
+};
 
 
 
@@ -21,7 +28,8 @@ enum Action
 {
     DEPLACER,
     ATTAQUER,
-    ACTIONNER
+    ACTIONNER,
+    NOMBRE_ACTIONS
 };
 
 
@@ -56,15 +64,15 @@ class Personnage
         //void interragir(Objet obj);
 
 
+        std::string m_nom;
         int m_sante;
         int m_santeMax;
         int m_degats;
         Position m_position;
-        std::string m_nom;
         Direction m_directionActuelle;
-        Action m_actionCourante;
         Case *m_caseCible;
         bool m_vivant;
+        Action m_actionCourante;
 
 };
 

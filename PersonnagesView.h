@@ -3,6 +3,7 @@
 
 #include "Vue.h"
 #include "Personnage.h"
+#include "Animation.h"
 
 class PersonnagesView : public Vue
 {
@@ -10,10 +11,12 @@ class PersonnagesView : public Vue
         PersonnagesView(sf::RenderWindow& window);
         virtual ~PersonnagesView();
 
+        void update(sf::Time deltaTemps);
         void draw() const;
         void drawPersonnage(const Personnage& personnage) const;
 
     private:
+        Animation m_debug;
 };
 
 #endif // PERSONNAGESVIEW_H

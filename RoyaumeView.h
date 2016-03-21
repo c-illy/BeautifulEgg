@@ -10,6 +10,7 @@ class RoyaumeView : public Vue
         RoyaumeView(sf::RenderWindow& window);
         virtual ~RoyaumeView();
 
+        void update(sf::Time deltaTemps);
         void draw() const;
 
     private:

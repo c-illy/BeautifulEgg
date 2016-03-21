@@ -20,6 +20,11 @@ IHMView::~IHMView()
     //dtor
 }
 
+void IHMView::update(sf::Time deltaTemps)
+{
+
+}
+
 void IHMView::draw() const
 {
     const Personnage& joueur = Modeles::m_joueur;
