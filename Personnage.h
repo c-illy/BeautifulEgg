@@ -47,9 +47,9 @@ class Personnage
         void setAction(Action action);
         void executerAction();
         std::string getNom();
-        void setCaseCible(Case *caseCible);
+        void setCaseCible(const Case *caseCible);
         void setPosition(int x, int y);
-        Position getPosition();
+        Position getPosition() const;
 
 
 
@@ -70,7 +70,7 @@ class Personnage
         int m_degats;
         Position m_position;
         Direction m_directionActuelle;
-        Case *m_caseCible;
+        const Case *m_caseCible;
         bool m_vivant;
         Action m_actionCourante;
 

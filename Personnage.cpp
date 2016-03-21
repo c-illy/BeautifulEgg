@@ -10,7 +10,7 @@
 
 Personnage::Personnage(std::string nom, int x, int y) :
     m_nom(nom), m_sante(100), m_santeMax(100), m_degats(20), m_position(x,y),
-    m_directionActuelle(droite), m_caseCible(NULL), m_vivant(true)
+    m_directionActuelle(DROITE), m_caseCible(NULL), m_vivant(true)
 {
 
 }
@@ -50,7 +50,7 @@ void Personnage::attaquer(Personnage &autre)
 
 
 
-void Personnage::setCaseCible(Case *caseCible)
+void Personnage::setCaseCible(const Case *caseCible)
 {
     m_caseCible=caseCible;
 }
@@ -70,7 +70,7 @@ void Personnage::setPosition(int x, int y)
 }
 
 
-Position Personnage::getPosition()
+Position Personnage::getPosition() const
 {
     return m_position;
 }
@@ -114,7 +114,7 @@ void Personnage::executerAction()
             break;
 
 
-      case ACTIONNER :
+        case ACTIONNER :
 
             break;
 
@@ -125,6 +125,9 @@ void Personnage::executerAction()
 
             attaquer(*cible);
 
+            break;
+
+        default:
             break;
 
     }

@@ -11,6 +11,7 @@ class Position
     int getPositionY();
     void setPositionX(int x);
     void setPositionY(int y);
+    double distance(const Position &pos) const;
 
 
     private:

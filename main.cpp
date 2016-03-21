@@ -1,7 +1,7 @@
 
-//#include <SFML/Graphics.hpp>
-//#include "Personnage.h"
-//#include "Case.h"
+#include <SFML/Graphics.hpp>
+#include "Personnage.h"
+#include "Case.h"
 
 #include "Modeles.h"
 #include "Vues.h"

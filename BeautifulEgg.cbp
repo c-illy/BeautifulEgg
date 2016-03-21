@@ -59,6 +59,8 @@
 		<Unit filename="IHMView.h" />
 		<Unit filename="Modeles.cpp" />
 		<Unit filename="Modeles.h" />
+		<Unit filename="Monstre.cpp" />
+		<Unit filename="Monstre.h" />
 		<Unit filename="Personnage.cpp" />
 		<Unit filename="Personnage.h" />
 		<Unit filename="PersonnagesView.cpp" />

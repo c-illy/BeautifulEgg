@@ -24,8 +24,8 @@ class Case
         virtual ~Case();
 
         bool navigable() const;
-        Personnage* getPersonnage();
-        Position getPosition();
+        Personnage* getPersonnage() const;
+        Position getPosition() const;
         //Objet& getObjet();
 
         void setPersonnage(Personnage* personnage);
