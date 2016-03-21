@@ -51,6 +51,8 @@
 			<Add directory="SFML-2.3.2-l/lib" />
 			<Add directory="SFML-2.3.2-w/lib" />
 		</Linker>
+		<Unit filename="Animation.cpp" />
+		<Unit filename="Animation.h" />
 		<Unit filename="Case.cpp" />
 		<Unit filename="Case.h" />
 		<Unit filename="IHMView.cpp" />
