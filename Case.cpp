@@ -20,7 +20,7 @@ bool Case::navigable() const
     return m_navigable;
 }
 
-Personnage* Case::getPersonnage()
+Personnage* Case::getPersonnage() const
 {
     return m_personnage;
 }
@@ -37,7 +37,7 @@ void Case::setPersonnage(Personnage* personnage)
 }
 
 
-Position Case::getPosition()
+Position Case::getPosition() const
 {
     return m_position;
 }

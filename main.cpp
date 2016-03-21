@@ -1,7 +1,7 @@
 
-//#include <SFML/Graphics.hpp>
-//#include "Personnage.h"
-//#include "Case.h"
+#include <SFML/Graphics.hpp>
+#include "Personnage.h"
+#include "Case.h"
 
 #include "Modeles.h"
 #include "Vues.h"
@@ -9,7 +9,12 @@
 
 int main()
 {
-    /*
+
+
+
+//sf::RenderWindow window(sf::VideoMode(800,600), "BeautifulEgg");
+
+Vues vue;
 
 
 int a(10);
@@ -17,19 +22,19 @@ int a(10);
 
     Personnage *perso1=new Personnage("p1");
     Personnage *perso2=new Personnage("p2");
-    Case case1, case2(3,5);
+    Case case1(true,0,0,0), case2(true,0,3,5);
 
 
-    while (window.isOpen())
+    while (vue.m_window.isOpen())
     {
 
 
         sf::Event event;
-        while (window.pollEvent(event))
+        while (vue.m_window.pollEvent(event))
         {
 
               if (event.type == sf::Event::Closed)
-                window.close();
+                vue.m_window.close();
 
 
         }
@@ -60,17 +65,23 @@ int a(10);
           std::cout<<"============================================="<<std::endl;
 
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+
+        vue.m_window.clear();
+
+
+          for(int i=0; i<4000; i++)
+        Vues::draw();
+
+        vue.m_window.display();
 
 
     }
 
 
-    }*/
-    for(int i=0; i<4000; i++)
-        Vues::draw();
+
+
+
+
 
 
     return 0;

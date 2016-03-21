@@ -1,4 +1,5 @@
-#include"Position.h"
+#include "Position.h"
+#include <Math.h>
 
 
 Position::Position(int x, int y): m_x(x), m_y(y)
@@ -28,3 +29,11 @@ void Position::setPositionY(int y)
 {
     m_y=y;
 }
+
+
+double Position::distance(const Position &pos) const
+{
+	double val = pow(m_x - pos.m_x,2) + pow(m_y - pos.m_y,2);
+	return sqrt(val);
+}
+

@@ -1,7 +1,10 @@
 # depslib dependency file v1.0
 538992756 
 
-1457993097 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\main.cpp
+1457994756 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\main.cpp
+	<SFML/Graphics.hpp>
+	"Personnage.h"
+	"Case.h"
 	"Modeles.h"
 	"Vues.h"
 
@@ -398,7 +401,7 @@
 	<string>
 	<vector>
 
-1457992392 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\personnage.h
+1458592810 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\personnage.h
 	<string>
 	"Case.h"
 	"Position.h"
@@ -413,27 +416,28 @@
 	<vector>
 	"Case.h"
 
-1457992501 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\case.h
+1458594741 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\case.h
 	<iostream>
 	"Position.h"
 
-1457992504 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\case.cpp
+1458594757 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\case.cpp
 	"Case.h"
 
 1457384741 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\modeles.cpp
 	"Modeles.h"
 
-1457990278 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\personnage.cpp
+1458594679 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\personnage.cpp
 	<iostream>
 	"Personnage.h"
 
 1457992776 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\royaume.cpp
 	"Royaume.h"
 
-1457989052 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\position.h
+1458591075 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\position.h
 
-1457989083 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\position.cpp
+1458594817 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\position.cpp
 	"Position.h"
+	<Math.h>
 
 1456776412 source:h:\creajeu\codeblocks\beautifullegg\src\case.cpp
 	"Case.h"
@@ -563,4 +567,12 @@
 
 1457990941 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\vues.cpp
 	"Vues.h"
+
+1458594477 source:c:\users\laumaille\desktop\projet_créajeux\beautifulegg\monstre.cpp
+	"Monstre.h"
+	"Modeles.h"
+
+1458594477 c:\users\laumaille\desktop\projet_créajeux\beautifulegg\monstre.h
+	"Personnage.h"
+	"Case.h"
 

@@ -39,9 +39,9 @@ class Personnage
         void setAction(Action action);
         void executerAction();
         std::string getNom();
-        void setCaseCible(Case *caseCible);
+        void setCaseCible(const Case *caseCible);
         void setPosition(int x, int y);
-        Position getPosition();
+        Position getPosition() const;
 
 
 
@@ -63,7 +63,7 @@ class Personnage
         std::string m_nom;
         Direction m_directionActuelle;
         Action m_actionCourante;
-        Case *m_caseCible;
+        const Case *m_caseCible;
         bool m_vivant;
 
 };
