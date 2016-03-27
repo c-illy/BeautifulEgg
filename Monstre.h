@@ -4,36 +4,22 @@
 #include "Personnage.h"
 #include "Case.h"
 
-
-typedef std::vector<int> vecteur;
-
-
-
-
+//typedef std::vector<int> vecteur;
+class Position;
 
 
 class Monstre: public Personnage
 {
-
     public:
-
-    Monstre();
-    void choisirDeplacement(vecteur direction);
-    void appliquerIA();
-
-
+      Monstre();
+      void appliquerIA();
 
     private:
+      void choisirDeplacement(const Position* direction);
 
-    double m_rayonIA;
-
-
+    private:
+      double m_rayonIA;
 
 };
-
-
-
-
-
 
 #endif // MONSTRE_H_INCLUDED

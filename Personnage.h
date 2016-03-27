@@ -6,11 +6,7 @@
 #include "Position.h"
 #include "Modeles.h"
 
-
-
 class Modeles;
-
-
 
 
 enum Direction
@@ -22,8 +18,6 @@ enum Direction
     NOMBRE_DIRECTIONS
 };
 
-
-
 enum Action
 {
     DEPLACER,
@@ -33,13 +27,9 @@ enum Action
 };
 
 
-
-
 class Personnage
 {
     public:
-
-
         Personnage(std::string nom="joueur", int x=0, int y=0);
         ~Personnage();
 
@@ -50,19 +40,13 @@ class Personnage
         void setCaseCible(const Case *caseCible);
         void setPosition(int x, int y);
         Position getPosition() const;
-
-
-
-
+        bool getVivant() const;
+        bool getMourant() const;
 
     protected:
-
-
-
         void perdreSante(int degats);
         void attaquer(Personnage &autre);
         //void interragir(Objet obj);
-
 
         std::string m_nom;
         int m_sante;
@@ -71,10 +55,10 @@ class Personnage
         Position m_position;
         Direction m_directionActuelle;
         const Case *m_caseCible;
-        bool m_vivant;
+        bool m_vivant;///pas utilisé??
+        bool m_mourant;///animé en phase ACTION_PNJ
         Action m_actionCourante;
 
 };
-
 
 #endif // PERSONNAGE_H_INCLUDED

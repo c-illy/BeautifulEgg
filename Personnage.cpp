@@ -3,37 +3,31 @@
 
 
 
-
-
-
-
-
 Personnage::Personnage(std::string nom, int x, int y) :
     m_nom(nom), m_sante(100), m_santeMax(100), m_degats(20), m_position(x,y),
-    m_directionActuelle(DROITE), m_caseCible(NULL), m_vivant(true)
+    m_directionActuelle(DROITE), m_caseCible(NULL), m_vivant(true), m_mourant(false)
 {
-
 }
 
+Personnage::~Personnage()
+{
+    //delete m_caseCible;//non, cf. Royaume
+}
 
 
 void Personnage::perdreSante(int degats)
 {
-
     if(m_sante>0)
     {
          m_sante -= degats;
 
-
-        if (m_sante == 0)
+        if (m_sante <= 0)
         {
-
-            m_vivant=true;
-            std::cout << "Game over" << std::endl;
+            m_vivant = false;
+            m_mourant = true;
+            //std::cout << "Game over" << std::endl;
         }
     }
-
-
 }
 
 
@@ -42,10 +36,8 @@ void Personnage::attaquer(Personnage &autre)
 {
     autre.perdreSante(m_degats);
 
-
     std::cout<<m_nom<<" inflige "<<m_degats<<" degats a "<<autre.getNom()<<std::endl;
     autre.afficher();
-
 }
 
 
@@ -76,14 +68,10 @@ Position Personnage::getPosition() const
 }
 
 
-
-
 void Personnage::afficher()
 {
     std::cout<<m_nom<<" a "<<m_sante<<" points de vie"<<std::endl;
     std::cout<<m_nom<<" est sur la case ("<<m_position.getPositionX()<<","<<m_position.getPositionY()<<")"<<std::endl;
-
-
 }
 
 
@@ -91,6 +79,16 @@ void Personnage::afficher()
 std::string Personnage::getNom()
 {
     return m_nom;
+}
+
+bool Personnage::getVivant() const
+{
+    return m_vivant;
+}
+
+bool Personnage::getMourant() const
+{
+    return m_mourant;
 }
 
 
@@ -102,7 +100,6 @@ void Personnage::setAction(Action action)
 
 void Personnage::executerAction()
 {
-
 
     switch(m_actionCourante)
     {
@@ -132,11 +129,6 @@ void Personnage::executerAction()
 
     }
 
+    m_mourant = false;
 
-
-}
-
-Personnage::~Personnage()
-{
-    delete m_caseCible;
 }

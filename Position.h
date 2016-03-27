@@ -7,8 +7,8 @@ class Position
     public:
 
     Position(int x=0, int y=0);
-    int getPositionX();
-    int getPositionY();
+    int getPositionX() const;
+    int getPositionY() const;
     void setPositionX(int x);
     void setPositionY(int y);
     double distance(const Position &pos) const;

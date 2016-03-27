@@ -8,14 +8,14 @@ Position::Position(int x, int y): m_x(x), m_y(y)
 }
 
 
-int Position::getPositionX()
+int Position::getPositionX() const
 {
     return m_x;
 }
 
 
 
-int Position::getPositionY()
+int Position::getPositionY() const
 {
     return m_y;
 }

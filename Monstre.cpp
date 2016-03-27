@@ -1,46 +1,37 @@
 #include "Monstre.h"
 #include "Modeles.h"
+#include "Position.h"
 
 Monstre::Monstre() : m_rayonIA(20)
 {
-
 }
 
-
-
-void Monstre::choisirDeplacement(vecteur direction)
+void Monstre::choisirDeplacement(const Position* direction)
 {
-	//Case* newPos = pos;
-
 	const Royaume& royaume = (Modeles::m_royaume);
 
+	int resX = getPosition().getPositionX();
+	int resY = getPosition().getPositionY();
+	int dirX = direction->getPositionX();
+	int dirY = direction->getPositionY();
 
-	int resX=getPosition().getPositionX();
-	int resY=getPosition().getPositionY();
-
-
-
-
-	if ((direction[0] > 0) and (royaume.get(resX+1,resY).navigable()))
+	if ((dirX > 0) and (royaume.get(resX+1,resY).navigable()))
 	{
 		setCaseCible(&(royaume.get(resX+1,resY)));
 	}
-	if ((direction[0] < 0) and (royaume.get(resX-1, resY).navigable()))
+	if ((dirX < 0) and (royaume.get(resX-1, resY).navigable()))
 	{
 		setCaseCible(&(royaume.get(resX-1,resY)));
 	}
-	if ((direction[1] > 0) and (royaume.get(resX, resY+1).navigable()))
+	if ((dirY > 0) and (royaume.get(resX, resY+1).navigable()))
 	{
 		setCaseCible(&(royaume.get(resX,resY+1)));
 	}
-	if ((direction[1] < 0) and (royaume.get(resX, resY+1).navigable()))
+	if ((dirY < 0) and (royaume.get(resX, resY+1).navigable()))
 	{
 		setCaseCible(&(royaume.get(resX,resY-1)));
 	}
-
 }
-
-
 
 void Monstre::appliquerIA()
 {
@@ -60,8 +51,8 @@ void Monstre::appliquerIA()
 	}
 	else if ((dist < m_rayonIA) && (dist > 1))
 	{
-		vecteur direction(joueurX - p.getPositionX(), joueurY - p.getPositionY());
-		choisirDeplacement(direction);
+		Position direction(joueurX - p.getPositionX(), joueurY - p.getPositionY());
+		choisirDeplacement(&direction);
 		setAction(DEPLACER);
 	}
 }

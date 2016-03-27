@@ -1,5 +1,6 @@
 #include "PersonnagesView.h"
 #include "Modeles.h"
+#include "Monstre.h"
 
 PersonnagesView::PersonnagesView(sf::RenderWindow& window) :
     Vue(window), m_debug(window, "testAnim")
@@ -20,7 +21,7 @@ void PersonnagesView::update(sf::Time deltaTemps)
 void PersonnagesView::draw() const
 {
     Personnage& joueur = Modeles::m_joueur;
-    std::vector<Personnage*> monstres = Modeles::m_monstres;
+    std::vector<Monstre*>& monstres = Modeles::m_monstres;
 
     drawPersonnage(joueur);
     for(Personnage* p : monstres)
