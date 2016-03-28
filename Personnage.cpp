@@ -76,7 +76,7 @@ void Personnage::afficher()
 
 
 
-std::string Personnage::getNom()
+std::string Personnage::getNom() const
 {
     return m_nom;
 }

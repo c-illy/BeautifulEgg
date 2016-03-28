@@ -5,6 +5,8 @@
 
 #define TAILLE_BARRE_X 100
 #define TAILLE_BARRE_Y 10
+#define POS_BARRE_X 50
+#define POS_BARRE_Y (TAILLE_FENETRE_Y - TAILLE_BARRE_Y - 50)
 
 class IHMView : public Vue
 {

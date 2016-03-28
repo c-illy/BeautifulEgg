@@ -55,8 +55,14 @@
 		<Unit filename="Animation.h" />
 		<Unit filename="Case.cpp" />
 		<Unit filename="Case.h" />
+		<Unit filename="Cinematique.cpp" />
+		<Unit filename="Cinematique.h" />
+		<Unit filename="Controleur.cpp" />
+		<Unit filename="Controleur.h" />
 		<Unit filename="IHMView.cpp" />
 		<Unit filename="IHMView.h" />
+		<Unit filename="MapParser.cpp" />
+		<Unit filename="MapParser.h" />
 		<Unit filename="Modeles.cpp" />
 		<Unit filename="Modeles.h" />
 		<Unit filename="Monstre.cpp" />
@@ -75,6 +81,8 @@
 		<Unit filename="Vue.h" />
 		<Unit filename="Vues.cpp" />
 		<Unit filename="Vues.h" />
+		<Unit filename="Zone.cpp" />
+		<Unit filename="Zone.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

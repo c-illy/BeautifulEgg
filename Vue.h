@@ -5,6 +5,9 @@
 
 #define RESSOURCES "./"
 
+#define TAILLE_FENETRE_X 1400
+#define TAILLE_FENETRE_Y 800
+
 class Vue
 {
     public:

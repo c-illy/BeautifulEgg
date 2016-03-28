@@ -36,7 +36,7 @@ class Personnage
         void afficher();
         void setAction(Action action);
         void executerAction();
-        std::string getNom();
+        std::string getNom() const;
         void setCaseCible(const Case *caseCible);
         void setPosition(int x, int y);
         Position getPosition() const;

@@ -3,33 +3,41 @@
 #include "Monstre.h"
 
 PersonnagesView::PersonnagesView(sf::RenderWindow& window) :
-    Vue(window), m_debug(window, "testAnim")
+    Vue(window)
 {
 
 }
 
 PersonnagesView::~PersonnagesView()
 {
-    //dtor
+    for(Animation* anim : m_animations)
+    {
+        delete anim;
+    }
+}
+
+void PersonnagesView::init()
+{
+    m_animations.push_back(new Animation(m_window, Modeles::m_joueur));
 }
 
 void PersonnagesView::update(sf::Time deltaTemps)
 {
-    m_debug.update(deltaTemps);
+    for(Animation* anim : m_animations)
+    {
+        anim->update(deltaTemps);
+    }
 }
 
 void PersonnagesView::draw() const
 {
-    Personnage& joueur = Modeles::m_joueur;
-    std::vector<Monstre*>& monstres = Modeles::m_monstres;
+    //Personnage& joueur = Modeles::m_joueur;
+    //std::vector<Monstre*>& monstres = Modeles::m_monstres;
 
-    drawPersonnage(joueur);
-    for(Personnage* p : monstres)
+    for(Animation* anim : m_animations)
     {
-        drawPersonnage(*p);
+        anim->draw();
     }
-
-    m_debug.draw();///////////////////////////////FIXME
 }
 
 void PersonnagesView::drawPersonnage(const Personnage& personnage) const

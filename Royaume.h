@@ -2,7 +2,7 @@
 #define ROYAUME_H
 
 #include <vector>
-#include "Case.h"
+#include "Zone.h"
 
 class Royaume
 {
@@ -10,6 +10,7 @@ class Royaume
         Royaume();
         virtual ~Royaume();
 
+        void ajouterZone(Zone* zone);
         void chargerFichier();
 
         Case& get(int i, int j);
@@ -18,7 +19,8 @@ class Royaume
         int getHauteur() const;
 
     private:
-        std::vector<std::vector<Case> > m_cases;
+        std::vector<Zone*> m_zones;
+        int m_zoneCourante;
 };
 
 #endif // ROYAUME_H

@@ -1,4 +1,5 @@
 #include "Royaume.h"
+#include "MapParser.h"
 
 Royaume::Royaume()
 {
@@ -7,44 +8,43 @@ Royaume::Royaume()
 
 Royaume::~Royaume()
 {
-    //dtor
+    for(Zone* zone : m_zones)
+    {
+        delete zone;
+    }
 }
 
 void Royaume::chargerFichier()
 {
-    m_cases.push_back(std::vector<Case>());
-    m_cases.at(0).push_back(Case(true,0,0,0));
-    m_cases.at(0).push_back(Case(true, 0,0,0));
-    m_cases.at(0).push_back(Case(true, 0,0,0));
-    m_cases.push_back(std::vector<Case>());
-    m_cases.at(1).push_back(Case(true, 0,0,0));
-    m_cases.at(1).push_back(Case(false, 0,0,0));
-    m_cases.at(1).push_back(Case(true, 0,0,0));
-    m_cases.push_back(std::vector<Case>());
-    m_cases.at(2).push_back(Case(true, 0,0,0));
-    m_cases.at(2).push_back(Case(true, 0,0,0));
-    m_cases.at(2).push_back(Case(true, 0,0,0));
+    ///TODO
+    /*Zone* zone = new Zone();
+    zone->chargerFichier();
+    m_zones.push_back(zone);*/
+    MapParser::initZonesFromFiles();
+}
+
+void Royaume::ajouterZone(Zone* zone)
+{
+    m_zones.push_back(zone);
 }
 
 Case& Royaume::get(int i, int j)
 {
-    return m_cases.at(i).at(j);
+    return m_zones.at(m_zoneCourante)->get(i, j);
 }
 
 const Case& Royaume::get(int i, int j) const
 {
-    return m_cases.at(i).at(j);
+    return m_zones.at(m_zoneCourante)->get(i, j);
 }
 
 int Royaume::getLargeur() const
 {
-    return m_cases.size();
+    return m_zones.at(m_zoneCourante)->getLargeur();
 }
 
 int Royaume::getHauteur() const
 {
-    if(m_cases.size() > 0)
-        return m_cases.at(0).size();
-    return 0;
+    return m_zones.at(m_zoneCourante)->getHauteur();
 }
 

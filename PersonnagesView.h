@@ -11,12 +11,14 @@ class PersonnagesView : public Vue
         PersonnagesView(sf::RenderWindow& window);
         virtual ~PersonnagesView();
 
+        void init();
+
         void update(sf::Time deltaTemps);
         void draw() const;
         void drawPersonnage(const Personnage& personnage) const;
 
     private:
-        Animation m_debug;
+        std::vector<Animation*> m_animations;
 };
 
 #endif // PERSONNAGESVIEW_H

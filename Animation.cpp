@@ -1,6 +1,6 @@
 #include "Animation.h"
 
-Animation::Animation(sf::RenderWindow& window, std::string nom) :
+Animation::Animation(sf::RenderWindow& window, const Personnage& personnage) :
     Vue(window),
     m_spriteLargeur(100),
     m_spriteHauteur(100),
@@ -8,10 +8,8 @@ Animation::Animation(sf::RenderWindow& window, std::string nom) :
     m_totalFrames(3),
     m_frameCourante(0)
 {
-    if (!m_texture.loadFromFile(RESSOURCES + nom + ".png"))
-    {
-        // erreur...
-    }
+    std::string nomFichier = personnage.getNom() + "_marche_bas";
+    m_texture.loadFromFile(RESSOURCES + nomFichier + ".png");
 
     m_sprite.setTexture(m_texture);
     m_sprite.setTextureRect(sf::IntRect(0, 0, m_spriteLargeur, m_spriteHauteur));

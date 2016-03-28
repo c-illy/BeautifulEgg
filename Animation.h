@@ -2,11 +2,29 @@
 #define ANIMATION_H
 
 #include "Vue.h"
+#include "Personnage.h"
+
+/*
+
+Joueur  haut   marche  10
+Joueur  haut   attaque 8
+Joueur  bas    marche  10
+Joueur  bas    attaque 8
+Joueur  droite marche  10
+Joueur  droite attaque 8
+Joueur  gauche marche  10
+Joueur  gauche attaque 8
+Monstre haut   marche  20
+Monstre haut   attaque 16
+Monstre bas    marche  20
+...
+
+*/
 
 class Animation : public Vue
 {
     public:
-        Animation(sf::RenderWindow& window, std::string nom);
+        Animation(sf::RenderWindow& window, const Personnage& personnage);
         virtual ~Animation();
 
         void demarrer();

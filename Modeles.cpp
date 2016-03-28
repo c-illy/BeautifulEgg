@@ -2,7 +2,7 @@
 #include "Monstre.h"
 
 Royaume Modeles::m_royaume;
-Personnage Modeles::m_joueur;
+Personnage Modeles::m_joueur("joueur");
 std::vector<Monstre*> Modeles::m_monstres;
 
 
@@ -29,6 +29,7 @@ void Modeles::updatePhasePret()
     m_nouvellePhase = true;
     m_phaseDeltaTempsMs = 0;
 }
+
 void Modeles::updatePhasePJ()
 {
     if (m_phaseDeltaTempsMs >= DUREE_ACTION_PJ_MS)

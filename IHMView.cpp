@@ -13,6 +13,7 @@ IHMView::IHMView(sf::RenderWindow& window) :
         // erreur...
     }
     m_fond.setFillColor(sf::Color::Green);
+    m_fond.setPosition(POS_BARRE_X, POS_BARRE_Y);
 }
 
 IHMView::~IHMView()
@@ -31,6 +32,9 @@ void IHMView::draw() const
 
     sf::Sprite barreDeVieVariable(m_tex_barreDeVieVariable, sf::IntRect(0, 0, 100, 10));
     sf::Sprite barreDeVie(m_tex_barreDeVie);
+
+    barreDeVieVariable.setPosition(POS_BARRE_X, POS_BARRE_Y);
+    barreDeVie.setPosition(POS_BARRE_X, POS_BARRE_Y);
 
     m_window.draw(m_fond);
     m_window.draw(barreDeVieVariable);

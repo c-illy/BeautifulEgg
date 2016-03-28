@@ -1,6 +1,5 @@
 #include "Case.h"
 
-
 Case::Case( bool navigable, Personnage* personnage, int x, int y/*, Objet* objet*/) :
     m_navigable(navigable), m_personnage(personnage)
 {
