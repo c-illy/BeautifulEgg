@@ -10,6 +10,7 @@ void Controleur::jouer()
 {
     sf::Event event;
     sf::Clock clock;
+
     while (Vues::m_window.isOpen())
     {
         sf::Time deltaTemps(clock.restart());

@@ -1,4 +1,5 @@
 #include "Animation.h"
+#include "Vues.h"
 
 Animation::Animation(sf::RenderWindow& window, const Personnage& personnage) :
     Vue(window),
@@ -6,7 +7,8 @@ Animation::Animation(sf::RenderWindow& window, const Personnage& personnage) :
     m_spriteHauteur(100),
     m_tempsIntervalle(sf::milliseconds(100)),
     m_totalFrames(3),
-    m_frameCourante(0)
+    m_frameCourante(0),
+    m_personnage(personnage)
 {
     std::string nomFichier = personnage.getNom() + "_marche_bas";
     m_texture.loadFromFile(RESSOURCES + nomFichier + ".png");
@@ -27,6 +29,11 @@ void Animation::demarrer()
 
 void Animation::update(sf::Time deltaTemps)
 {
+    sf::Vector2f vect = Vues::positionToVect2f(m_personnage.getPosition());
+    vect.x += TAILLE_CASE_X - m_spriteLargeur;
+    vect.y += TAILLE_CASE_Y - m_spriteHauteur;
+    m_sprite.setPosition(vect);
+
     sf::Time tempsDepuisDebut = m_clock.getElapsedTime();
 
     int prochaineFrame = ((int)(tempsDepuisDebut / m_tempsIntervalle)) % m_totalFrames;

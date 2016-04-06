@@ -1,9 +1,9 @@
 #include "MapParser.h"
 
 const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
-{ {sf::Color(255, 255, 255).toInteger(), Empty  },
-  {sf::Color(0, 0, 0).toInteger(), Wall  },
-  {sf::Color(1, 1, 1).toInteger(), Wall  } };
+{ {sf::Color(255, 255, 255).toInteger(), Vide  },
+  {sf::Color(0, 0, 0).toInteger(), Mur  },
+  {sf::Color(1, 1, 1).toInteger(), Joueur  } };
 
 void MapParser::initZonesFromFiles()
 {
@@ -21,17 +21,6 @@ void MapParser::parseAndInit(const sf::Image& grid,
 	unsigned nLine   = grid.getSize().x / width;
 	unsigned nColumn = grid.getSize().y / height;
 	Zone* zone = new Zone(nLine, nColumn);
-
-
-
-
-	for(auto e : code)
-    {
-        std::cout << e.first << " -> " << e.second << std::endl;
-    }
-
-
-
 
 	for(unsigned j=0; j<nColumn; ++j) {
 		for(unsigned i=0; i<nLine; ++i) {
@@ -58,17 +47,28 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 {
 	switch(type)
 	{
-	case Empty:
+	case Vide:
 		zone->set(x, y, new Case(false,    // no navigable
 		                         nullptr, // no personnage
                                  x,
                                  y));
 		break;
-	case Wall:
+	case Mur:
 		zone->set(x, y, new Case(true,       // navigable
                                  nullptr,   // no personnage
                                  x,
                                  y));
 		break;
+	case Joueur:
+		Modeles::m_joueur.setPosition(x, y);
+		zone->set(x, y, new Case(false,
+                                 &Modeles::m_joueur,
+                                 x,
+                                 y));
+		break;
+	default:
+		std::cerr << "Erreur : Type de case inconnue." << std::endl;
+		break;
 	}
 }
+

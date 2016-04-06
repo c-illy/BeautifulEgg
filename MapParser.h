@@ -10,8 +10,9 @@ class MapParser
 public:
 	enum CaseType
 	{
-		Empty,
-		Wall,
+		Vide,
+		Mur,
+		Joueur
 	};
 
 	static void initZonesFromFiles();
