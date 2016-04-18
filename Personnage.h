@@ -40,6 +40,8 @@ class Personnage
         void setCaseCible(const Case *caseCible);
         void setPosition(int x, int y);
         Position getPosition() const;
+        int getSante() const;
+        int getSanteMax() const;
         bool getVivant() const;
         bool getMourant() const;
 

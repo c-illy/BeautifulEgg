@@ -67,6 +67,16 @@ Position Personnage::getPosition() const
     return m_position;
 }
 
+int Personnage::getSante() const
+{
+    return m_sante;
+}
+
+int Personnage::getSanteMax() const
+{
+    return m_santeMax;
+}
+
 
 void Personnage::afficher()
 {

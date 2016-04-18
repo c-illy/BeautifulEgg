@@ -26,7 +26,7 @@ void Vues::draw()
     sf::View view = m_window.getDefaultView();
     const Position& posJoueur = Modeles::m_joueur.getPosition();
     view.setCenter(positionToVect2f(posJoueur));
-    view.zoom(2.f);
+    //view.zoom(2.f);
     m_window.setView(view);
 
     m_royaumeView.draw();
