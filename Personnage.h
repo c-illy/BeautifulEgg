@@ -23,6 +23,7 @@ enum Action
     DEPLACER,
     ATTAQUER,
     ACTIONNER,
+    RIEN,
     NOMBRE_ACTIONS
 };
 
@@ -36,6 +37,7 @@ class Personnage
         void afficher();
         void setAction(Action action);
         void executerAction();
+        void deplacer();
         std::string getNom() const;
         void setCaseCible(const Case *caseCible);
         void setPosition(int x, int y);

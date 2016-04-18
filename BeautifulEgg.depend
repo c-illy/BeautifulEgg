@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1459183934 source:h:\creajeu\codeblocks\beautifullegg\animation.cpp
+1461003911 source:h:\creajeu\codeblocks\beautifullegg\animation.cpp
 	"Animation.h"
+	"Vues.h"
 
-1459180149 h:\creajeu\codeblocks\beautifullegg\animation.h
+1461003911 h:\creajeu\codeblocks\beautifullegg\animation.h
 	"Vue.h"
 	"Personnage.h"
 
@@ -393,11 +394,12 @@
 
 1459109206 h:\creajeu\codeblocks\beautifullegg\position.h
 
-1459187035 source:h:\creajeu\codeblocks\beautifullegg\ihmview.cpp
+1461003911 source:h:\creajeu\codeblocks\beautifullegg\ihmview.cpp
 	"IHMView.h"
 	"Modeles.h"
+	"Vues.h"
 
-1459186938 h:\creajeu\codeblocks\beautifullegg\ihmview.h
+1461003911 h:\creajeu\codeblocks\beautifullegg\ihmview.h
 	"Vue.h"
 
 1459193738 h:\creajeu\codeblocks\beautifullegg\vue.h
@@ -408,11 +410,11 @@
 	"Royaume.h"
 	"Personnage.h"
 
-1459189645 h:\creajeu\codeblocks\beautifullegg\royaume.h
+1461009373 h:\creajeu\codeblocks\beautifullegg\royaume.h
 	<vector>
 	"Zone.h"
 
-1459180238 h:\creajeu\codeblocks\beautifullegg\personnage.h
+1461009697 h:\creajeu\codeblocks\beautifullegg\personnage.h
 	<string>
 	"Case.h"
 	"Position.h"
@@ -423,7 +425,7 @@
 	"Vues.h"
 	"Controleur.h"
 
-1459186713 h:\creajeu\codeblocks\beautifullegg\vues.h
+1461003911 h:\creajeu\codeblocks\beautifullegg\vues.h
 	<SFML/Graphics.hpp>
 	"RoyaumeView.h"
 	"IHMView.h"
@@ -438,11 +440,11 @@
 	"Personnage.h"
 	"Animation.h"
 
-1459181203 source:h:\creajeu\codeblocks\beautifullegg\modeles.cpp
+1461008844 source:h:\creajeu\codeblocks\beautifullegg\modeles.cpp
 	"Modeles.h"
 	"Monstre.h"
 
-1459180281 source:h:\creajeu\codeblocks\beautifullegg\personnage.cpp
+1461009697 source:h:\creajeu\codeblocks\beautifullegg\personnage.cpp
 	<iostream>
 	"Personnage.h"
 
@@ -451,11 +453,11 @@
 	"Modeles.h"
 	"Monstre.h"
 
-1459109220 source:h:\creajeu\codeblocks\beautifullegg\position.cpp
+1461003911 source:h:\creajeu\codeblocks\beautifullegg\position.cpp
 	"Position.h"
-	<Math.h>
+	<math.h>
 
-1459191195 source:h:\creajeu\codeblocks\beautifullegg\royaume.cpp
+1461009458 source:h:\creajeu\codeblocks\beautifullegg\royaume.cpp
 	"Royaume.h"
 	"MapParser.h"
 
@@ -466,7 +468,7 @@
 1457391511 source:h:\creajeu\codeblocks\beautifullegg\vue.cpp
 	"Vue.h"
 
-1459194589 source:h:\creajeu\codeblocks\beautifullegg\vues.cpp
+1461003911 source:h:\creajeu\codeblocks\beautifullegg\vues.cpp
 	"Vues.h"
 
 1459109161 source:h:\creajeu\codeblocks\beautifullegg\monstre.cpp
@@ -478,12 +480,12 @@
 	"Personnage.h"
 	"Case.h"
 
-1459178001 source:h:\creajeu\codeblocks\beautifullegg\controleur.cpp
+1461007839 source:h:\creajeu\codeblocks\beautifullegg\controleur.cpp
 	"Controleur.h"
 	"Vues.h"
 
-1459177129 h:\creajeu\codeblocks\beautifullegg\controleur.h
-	<SFML/System.hpp>
+1461005406 h:\creajeu\codeblocks\beautifullegg\controleur.h
+	<SFML/Window.hpp>
 
 1459188944 source:h:\creajeu\codeblocks\beautifullegg\cinematique.cpp
 	<string>
@@ -492,10 +494,10 @@
 1459177742 h:\creajeu\codeblocks\beautifullegg\cinematique.h
 	<string>
 
-1459193658 source:h:\creajeu\codeblocks\beautifullegg\mapparser.cpp
+1461008864 source:h:\creajeu\codeblocks\beautifullegg\mapparser.cpp
 	"MapParser.h"
 
-1459190732 h:\creajeu\codeblocks\beautifullegg\mapparser.h
+1461003911 h:\creajeu\codeblocks\beautifullegg\mapparser.h
 	<map>
 	<SFML/Graphics.hpp>
 	"Modeles.h"

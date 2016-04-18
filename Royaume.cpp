@@ -48,3 +48,10 @@ int Royaume::getHauteur() const
     return m_zones.at(m_zoneCourante)->getHauteur();
 }
 
+void Royaume::placerPersonnage(int i, int j, Personnage* p)
+{
+    get(i, j).setPersonnage(p);
+}
+
+
+

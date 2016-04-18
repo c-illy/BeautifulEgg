@@ -1,8 +1,8 @@
 #include "MapParser.h"
 
 const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
-{ {sf::Color(255, 255, 255).toInteger(), Vide  },
-  {sf::Color(0, 0, 0).toInteger(), Mur  },
+{ {sf::Color(255, 255, 255).toInteger(), Mur  },
+  {sf::Color(0, 0, 0).toInteger(), Vide  },
   {sf::Color(1, 1, 1).toInteger(), Joueur  } };
 
 void MapParser::initZonesFromFiles()
@@ -41,6 +41,7 @@ void MapParser::parseAndInit(const sf::Image& grid,
 		}
 	}
 	Modeles::m_royaume.ajouterZone(zone);
+	///TODO ZoneView
 }
 
 void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
@@ -61,7 +62,7 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 		break;
 	case Joueur:
 		Modeles::m_joueur.setPosition(x, y);
-		zone->set(x, y, new Case(false,
+		zone->set(x, y, new Case(true,
                                  &Modeles::m_joueur,
                                  x,
                                  y));

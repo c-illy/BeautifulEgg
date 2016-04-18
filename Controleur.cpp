@@ -16,20 +16,11 @@ void Controleur::jouer()
         sf::Time deltaTemps(clock.restart());
         Modeles::m_phaseDeltaTempsMs += deltaTemps.asMilliseconds();
 
-        //fermeture
-        if (Vues::m_window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                Vues::m_window.close();
-        }
 
         ///TODO intro (cinematique)
         if (Modeles::m_phase == Modeles::PRET)
         {
-            /*if (Vues::m_window.pollEvent(event))///TODO controleur
-            {
-                Modeles::updatePhasePret();
-            }*/
+            pollEvent(event);
         }
         if (Modeles::m_phase == Modeles::ACTION_PJ)
         {
@@ -45,5 +36,63 @@ void Controleur::jouer()
         Vues::draw();
 
         Modeles::m_nouvellePhase = false;
+    }
+}
+
+void Controleur::pollEvent(sf::Event& event)
+{
+    if(Vues::m_window.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+        {
+            Vues::m_window.close();
+        }
+        if(event.type == sf::Event::KeyPressed)
+        {
+            bool joueurAgit(false);
+            bool deplacementVoulu(false);
+            Position posJoueur = Modeles::m_joueur.getPosition();
+            Position posCibleTmp = posJoueur;//temporairement
+            switch(event.key.code)
+            {
+            case sf::Keyboard::Z:
+                deplacementVoulu = true;
+                posCibleTmp.setPositionY(posJoueur.getPositionY()-1);
+                break;
+            case sf::Keyboard::S:
+                deplacementVoulu = true;
+                posCibleTmp.setPositionY(posJoueur.getPositionY()+1);
+                break;
+            case sf::Keyboard::Q:
+                deplacementVoulu = true;
+                posCibleTmp.setPositionX(posJoueur.getPositionX()-1);
+                break;
+            case sf::Keyboard::D:
+                deplacementVoulu = true;
+                posCibleTmp.setPositionX(posJoueur.getPositionX()+1);
+                break;
+            default:
+                break;
+            }
+            if(deplacementVoulu)
+            {
+                const Case& caseCible = Modeles::m_royaume.get(
+                    posCibleTmp.getPositionX(), posCibleTmp.getPositionY());
+                bool caseOk = caseCible.navigable() &&
+                    caseCible.getPersonnage() == 00;
+                if(caseOk)
+                {
+                    Modeles::m_joueur.setAction(DEPLACER);
+                }
+                Modeles::m_joueur.setCaseCible(&caseCible);
+                ////todo direction
+                joueurAgit = true;
+            }
+
+            if(joueurAgit)
+            {
+                Modeles::updatePhasePret();
+            }
+        }
     }
 }

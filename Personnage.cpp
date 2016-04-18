@@ -5,7 +5,8 @@
 
 Personnage::Personnage(std::string nom, int x, int y) :
     m_nom(nom), m_sante(100), m_santeMax(100), m_degats(20), m_position(x,y),
-    m_directionActuelle(DROITE), m_caseCible(NULL), m_vivant(true), m_mourant(false)
+    m_directionActuelle(DROITE), m_caseCible(NULL), m_vivant(true), m_mourant(false),
+    m_actionCourante(RIEN)
 {
 }
 
@@ -115,8 +116,7 @@ void Personnage::executerAction()
     {
         case DEPLACER :
 
-            std::cout<<m_nom<<" se deplace"<<std::endl;
-            setPosition(m_caseCible->getPosition().getPositionX(),m_caseCible->getPosition().getPositionY());
+            deplacer();
 
             break;
 
@@ -139,6 +139,23 @@ void Personnage::executerAction()
 
     }
 
+    m_actionCourante = RIEN;
     m_mourant = false;
 
 }
+
+
+void Personnage::deplacer()
+{
+    //std::cout<<m_nom<<" se deplace"<<std::endl;
+    int iAvant = m_position.getPositionX();
+    int jAvant = m_position.getPositionY();
+    int iApres = m_caseCible->getPosition().getPositionX();
+    int jApres = m_caseCible->getPosition().getPositionY();
+    setPosition(iApres, jApres);
+    Modeles::m_royaume.placerPersonnage(iAvant, jAvant, 00);
+    Modeles::m_royaume.placerPersonnage(iApres, jApres, this);
+}
+
+
+
