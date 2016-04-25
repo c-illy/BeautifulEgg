@@ -10,8 +10,9 @@ Animation::Animation(sf::RenderWindow& window, const Personnage& personnage) :
     m_frameCourante(0),
     m_personnage(personnage)
 {
-    std::string nomFichier = personnage.getNom() + "_marche_bas";
-    m_texture.loadFromFile(RESSOURCES + nomFichier + ".png");
+    std::string nomFichier = personnage.getNom() + "_marche_bas.png";
+    std::cout << "Ouverture du fichier d'animation " << nomFichier << std::endl;
+    m_texture.loadFromFile(RESSOURCES + nomFichier);
 
     m_sprite.setTexture(m_texture);
     m_sprite.setTextureRect(sf::IntRect(0, 0, m_spriteLargeur, m_spriteHauteur));

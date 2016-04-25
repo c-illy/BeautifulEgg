@@ -19,6 +19,11 @@ PersonnagesView::~PersonnagesView()
 void PersonnagesView::init()
 {
     m_animations.push_back(new Animation(m_window, Modeles::m_joueur));
+
+    for(Monstre* monstre : Modeles::m_monstres)
+    {
+        m_animations.push_back(new Animation(m_window, *monstre));
+    }
 }
 
 void PersonnagesView::update(sf::Time deltaTemps)

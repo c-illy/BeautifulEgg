@@ -2,7 +2,7 @@
 #include "Modeles.h"
 #include "Position.h"
 
-Monstre::Monstre() : m_rayonIA(20)
+Monstre::Monstre(std::string nom, int x, int y) : Personnage(nom, x, y), m_rayonIA(20)
 {
 }
 
@@ -44,6 +44,7 @@ void Monstre::appliquerIA()
 	double dist = p.distance(jp);
 
 
+	std::cout << "x:" << p.getPositionX() << "; y:" << p.getPositionY() << std::endl;
 	if (dist == 1)
 	{
 		setCaseCible(joueur);

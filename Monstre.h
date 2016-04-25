@@ -11,7 +11,7 @@ class Position;
 class Monstre: public Personnage
 {
     public:
-      Monstre();
+      Monstre(std::string nom, int x=0, int y=0);
       void appliquerIA();
 
     private:

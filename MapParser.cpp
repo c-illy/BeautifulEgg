@@ -2,11 +2,13 @@
 #include "tinydir.h"
 #include "Vues.h"
 #include "ZoneView.h"
+#include "Monstre.h"
 
 const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
 { {sf::Color(255, 255, 255).toInteger(), Mur  },
   {sf::Color(0, 0, 0).toInteger(), Vide  },
-  {sf::Color(1, 1, 1).toInteger(), Joueur  } };
+  {sf::Color(1, 1, 1).toInteger(), Joueur  },
+  {sf::Color(255, 0, 0).toInteger(), Monstre1  } };
 
 void MapParser::initZonesFromFiles()
 {
@@ -59,7 +61,7 @@ void MapParser::parseAndInit(const std::string& cheminZone,
             }
             else
             {
-                std::cerr << "Erreur : Couleur inconnue lors du chargement (" << color.r << ", " << color.g << ", " << color.b << ")" << std::endl;
+                std::cerr << "Erreur : Couleur inconnue lors du chargement (" << (int)color.r << ", " << (int)color.g << ", " << (int)color.b << ")" << std::endl;
             }
 		}
 	}
@@ -70,6 +72,7 @@ void MapParser::parseAndInit(const std::string& cheminZone,
 
 void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 {
+	Monstre* monstreACreer;
 	switch(type)
 	{
 	case Vide:
@@ -88,6 +91,15 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 		Modeles::m_joueur.setPosition(x, y);
 		zone->set(x, y, new Case(true,
                                  &Modeles::m_joueur,
+                                 x,
+                                 y));
+		break;
+	case Monstre1:
+		std::cout << "Ajout d'un monstre" << std::endl;
+		monstreACreer = new Monstre("monstre1", x, y);
+		Modeles::m_monstres.push_back(monstreACreer);
+		zone->set(x, y, new Case(true,
+                                 monstreACreer,
                                  x,
                                  y));
 		break;

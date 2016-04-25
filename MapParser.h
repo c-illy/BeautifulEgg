@@ -12,7 +12,8 @@ public:
 	{
 		Vide,
 		Mur,
-		Joueur
+		Joueur,
+		Monstre1
 	};
 
 	static void initZonesFromFiles();
