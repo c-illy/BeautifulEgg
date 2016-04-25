@@ -1,19 +1,22 @@
 #ifndef ZONEVIEW_H
 #define ZONEVIEW_H
 
+#include <SFML/Graphics.hpp>
+
 ///textures 1er et arriere plan
 class ZoneView
 {
     public:
-        ZoneView();///debug
-        ZoneView(const std::string& nomDossier);///pas debug TODO
+        ZoneView();
         virtual ~ZoneView();
+
+        void init(const std::string& nomDossier);
 
     protected:
 
-    private:
+    public:
         sf::Texture m_tex_premierPlan;
-        sf::Texture m_tex_arrierePlan;
+        sf::Texture m_tex_dernierPlan;
 };
 
 #endif // ZONEVIEW_H

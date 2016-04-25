@@ -1,5 +1,7 @@
 #include "RoyaumeView.h"
 #include "Modeles.h"
+#include "Vues.h"
+#include "ZoneView.h"
 
 RoyaumeView::RoyaumeView(sf::RenderWindow& window) :
     Vue(window)
@@ -23,31 +25,18 @@ void RoyaumeView::update(sf::Time deltaTemps)
 {
 
 }
-
 void RoyaumeView::draw() const
 {
-    const Royaume& royaume = Modeles::m_royaume;
+    int zoneCourante = Modeles::m_royaume.m_zoneCourante;
+    ZoneView& zview = Vues::m_zoneViews.at(zoneCourante);
+    sf::Sprite spriteDernierPlan(zview.m_tex_dernierPlan);
+    m_window.draw(spriteDernierPlan);
+}
 
-    sf::Sprite sprite_caseNavigable(m_tex_caseNavigable);
-    sf::Sprite sprite_caseNonNavigable(m_tex_caseNonNavigable);
-
-    int largeur = royaume.getLargeur();
-    int hauteur = royaume.getHauteur();
-    for(int i=0; i<largeur; i++)
-    {
-        for(int j=0; j<hauteur; j++)
-        {
-            const Case& c = royaume.get(i, j);
-            if(c.navigable())
-            {
-                sprite_caseNavigable.setPosition(i*TAILLE_CASE_X, j*TAILLE_CASE_Y);
-                m_window.draw(sprite_caseNavigable);
-            }
-            else
-            {
-                sprite_caseNonNavigable.setPosition(i*TAILLE_CASE_X, j*TAILLE_CASE_Y);
-                m_window.draw(sprite_caseNonNavigable);
-            }
-        }
-    }
+void RoyaumeView::drawPremierPlan() const
+{
+    int zoneCourante = Modeles::m_royaume.m_zoneCourante;
+    ZoneView& zview = Vues::m_zoneViews.at(zoneCourante);
+    sf::Sprite spritePremierPlan(zview.m_tex_premierPlan);
+    m_window.draw(spritePremierPlan);
 }

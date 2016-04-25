@@ -1,4 +1,7 @@
 #include "MapParser.h"
+#include "tinydir.h"
+#include "Vues.h"
+#include "ZoneView.h"
 
 const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
 { {sf::Color(255, 255, 255).toInteger(), Mur  },
@@ -7,15 +10,35 @@ const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
 
 void MapParser::initZonesFromFiles()
 {
-    sf::Image img;
-    img.loadFromFile("zone_debug.png");
-    parseAndInit(img, TAILLE_CASE_X, TAILLE_CASE_Y);
+    std::string racineZones("./zones");
+
+    std::cout << "ouverture dossier zones" << std::endl;
+    tinydir_dir dir;
+    tinydir_open(&dir, racineZones.c_str());
+
+    while(dir.has_next)
+    {
+        tinydir_file file;
+        tinydir_readfile(&dir, &file);
+
+        if (file.is_dir && file.name[0]!='.')
+        {
+            std::string chemin = racineZones + "/" + file.name;
+            std::cout << chemin << std::endl;
+            parseAndInit(chemin, TAILLE_CASE_X, TAILLE_CASE_Y);
+        }
+
+        tinydir_next(&dir);
+    }
+    tinydir_close(&dir);
 }
 
-void MapParser::parseAndInit(const sf::Image& grid,
+void MapParser::parseAndInit(const std::string& cheminZone,
                              unsigned int width,
                              unsigned int height)
 {
+    sf::Image grid;
+    grid.loadFromFile(cheminZone + "/" + "grid.png");
 	unsigned x = width  / 2;
 	unsigned y = height / 2;
 	unsigned nLine   = grid.getSize().x / width;
@@ -41,7 +64,8 @@ void MapParser::parseAndInit(const sf::Image& grid,
 		}
 	}
 	Modeles::m_royaume.ajouterZone(zone);
-	///TODO ZoneView
+	Vues::m_zoneViews.push_back(ZoneView());
+	Vues::m_zoneViews.at(Vues::m_zoneViews.size()-1).init(cheminZone);
 }
 
 void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)

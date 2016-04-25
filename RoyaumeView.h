@@ -12,6 +12,7 @@ class RoyaumeView : public Vue
 
         void update(sf::Time deltaTemps);
         void draw() const;
+        void drawPremierPlan() const;
 
     private:
         sf::Texture m_tex_caseNavigable;

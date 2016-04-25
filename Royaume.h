@@ -20,7 +20,7 @@ class Royaume
 
         void placerPersonnage(int i, int j, Personnage* p);
 
-    private:
+    public:
         std::vector<Zone*> m_zones;
         int m_zoneCourante;
 };

@@ -6,6 +6,7 @@
 #include "RoyaumeView.h"
 #include "IHMView.h"
 #include "PersonnagesView.h"
+#include "ZoneView.h"
 
 class Vues
 {
@@ -19,6 +20,7 @@ class Vues
 
     public:
         static RoyaumeView m_royaumeView;
+        static std::vector<ZoneView> m_zoneViews;
         static IHMView m_IHMView;
         static PersonnagesView m_personnagesView;
 

@@ -1,6 +1,7 @@
 #include "Vues.h"
 
 RoyaumeView Vues::m_royaumeView(Vues::m_window);
+std::vector<ZoneView> Vues::m_zoneViews;
 IHMView Vues::m_IHMView(Vues::m_window);
 PersonnagesView Vues::m_personnagesView(Vues::m_window);
 
@@ -31,6 +32,7 @@ void Vues::draw()
 
     m_royaumeView.draw();
     m_personnagesView.draw();
+    m_royaumeView.drawPremierPlan();
     m_IHMView.draw();
 
     m_window.display();
