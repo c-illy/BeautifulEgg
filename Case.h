@@ -5,15 +5,18 @@
 #include "Position.h"
 //#include "Personnage.h"
 //#include "Objet.h"
-
 //#include "Modeles.h"
-
-
 class Personnage;
-
 class Modeles;
 
 
+class Destination
+{
+public:
+    int m_numZone;
+    int m_x;
+    int m_y;
+};
 
 class Case
 {
@@ -29,7 +32,9 @@ class Case
 
         void setPersonnage(Personnage* personnage);
 
-    protected:
+    public:
+        ///nul par défaut, non nul ssi portail
+        Destination* m_destination;
 
     private:
         bool m_navigable;

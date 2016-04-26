@@ -10,6 +10,8 @@ const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
   {sf::Color(1, 1, 1).toInteger(), Joueur  },
   {sf::Color(255, 0, 0).toInteger(), Monstre1  } };
 
+std::map<sf::Uint32, std::pair<Destination, Destination> > MapParser::m_portails;
+
 void MapParser::initZonesFromFiles()
 {
     std::string racineZones("./zones");
@@ -33,6 +35,20 @@ void MapParser::initZonesFromFiles()
         tinydir_next(&dir);
     }
     tinydir_close(&dir);
+
+    //vérification debug:
+    std::cout << "## portails trouvés : ##" << std::endl;
+    std::map<sf::Uint32, std::pair<Destination, Destination> >::iterator it;
+    for(it=m_portails.begin(); it!=m_portails.end(); it++)
+    {
+        std::cout << " " << it->first << "=>[ (zone:" <<
+            it->second.first.m_numZone << " \tx:" << it->second.first.m_x << " \ty:" << it->second.first.m_y <<
+            ") ~ (zone:" <<
+            it->second.second.m_numZone << " \tx:" << it->second.second.m_x << " \ty:" << it->second.second.m_y <<
+            ") ]\n";
+    }
+    std::cout << "## (fin portails) ##" << std::endl;
+
 }
 
 void MapParser::parseAndInit(const std::string& cheminZone,
@@ -61,7 +77,9 @@ void MapParser::parseAndInit(const std::string& cheminZone,
             }
             else
             {
-                std::cerr << "Erreur : Couleur inconnue lors du chargement (" << (int)color.r << ", " << (int)color.g << ", " << (int)color.b << ")" << std::endl;
+                std::cout << "Couleur de portail (" <<
+                    (int)color.r << ", " << (int)color.g << ", " << (int)color.b << ")" << std::endl;
+                initCasePortail(zone, colorCode, i, j);
             }
 		}
 	}
@@ -93,6 +111,8 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
                                  &Modeles::m_joueur,
                                  x,
                                  y));
+        //désigner la zone courante comme la zone de départ du jeu :
+        Modeles::m_royaume.m_zoneCourante = Modeles::m_royaume.m_zones.size();
 		break;
 	case Monstre1:
 		std::cout << "Ajout d'un monstre" << std::endl;
@@ -107,5 +127,49 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 		std::cerr << "Erreur : Type de case inconnue." << std::endl;
 		break;
 	}
+}
+
+void MapParser::initCasePortail(Zone* zone, sf::Uint32 colorCode, unsigned x, unsigned y)
+{
+    Case* newCase = new Case(true,    // no navigable
+                             nullptr, // no personnage
+                             x,
+                             y);
+    std::map<sf::Uint32, std::pair<Destination, Destination> >::iterator it;
+    it = m_portails.find(colorCode);
+    Destination here;
+    here.m_numZone = Modeles::m_royaume.m_zones.size();
+    here.m_x = x;
+    here.m_y = y;
+    if(it != m_portails.end())
+    {
+        std::pair<Destination, Destination>& portail = it->second;
+        //le portail a été trouvé, donc son 1er bout existe déjà (portail.first)
+        //reste à fixer le 2è bout (portail.second):
+        portail.second = here;
+
+        //ensuite, remplir le champ m_destination des vraies cases
+        newCase->m_destination = &(portail.first);//risque de réallocation??
+
+        Destination there = portail.first;
+        Zone* zoneCible = zone;
+        if(there.m_numZone < (int)Modeles::m_royaume.m_zones.size())
+        {
+            zoneCible = Modeles::m_royaume.m_zones.at(there.m_numZone);
+        }
+        //else : ok, zone courante pas encore ajoutée à m_royaume.m_zones
+        Case& oldCase = zoneCible->get(there.m_x, there.m_y);
+        oldCase.m_destination = &(portail.second);
+    }
+    else
+    {
+        //nouveau portail pas encore connu
+        std::pair<Destination, Destination> newPortail;
+        newPortail.first = here;
+        m_portails[colorCode] = newPortail;
+
+        //on ne peut pas encore remplir le champ m_destination de newCase, cf. ci-dessus
+    }
+    zone->set(x, y, newCase);
 }
 
