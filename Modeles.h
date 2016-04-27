@@ -25,16 +25,18 @@ class Modeles
 
         static void init();
 
+        static std::vector<Monstre*>& getMonstres();
+        static int getNumZoneCourant();
+
         static void updatePhaseIntro();
         static void updatePhasePret();
         static void updatePhasePJ();
         static void updatePhasePNJ();
         static void updatePhaseFin();
 
-
         static Royaume m_royaume;
         static Personnage m_joueur;
-        static std::vector<Monstre*> m_monstres;
+        //static std::vector<Monstre*> m_monstres;//cf. Zone.h
 
         //gestion phases
         static Phase m_phase;///phase courante

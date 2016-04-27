@@ -1,5 +1,9 @@
+#ifndef ZONE_H
+#define ZONE_H
+
 #include <vector>
 #include "Case.h"
+class Monstre;
 
 class Zone
 {
@@ -7,6 +11,9 @@ class Zone
 
 		/// liste des colonnes
 		 std::vector<std::vector<Case*> > m_cases;
+
+    public:
+		 std::vector<Monstre*> m_monstres;
 
 	public:
 		Zone(int x, int y);
@@ -22,3 +29,5 @@ class Zone
 		int getLargeur() const;
 		int getHauteur() const;
 };
+
+#endif // ZONE_H

@@ -16,10 +16,6 @@ Royaume::~Royaume()
 
 void Royaume::chargerFichier()
 {
-    ///TODO
-    /*Zone* zone = new Zone();
-    zone->chargerFichier();
-    m_zones.push_back(zone);*/
     MapParser::initZonesFromFiles();
 }
 
@@ -46,6 +42,11 @@ int Royaume::getLargeur() const
 int Royaume::getHauteur() const
 {
     return m_zones.at(m_zoneCourante)->getHauteur();
+}
+
+Zone* Royaume::getZoneCourante()
+{
+    return m_zones.at(m_zoneCourante);
 }
 
 void Royaume::placerPersonnage(int i, int j, Personnage* p)

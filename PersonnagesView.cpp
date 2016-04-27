@@ -1,9 +1,14 @@
 #include "PersonnagesView.h"
 #include "Modeles.h"
 #include "Monstre.h"
+#include "Vues.h"
+#include "Zone.h"
+#include "Animation.h"
 
-PersonnagesView::PersonnagesView(sf::RenderWindow& window) :
-    Vue(window)
+Animation* PersonnagesView::m_joueurAnimation = 00;
+
+PersonnagesView::PersonnagesView() :
+    Vue(Vues::m_window)
 {
 
 }
@@ -12,15 +17,23 @@ PersonnagesView::~PersonnagesView()
 {
     for(Animation* anim : m_animations)
     {
-        delete anim;
+        if(anim != 00)
+        {
+            delete anim;
+            anim = 00;
+        }
     }
 }
 
-void PersonnagesView::init()
+void PersonnagesView::init(Zone* zone)
 {
-    m_animations.push_back(new Animation(m_window, Modeles::m_joueur));
+    if(m_joueurAnimation == 00)
+    {
+        m_joueurAnimation = new Animation(m_window, Modeles::m_joueur);
+    }
+    m_animations.push_back(m_joueurAnimation);
 
-    for(Monstre* monstre : Modeles::m_monstres)
+    for(Monstre* monstre : zone->m_monstres)
     {
         m_animations.push_back(new Animation(m_window, *monstre));
     }

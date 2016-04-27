@@ -17,6 +17,7 @@ class Royaume
         const Case& get(int i, int j) const;
         int getLargeur() const;
         int getHauteur() const;
+        Zone* getZoneCourante();
 
         void placerPersonnage(int i, int j, Personnage* p);
 

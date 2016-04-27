@@ -3,7 +3,7 @@
 
 Royaume Modeles::m_royaume;
 Personnage Modeles::m_joueur("joueur");
-std::vector<Monstre*> Modeles::m_monstres;
+//std::vector<Monstre*> Modeles::m_monstres;
 
 Modeles::Phase Modeles::m_phase(PRET);///TODO = INTRO
 bool Modeles::m_nouvellePhase(true);///si la phase vient juste de changer
@@ -16,6 +16,15 @@ void Modeles::init()
     m_royaume.chargerFichier();
 }
 
+std::vector<Monstre*>& Modeles::getMonstres()
+{
+    return m_royaume.getZoneCourante()->m_monstres;
+}
+
+int Modeles::getNumZoneCourant()
+{
+    return m_royaume.m_zoneCourante;
+}
 
 void Modeles::updatePhaseIntro()
 {
@@ -53,9 +62,9 @@ void Modeles::updatePhasePJ()
             m_phaseDeltaTempsMs = 0;
             return;
         }
-        for(unsigned int i=0; i<m_monstres.size(); i++)
+        for(unsigned int i=0; i<getMonstres().size(); i++)
         {
-            m_monstres.at(i)->appliquerIA();
+            getMonstres().at(i)->appliquerIA();
         }
         m_phase = ACTION_PNJ;
         m_nouvellePhase = true;
@@ -65,12 +74,12 @@ void Modeles::updatePhasePJ()
 
 void Modeles::updatePhasePNJ()
 {
-    if (m_monstres.size() == 0 ||
+    if (getMonstres().size() == 0 ||
         m_phaseDeltaTempsMs >= DUREE_ACTION_PNJ_MS)
     {
-        for(unsigned int i=0; i<m_monstres.size(); i++)
+        for(unsigned int i=0; i<getMonstres().size(); i++)
         {
-            m_monstres.at(i)->executerAction();
+            getMonstres().at(i)->executerAction();
         }
         m_nouvellePhase = true;
         m_phaseDeltaTempsMs = 0;

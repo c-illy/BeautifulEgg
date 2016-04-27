@@ -55,6 +55,8 @@ void MapParser::parseAndInit(const std::string& cheminZone,
                              unsigned int width,
                              unsigned int height)
 {
+    unsigned int nouvNumZone = Modeles::m_royaume.m_zones.size();
+
     sf::Image grid;
     grid.loadFromFile(cheminZone + "/" + "grid.png");
 	unsigned x = width  / 2;
@@ -77,15 +79,16 @@ void MapParser::parseAndInit(const std::string& cheminZone,
             }
             else
             {
-                std::cout << "Couleur de portail (" <<
-                    (int)color.r << ", " << (int)color.g << ", " << (int)color.b << ")" << std::endl;
+                //std::cout << "Couleur de portail (" << (int)color.r << ", " << (int)color.g << ", " << (int)color.b << ")" << std::endl;
                 initCasePortail(zone, colorCode, i, j);
             }
 		}
 	}
 	Modeles::m_royaume.ajouterZone(zone);
 	Vues::m_zoneViews.push_back(ZoneView());
-	Vues::m_zoneViews.at(Vues::m_zoneViews.size()-1).init(cheminZone);
+	Vues::m_zoneViews.at(nouvNumZone).init(cheminZone);
+    Vues::m_personnagesViewParZone.push_back(new PersonnagesView());
+    Vues::m_personnagesViewParZone.at(nouvNumZone)->init(zone);
 }
 
 void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
@@ -117,7 +120,7 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 	case Monstre1:
 		std::cout << "Ajout d'un monstre" << std::endl;
 		monstreACreer = new Monstre("monstre1", x, y);
-		Modeles::m_monstres.push_back(monstreACreer);
+		zone->m_monstres.push_back(monstreACreer);
 		zone->set(x, y, new Case(true,
                                  monstreACreer,
                                  x,

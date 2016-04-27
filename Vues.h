@@ -22,7 +22,7 @@ class Vues
         static RoyaumeView m_royaumeView;
         static std::vector<ZoneView> m_zoneViews;
         static IHMView m_IHMView;
-        static PersonnagesView m_personnagesView;
+        static std::vector<PersonnagesView*> m_personnagesViewParZone;//1 instance par zone
 
         static sf::RenderWindow m_window;
 };

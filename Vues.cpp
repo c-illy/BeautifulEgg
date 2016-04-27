@@ -3,20 +3,21 @@
 RoyaumeView Vues::m_royaumeView(Vues::m_window);
 std::vector<ZoneView> Vues::m_zoneViews;
 IHMView Vues::m_IHMView(Vues::m_window);
-PersonnagesView Vues::m_personnagesView(Vues::m_window);
+std::vector<PersonnagesView*> Vues::m_personnagesViewParZone;
 
 sf::RenderWindow Vues::m_window(sf::VideoMode(TAILLE_FENETRE_X, TAILLE_FENETRE_Y), "EGG");
 
 void Vues::init()
 {
     m_window.setFramerateLimit(60);
-    m_personnagesView.init();
+    //m_personnagesView.init();//cf. MapParser
 }
 
 void Vues::update(sf::Time deltaTemps)
 {
     m_royaumeView.update(deltaTemps);
-    m_personnagesView.update(deltaTemps);
+    int z = Modeles::getNumZoneCourant();
+    m_personnagesViewParZone.at(z)->update(deltaTemps);
     m_IHMView.update(deltaTemps);
 }
 
@@ -31,7 +32,8 @@ void Vues::draw()
     m_window.setView(view);
 
     m_royaumeView.draw();
-    m_personnagesView.draw();
+    int z = Modeles::getNumZoneCourant();
+    m_personnagesViewParZone.at(z)->draw();
     m_royaumeView.drawPremierPlan();
     m_IHMView.draw();
 
