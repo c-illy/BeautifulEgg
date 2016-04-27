@@ -43,6 +43,7 @@ class Animation : public Vue
         sf::Clock m_clock;
         int m_frameCourante;
 
+    public:
         const Personnage& m_personnage;
 
     private:

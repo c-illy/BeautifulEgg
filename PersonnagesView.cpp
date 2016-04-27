@@ -32,15 +32,39 @@ void PersonnagesView::init(Zone* zone)
         m_joueurAnimation = new Animation(m_window, Modeles::m_joueur);
     }
     m_animations.push_back(m_joueurAnimation);
+    m_yOrderAnims.insert(std::pair<int, Animation*>(
+        Modeles::m_joueur.getPosition().getPositionY(),
+        m_joueurAnimation));
 
     for(Monstre* monstre : zone->m_monstres)
     {
         m_animations.push_back(new Animation(m_window, *monstre));
+        m_yOrderAnims.insert(std::pair<int, Animation*>(
+            monstre->getPosition().getPositionY(),
+            m_animations.at(m_animations.size()-1)));
     }
 }
 
 void PersonnagesView::update(sf::Time deltaTemps)
 {
+    if(Modeles::m_nouvellePhase &&
+        ( (Modeles::m_phase==Modeles::ACTION_PJ) || (Modeles::m_phase==Modeles::ACTION_PNJ) )
+       )
+    {
+        //changement possible des yOrderAnims
+        //(on pourrait optimiser mieux, mais pas vraiment la peine)
+        //std::cout << "reordonnancement des anims des persos" << std::endl;
+
+        m_yOrderAnims.clear();
+        for(Animation* anim : m_animations)
+        {
+            Position p = anim->m_personnage.getPosition();
+            m_yOrderAnims.insert(std::pair<int, Animation*>(
+                p.getPositionY(),
+                anim));
+        }
+    }
+
     for(Animation* anim : m_animations)
     {
         anim->update(deltaTemps);
@@ -52,8 +76,10 @@ void PersonnagesView::draw() const
     //Personnage& joueur = Modeles::m_joueur;
     //std::vector<Monstre*>& monstres = Modeles::m_monstres;
 
-    for(Animation* anim : m_animations)
+    std::multimap<int, Animation*>::const_iterator it;
+    for(it=m_yOrderAnims.begin(); it!=m_yOrderAnims.end(); it++)
     {
+        const Animation* anim = it->second;
         anim->draw();
     }
 }

@@ -15,7 +15,7 @@ class Monstre: public Personnage
       void appliquerIA();
 
     private:
-      void choisirDeplacement(const Position* direction);
+      Action choisirDeplacement(const Position* direction);
 
     private:
       double m_rayonIA;

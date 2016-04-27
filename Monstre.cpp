@@ -6,7 +6,7 @@ Monstre::Monstre(std::string nom, int x, int y) : Personnage(nom, x, y), m_rayon
 {
 }
 
-void Monstre::choisirDeplacement(const Position* direction)
+Action Monstre::choisirDeplacement(const Position* direction)
 {
 	const Royaume& royaume = (Modeles::m_royaume);
 
@@ -15,22 +15,27 @@ void Monstre::choisirDeplacement(const Position* direction)
 	int dirX = direction->getPositionX();
 	int dirY = direction->getPositionY();
 
-	if ((dirX > 0) and (royaume.get(resX+1,resY).navigable()))
+	if ((dirX > 0) and (royaume.get(resX+1,resY).navigableEtLibre()))
 	{
 		setCaseCible(&(royaume.get(resX+1,resY)));
+		return DEPLACER;
 	}
-	if ((dirX < 0) and (royaume.get(resX-1, resY).navigable()))
+	if ((dirX < 0) and (royaume.get(resX-1, resY).navigableEtLibre()))
 	{
 		setCaseCible(&(royaume.get(resX-1,resY)));
+		return DEPLACER;
 	}
-	if ((dirY > 0) and (royaume.get(resX, resY+1).navigable()))
+	if ((dirY > 0) and (royaume.get(resX, resY+1).navigableEtLibre()))
 	{
 		setCaseCible(&(royaume.get(resX,resY+1)));
+		return DEPLACER;
 	}
-	if ((dirY < 0) and (royaume.get(resX, resY+1).navigable()))
+	if ((dirY < 0) and (royaume.get(resX, resY-1).navigableEtLibre()))
 	{
 		setCaseCible(&(royaume.get(resX,resY-1)));
+		return DEPLACER;
 	}
+    return RIEN;
 }
 
 void Monstre::appliquerIA()
@@ -53,8 +58,8 @@ void Monstre::appliquerIA()
 	else if ((dist < m_rayonIA) && (dist > 1))
 	{
 		Position direction(joueurX - p.getPositionX(), joueurY - p.getPositionY());
-		choisirDeplacement(&direction);
-		setAction(DEPLACER);
+		Action action = choisirDeplacement(&direction);
+		setAction(action);//DEPLACER ou RIEN
 	}
 }
 

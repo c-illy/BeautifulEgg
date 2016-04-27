@@ -42,10 +42,12 @@ class Personnage
         void setCaseCible(const Case *caseCible);
         void setPosition(int x, int y);
         Position getPosition() const;
+        bool isCaseCible(const Case* autre) const;
         int getSante() const;
         int getSanteMax() const;
         bool getVivant() const;
         bool getMourant() const;
+        Action getActionCourante() const {return m_actionCourante;};
 
     protected:
         void perdreSante(int degats);

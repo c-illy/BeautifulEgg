@@ -68,6 +68,17 @@ Position Personnage::getPosition() const
     return m_position;
 }
 
+bool Personnage::isCaseCible(const Case* autre) const
+{
+    return (
+            m_caseCible->getPosition().getPositionX() ==
+                autre->getPosition().getPositionX() )
+            &&
+            (
+            m_caseCible->getPosition().getPositionY() ==
+                autre->getPosition().getPositionY() );
+}
+
 int Personnage::getSante() const
 {
     return m_sante;

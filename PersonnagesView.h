@@ -21,6 +21,9 @@ class PersonnagesView : public Vue
     private:
         static Animation* m_joueurAnimation;
         std::vector<Animation*> m_animations;
+
+        ///redondant avec m_animations, mais ordonné selon coord y
+        std::multimap<int, Animation*> m_yOrderAnims;
 };
 
 #endif // PERSONNAGESVIEW_H
