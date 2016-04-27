@@ -1,5 +1,6 @@
 #include "Royaume.h"
 #include "MapParser.h"
+#include "Monstre.h"
 
 Royaume::Royaume()
 {
@@ -52,6 +53,23 @@ Zone* Royaume::getZoneCourante()
 void Royaume::placerPersonnage(int i, int j, Personnage* p)
 {
     get(i, j).setPersonnage(p);
+}
+
+void Royaume::retirerMonstresMorts()
+{
+    Zone* zone = getZoneCourante();
+
+    for(int i=zone->m_monstres.size()-1; i>=0; i--)
+    {
+        Monstre* monstre = zone->m_monstres.at(i);
+        if(!monstre->getVivant())
+        {
+            Position p = monstre->getPosition();
+            placerPersonnage(p.getPositionX(), p.getPositionY(), 00);
+            delete monstre;
+            zone->m_monstres.erase(zone->m_monstres.begin()+i);
+        }
+    }
 }
 
 

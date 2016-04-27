@@ -20,6 +20,7 @@ class Royaume
         Zone* getZoneCourante();
 
         void placerPersonnage(int i, int j, Personnage* p);
+        void retirerMonstresMorts();
 
     public:
         std::vector<Zone*> m_zones;

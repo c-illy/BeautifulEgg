@@ -47,9 +47,26 @@ void PersonnagesView::init(Zone* zone)
 
 void PersonnagesView::update(sf::Time deltaTemps)
 {
-    if(Modeles::m_nouvellePhase &&
-        ( (Modeles::m_phase==Modeles::ACTION_PJ) || (Modeles::m_phase==Modeles::ACTION_PNJ) )
-       )
+    bool retirerMorts = (Modeles::m_phase==Modeles::PRET) && Modeles::m_nouvellePhase;
+    if(retirerMorts)
+    {
+        retirerMorts = false;
+        for(int i=m_animations.size()-1; i>=0; i--)
+        {
+            Animation* anim = m_animations.at(i);
+            if(!anim->m_personnage.getVivant())
+            {
+                delete anim;
+                m_animations.erase(m_animations.begin()+i);
+                retirerMorts = true;
+            }
+        }
+    }
+
+    bool deplacementPerso = Modeles::m_nouvellePhase &&
+        ( (Modeles::m_phase==Modeles::ACTION_PJ) || (Modeles::m_phase==Modeles::ACTION_PNJ) );
+
+    if(retirerMorts || deplacementPerso)
     {
         //changement possible des yOrderAnims
         //(on pourrait optimiser mieux, mais pas vraiment la peine)

@@ -76,6 +76,8 @@ void Controleur::pollEvent(sf::Event& event)
             }
             if(deplacementVoulu)
             {
+                Modeles::m_royaume.retirerMonstresMorts();
+
                 const Case& caseCible = Modeles::m_royaume.get(
                     posCibleTmp.getPositionX(), posCibleTmp.getPositionY());
                 bool caseOk = caseCible.navigable() &&
@@ -83,6 +85,10 @@ void Controleur::pollEvent(sf::Event& event)
                 if(caseOk)
                 {
                     Modeles::m_joueur.setAction(DEPLACER);
+                }
+                else if(caseCible.getPersonnage() != 00)
+                {
+                    Modeles::m_joueur.setAction(ATTAQUER);
                 }
                 Modeles::m_joueur.setCaseCible(&caseCible);
                 ////todo direction

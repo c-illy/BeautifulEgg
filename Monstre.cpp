@@ -4,6 +4,7 @@
 
 Monstre::Monstre(std::string nom, int x, int y) : Personnage(nom, x, y), m_rayonIA(20)
 {
+    m_sante = 40;//debug!
 }
 
 Action Monstre::choisirDeplacement(const Position* direction)
@@ -40,6 +41,11 @@ Action Monstre::choisirDeplacement(const Position* direction)
 
 void Monstre::appliquerIA()
 {
+    if(m_sante <= 0) //mort
+    {
+        setAction(RIEN);
+        return;
+    }
 
 	int joueurX=(Modeles::m_joueur.getPosition().getPositionX());
 	int joueurY=(Modeles::m_joueur.getPosition().getPositionY());
