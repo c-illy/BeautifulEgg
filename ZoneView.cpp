@@ -22,5 +22,7 @@ void ZoneView::init(const std::string& nomDossier)
         std::cout << "Erreur chargement textures Zone ["
             << dp << "]" << std::endl;
     }
+    m_tex_premierPlan.setSmooth(true);
+    m_tex_dernierPlan.setSmooth(true);
 }
 

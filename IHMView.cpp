@@ -17,6 +17,9 @@ IHMView::IHMView(sf::RenderWindow& window) :
     {
         // erreur...
     }
+    m_tex_barreDeVieVariable.setSmooth(true);
+    m_tex_barreDeVie.setSmooth(true);
+    m_tex_gameOver.setSmooth(true);
     m_fond.setSize(sf::Vector2f(m_tex_barreDeVie.getSize().x, m_tex_barreDeVie.getSize().y));
     m_fond.setFillColor(sf::Color::Green);
     m_fond.setPosition(POS_BARRE_X, POS_BARRE_Y);

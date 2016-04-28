@@ -29,7 +29,10 @@ void Controleur::jouer()
                 Vues::m_window.close();
             }
         }
-        ///TODO intro (cinematique)
+        if (Modeles::m_phase == Modeles::INTRO)
+        {
+            pollIntroEvent(event);
+        }
         if (Modeles::m_phase == Modeles::PRET)
         {
             pollEvent(event);
@@ -42,7 +45,10 @@ void Controleur::jouer()
         {
             Modeles::updatePhasePNJ();
         }
-        ///TODO FIN (cinematique)
+        if (Modeles::m_phase == Modeles::FIN)
+        {
+            pollFinEvent(event);
+        }
 
         Vues::update(deltaTemps);
         Vues::draw();
@@ -83,6 +89,13 @@ void Controleur::pollEvent(sf::Event& event)
                 deplacementVoulu = true;
                 posCibleTmp.setPositionX(posJoueur.getPositionX()+1);
                 break;
+            //////////////<<<debug : test cinematique fin
+            case sf::Keyboard::T:
+                Modeles::m_phase = Modeles::FIN;
+                Modeles::m_nouvellePhase = true;
+                Modeles::m_phaseDeltaTempsMs = 0;
+                break;
+            //////>>>>>>>>>
             default:
                 break;
             }
@@ -114,3 +127,52 @@ void Controleur::pollEvent(sf::Event& event)
         }
     }
 }
+
+void Controleur::pollIntroEvent(sf::Event& event)
+{
+    if(Vues::m_window.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+        {
+            Vues::m_window.close();
+        }
+        if((event.type == sf::Event::KeyPressed)
+           &&
+           (Modeles::m_phaseDeltaTempsMs >= Modeles::DUREE_ACTION_PJ_MS))
+        {
+            Modeles::m_cinematiqueIntro.allerImageSuivante();
+
+            if(Modeles::m_cinematiqueIntro.estTerminee())
+            {
+                Modeles::m_phase = Modeles::PRET;
+                Modeles::m_nouvellePhase = true;
+                Modeles::m_phaseDeltaTempsMs = 0;
+            }
+        }
+    }
+}
+
+void Controleur::pollFinEvent(sf::Event& event)
+{
+    if(Vues::m_window.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+        {
+            Vues::m_window.close();
+        }
+        if((event.type == sf::Event::KeyPressed)
+           &&
+           (Modeles::m_phaseDeltaTempsMs >= Modeles::DUREE_ACTION_PJ_MS))
+        {
+            Modeles::m_cinematiqueFin.allerImageSuivante();
+
+            if(Modeles::m_cinematiqueFin.estTerminee())
+            {
+                Modeles::m_phase = Modeles::GAME_OVER;
+                Vues::m_window.close();
+            }
+        }
+    }
+}
+
+

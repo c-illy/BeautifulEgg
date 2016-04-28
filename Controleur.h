@@ -11,6 +11,8 @@ class Controleur
 
     private:
         static void pollEvent(sf::Event& event);
+        static void pollIntroEvent(sf::Event& event);
+        static void pollFinEvent(sf::Event& event);
 };
 
 #endif // CONTROLEUR_H

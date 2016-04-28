@@ -4,8 +4,10 @@
 Royaume Modeles::m_royaume;
 Personnage Modeles::m_joueur("joueur");
 //std::vector<Monstre*> Modeles::m_monstres;
+Cinematique Modeles::m_cinematiqueIntro;
+Cinematique Modeles::m_cinematiqueFin;
 
-Modeles::Phase Modeles::m_phase(PRET);///TODO = INTRO
+Modeles::Phase Modeles::m_phase(INTRO);
 bool Modeles::m_nouvellePhase(true);///si la phase vient juste de changer
 int Modeles::m_phaseDeltaTempsMs(0);///millisecondes depuis dernier changement de phase
 const int Modeles::DUREE_ACTION_PJ_MS(400);///millisecondes
@@ -24,11 +26,6 @@ std::vector<Monstre*>& Modeles::getMonstres()
 int Modeles::getNumZoneCourant()
 {
     return m_royaume.m_zoneCourante;
-}
-
-void Modeles::updatePhaseIntro()
-{
-    ///TODO
 }
 
 void Modeles::updatePhasePret()
@@ -92,9 +89,4 @@ void Modeles::updatePhasePNJ()
             m_phase = PRET;
         }
     }
-}
-
-void Modeles::updatePhaseFin()
-{
-    ///TODO
 }

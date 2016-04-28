@@ -3,6 +3,9 @@
 #include "Vues.h"
 #include "ZoneView.h"
 #include "Monstre.h"
+#include "Cinematique.h"
+#include "CinematiqueView.h"
+#include <sstream>
 
 const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
 { {sf::Color(255, 255, 255).toInteger(), Mur  },
@@ -49,6 +52,9 @@ void MapParser::initZonesFromFiles()
     }
     std::cout << "## (fin portails) ##" << std::endl;
 
+    // CINEMATIQUES
+    initCinematique(&Modeles::m_cinematiqueIntro, &Vues::m_cinematiqueViewIntro, "./intro");
+    initCinematique(&Modeles::m_cinematiqueFin, &Vues::m_cinematiqueViewFin, "./fin");
 }
 
 void MapParser::parseAndInit(const std::string& cheminZone,
@@ -174,5 +180,34 @@ void MapParser::initCasePortail(Zone* zone, sf::Uint32 colorCode, unsigned x, un
         //on ne peut pas encore remplir le champ m_destination de newCase, cf. ci-dessus
     }
     zone->set(x, y, newCase);
+}
+
+void MapParser::initCinematique(Cinematique* cinematique, CinematiqueView* cinematiqueView, char* dossier)
+{
+    tinydir_dir dir;
+    tinydir_open(&dir, dossier);
+    int nbImages = 0;
+    while(dir.has_next)
+    {
+        tinydir_file file;
+        tinydir_readfile(&dir, &file);
+        if (!file.is_dir)
+        {
+            nbImages++;
+        }
+        tinydir_next(&dir);
+    }
+    tinydir_close(&dir);
+    std::cout << "nb images cinematique " << dossier << " : " << nbImages << std::endl;
+    cinematique->setNbImages(nbImages);
+    cinematiqueView->m_cinematique = cinematique;
+    for(int i=0; i<nbImages; i++)
+    {
+        std::stringstream s;
+        s << dossier << "/" << i << ".png";
+
+        cinematiqueView->m_tex_images.push_back(sf::Texture());
+        cinematiqueView->m_tex_images.at(i).loadFromFile(s.str());
+    }
 }
 

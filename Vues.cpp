@@ -4,6 +4,8 @@ RoyaumeView Vues::m_royaumeView(Vues::m_window);
 std::vector<ZoneView> Vues::m_zoneViews;
 IHMView Vues::m_IHMView(Vues::m_window);
 std::vector<PersonnagesView*> Vues::m_personnagesViewParZone;
+CinematiqueView Vues::m_cinematiqueViewIntro;
+CinematiqueView Vues::m_cinematiqueViewFin;
 
 sf::RenderWindow Vues::m_window(sf::VideoMode(TAILLE_FENETRE_X, TAILLE_FENETRE_Y), "EGG");
 
@@ -31,11 +33,22 @@ void Vues::draw()
     //view.zoom(2.f);
     m_window.setView(view);
 
-    m_royaumeView.draw();
-    int z = Modeles::getNumZoneCourant();
-    m_personnagesViewParZone.at(z)->draw();
-    m_royaumeView.drawPremierPlan();
-    m_IHMView.draw();
+    if(Modeles::m_phase == Modeles::INTRO)
+    {
+        m_cinematiqueViewIntro.draw();
+    }
+    else if(Modeles::m_phase == Modeles::FIN)
+    {
+        m_cinematiqueViewFin.draw();
+    }
+    else
+    {
+        m_royaumeView.draw();
+        int z = Modeles::getNumZoneCourant();
+        m_personnagesViewParZone.at(z)->draw();
+        m_royaumeView.drawPremierPlan();
+        m_IHMView.draw();
+    }
 
     m_window.display();
 }

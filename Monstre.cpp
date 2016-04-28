@@ -5,6 +5,7 @@
 Monstre::Monstre(std::string nom, int x, int y) : Personnage(nom, x, y), m_rayonIA(20)
 {
     m_sante = 40;//debug!
+    m_degats = 10;//debug!
 }
 
 Action Monstre::choisirDeplacement(const Position* direction)

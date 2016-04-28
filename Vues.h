@@ -7,6 +7,7 @@
 #include "IHMView.h"
 #include "PersonnagesView.h"
 #include "ZoneView.h"
+#include "CinematiqueView.h"
 
 class Vues
 {
@@ -23,6 +24,8 @@ class Vues
         static std::vector<ZoneView> m_zoneViews;
         static IHMView m_IHMView;
         static std::vector<PersonnagesView*> m_personnagesViewParZone;//1 instance par zone
+        static CinematiqueView m_cinematiqueViewIntro;
+        static CinematiqueView m_cinematiqueViewFin;
 
         static sf::RenderWindow m_window;
 };

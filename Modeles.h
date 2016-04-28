@@ -5,6 +5,7 @@
 
 #include "Royaume.h"
 #include "Personnage.h"
+#include "Cinematique.h"
 class Monstre;
 //#include "Objet.h"
 
@@ -28,15 +29,15 @@ class Modeles
         static std::vector<Monstre*>& getMonstres();
         static int getNumZoneCourant();
 
-        static void updatePhaseIntro();
         static void updatePhasePret();
         static void updatePhasePJ();
         static void updatePhasePNJ();
-        static void updatePhaseFin();
 
         static Royaume m_royaume;
         static Personnage m_joueur;
         //static std::vector<Monstre*> m_monstres;//cf. Zone.h
+        static Cinematique m_cinematiqueIntro;
+        static Cinematique m_cinematiqueFin;
 
         //gestion phases
         static Phase m_phase;///phase courante

@@ -1,11 +1,16 @@
 #include <string>
 #include "Cinematique.h"
 
-Cinematique::Cinematique(const std::string &dossier, int nbImages) :
-	m_nombreImages(nbImages),
-	m_imageCourante(0),
-	m_dossierImages(dossier)
+Cinematique::Cinematique() :
+	m_nombreImages(0),
+	m_imageCourante(0)//,
+	//m_dossierImages(dossier)
 {}
+
+void Cinematique::setNbImages(int nb)
+{
+    m_nombreImages = nb;
+}
 
 void Cinematique::allerImageSuivante()
 {
