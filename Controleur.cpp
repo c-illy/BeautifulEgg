@@ -17,6 +17,18 @@ void Controleur::jouer()
         Modeles::m_phaseDeltaTempsMs += deltaTemps.asMilliseconds();
 
 
+        if(Modeles::m_phase == Modeles::GAME_OVER)
+        {
+            if((event.type == sf::Event::Closed) ||
+                (
+                    (Modeles::m_phaseDeltaTempsMs >= Modeles::DUREE_ACTION_PJ_MS) &&
+                    Vues::m_window.pollEvent(event) &&
+                    (event.type == sf::Event::KeyPressed)
+                 ))
+            {
+                Vues::m_window.close();
+            }
+        }
         ///TODO intro (cinematique)
         if (Modeles::m_phase == Modeles::PRET)
         {

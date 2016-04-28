@@ -13,6 +13,10 @@ IHMView::IHMView(sf::RenderWindow& window) :
     {
         // erreur...
     }
+    if (!m_tex_gameOver.loadFromFile(RESSOURCES "game_over.png"))
+    {
+        // erreur...
+    }
     m_fond.setSize(sf::Vector2f(m_tex_barreDeVie.getSize().x, m_tex_barreDeVie.getSize().y));
     m_fond.setFillColor(sf::Color::Green);
     m_fond.setPosition(POS_BARRE_X, POS_BARRE_Y);
@@ -47,4 +51,13 @@ void IHMView::draw() const
     m_window.draw(m_fond);
     m_window.draw(barreDeVieVariable);
     m_window.draw(barreDeVie);
+
+    if(Modeles::m_phase == Modeles::GAME_OVER)
+    {
+        sf::Sprite gameOver(m_tex_gameOver);
+        int l = m_tex_gameOver.getSize().x;
+        int h = m_tex_gameOver.getSize().y;
+        gameOver.setPosition(posJoueur.x - (l/2), posJoueur.y - (h/2));
+        m_window.draw(gameOver);
+    }
 }

@@ -20,6 +20,7 @@ class IHMView : public Vue
     private:
         sf::Texture m_tex_barreDeVieVariable;
         sf::Texture m_tex_barreDeVie;
+        sf::Texture m_tex_gameOver;
 
         sf::RectangleShape m_fond;
 };
