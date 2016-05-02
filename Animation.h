@@ -31,11 +31,19 @@ class Animation : public Vue
         void update(sf::Time deltaTemps);
         void draw() const;
 
+    private:
+        static  std::map<Action, std::string> m_actions;
+        static  std::map<Direction, std::string> m_directions;
+
+        static std::string actionToString(Action act);
+        static std::string directionToString(Direction dir);
+
     protected:
         const int m_spriteLargeur;
         const int m_spriteHauteur;
         const sf::Time m_tempsIntervalle;
         int m_totalFrames;
+        std::string m_animationCourante;
 
         sf::Texture m_texture;
         sf::Sprite m_sprite;
