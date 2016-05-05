@@ -1,16 +1,32 @@
 #include "Animation.h"
 #include "Vues.h"
 
+std::map<Action, std::string> Animation::m_actions = 
+{
+    {DEPLACER, "marche"},
+    {ATTAQUER, "attaque"},
+    {ACTIONNER, "actionne"},
+    {RIEN, "rien"}
+};
+std::map<Direction, std::string> Animation::m_directions = 
+{
+    {HAUT, "haut"},
+    {BAS, "bas"},
+    {GAUCHE, "gauche"},
+    {DROITE, "droite"}
+};
+
 Animation::Animation(sf::RenderWindow& window, const Personnage& personnage) :
     Vue(window),
     m_spriteLargeur(100),
     m_spriteHauteur(100),
     m_tempsIntervalle(sf::milliseconds(100)),
     m_totalFrames(3),
+    m_animationCourante(personnage.getNom() + "_marche_bas"),
     m_frameCourante(0),
     m_personnage(personnage)
 {
-    std::string nomFichier = personnage.getNom() + "_marche_bas.png";
+    std::string nomFichier = "animations/" + m_animationCourante + ".png";
     std::cout << "Ouverture du fichier d'animation " << nomFichier << std::endl;
     m_texture.loadFromFile(RESSOURCES + nomFichier);
     m_texture.setSmooth(true);
@@ -31,6 +47,17 @@ void Animation::demarrer()
 
 void Animation::update(sf::Time deltaTemps)
 {
+    std::string animationSuivante = "";
+    animationSuivante += m_personnage.getNom();
+    animationSuivante += "_" + actionToString(m_personnage.getActionCourante());
+    animationSuivante += "_" + directionToString(m_personnage.getDirection());
+    if(m_animationCourante != animationSuivante)
+    {
+        m_texture.loadFromFile(RESSOURCES "animations/" + animationSuivante + ".png");
+        m_sprite.setTexture(m_texture);
+        m_animationCourante = animationSuivante;
+    }
+
     sf::Vector2f vect = Vues::positionToVect2f(m_personnage.getPosition());
     vect.x += TAILLE_CASE_X - m_spriteLargeur;
     vect.y += TAILLE_CASE_Y - m_spriteHauteur;
@@ -49,4 +76,14 @@ void Animation::update(sf::Time deltaTemps)
 void Animation::draw() const
 {
     m_window.draw(m_sprite);
+}
+
+std::string Animation::actionToString(Action act)
+{
+    return m_actions[act];
+}
+
+std::string Animation::directionToString(Direction dir)
+{
+    return m_directions[dir];
 }

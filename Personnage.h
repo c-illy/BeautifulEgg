@@ -48,6 +48,7 @@ class Personnage
         bool getVivant() const;
         bool getMourant() const;
         Action getActionCourante() const {return m_actionCourante;};
+        Direction getDirection() const {return m_directionActuelle;};
 
     protected:
         void perdreSante(int degats);
