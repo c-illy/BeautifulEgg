@@ -15,7 +15,10 @@ public:
 		Vide,
 		Mur,
 		Joueur,
-		Monstre1
+		Monstre1,
+		Objet0,
+		Objet1,
+		Objet2
 	};
 
 	static void initZonesFromFiles();

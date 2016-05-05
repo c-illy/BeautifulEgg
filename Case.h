@@ -3,11 +3,8 @@
 
 #include <iostream>
 #include "Position.h"
-//#include "Personnage.h"
-//#include "Objet.h"
-//#include "Modeles.h"
 class Personnage;
-class Modeles;
+class Objet;
 
 
 class Destination
@@ -21,17 +18,18 @@ public:
 class Case
 {
     public:
-        Case(bool navigable, Personnage* personnage, int x, int y/*, Objet* objet*/);
+        Case(bool navigable, Personnage* personnage, int x, int y, Objet* objet=00);
 
         virtual ~Case();
 
         bool navigable() const;
         bool navigableEtLibre() const;
         Personnage* getPersonnage() const;
+        Objet* getObjet() const;
         Position getPosition() const;
-        //Objet& getObjet();
 
         void setPersonnage(Personnage* personnage);
+        void setObjet(Objet* objet);
 
     public:
         ///nul par défaut, non nul ssi portail
@@ -39,10 +37,9 @@ class Case
 
     private:
         bool m_navigable;
-        Personnage* m_personnage;
         Position m_position;
-
-        //Objet* m_objet;
+        Personnage* m_personnage;
+        Objet* m_objet;
 };
 
 #endif // CASE_H

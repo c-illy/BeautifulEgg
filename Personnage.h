@@ -52,7 +52,7 @@ class Personnage
     protected:
         void perdreSante(int degats);
         void attaquer(Personnage &autre);
-        //void interragir(Objet obj);
+        void interagir();
 
         std::string m_nom;
         int m_sante;

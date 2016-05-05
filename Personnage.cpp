@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Personnage.h"
+#include "Objet.h"
 
 
 
@@ -41,6 +42,14 @@ void Personnage::attaquer(Personnage &autre)
     autre.afficher();
 }
 
+void Personnage::interagir()
+{
+    m_caseCible->getObjet()->utiliser();
+    int x = m_caseCible->getPosition().getPositionX();
+    int y = m_caseCible->getPosition().getPositionY();
+    Modeles::m_royaume.retirerObjet(x, y, m_caseCible->getObjet());
+    //faire le delete à un autre niveau, si besoin
+}
 
 
 void Personnage::setCaseCible(const Case *caseCible)
@@ -122,37 +131,28 @@ void Personnage::setAction(Action action)
 
 void Personnage::executerAction()
 {
-
     switch(m_actionCourante)
     {
         case DEPLACER :
-
             deplacer();
-
             break;
 
-
         case ACTIONNER :
-
+            interagir();
             break;
 
         case ATTAQUER :
-
             Personnage *cible;
             cible=m_caseCible->getPersonnage();
-
             attaquer(*cible);
-
             break;
 
         default:
             break;
-
     }
 
     m_actionCourante = RIEN;
     m_mourant = false;
-
 }
 
 
@@ -166,6 +166,15 @@ void Personnage::deplacer()
     setPosition(iApres, jApres);
     Modeles::m_royaume.placerPersonnage(iAvant, jAvant, 00);
     Modeles::m_royaume.placerPersonnage(iApres, jApres, this);
+
+    Objet* obj = m_caseCible->getObjet();
+    if((this == &Modeles::m_joueur) && (obj != 00))
+    {
+        //prendre et utiliser objet
+        obj->utiliser();
+        Modeles::m_royaume.retirerObjet(iApres, jApres, obj);
+        delete obj;
+    }
 }
 
 

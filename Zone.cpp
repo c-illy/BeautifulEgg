@@ -17,7 +17,7 @@ Zone::~Zone()
 	}
 }
 
-void Zone::chargerFichier()
+/*void Zone::chargerFichier()
 {
 	m_cases.push_back(std::vector<Case*>());
 	m_cases.at(0).push_back(new Case(true,0,0,0));
@@ -31,7 +31,7 @@ void Zone::chargerFichier()
 	m_cases.at(2).push_back(new Case(true, 0,0,0));
 	m_cases.at(2).push_back(new Case(true, 0,0,0));
 	m_cases.at(2).push_back(new Case(true, 0,0,0));
-}
+}*/
 
 Case& Zone::get(int i, int j)
 {

@@ -23,6 +23,11 @@ std::vector<Monstre*>& Modeles::getMonstres()
     return m_royaume.getZoneCourante()->m_monstres;
 }
 
+std::vector<Objet*>& Modeles::getObjets()
+{
+    return m_royaume.getZoneCourante()->m_objet;
+}
+
 int Modeles::getNumZoneCourant()
 {
     return m_royaume.m_zoneCourante;

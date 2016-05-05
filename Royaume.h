@@ -21,6 +21,8 @@ class Royaume
 
         void placerPersonnage(int i, int j, Personnage* p);
         void retirerMonstresMorts();
+        void placerObjet(int i, int j, Objet* o);
+        void retirerObjet(int x, int y, Objet* o);//sans delete
 
     public:
         std::vector<Zone*> m_zones;

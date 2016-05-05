@@ -4,6 +4,7 @@ RoyaumeView Vues::m_royaumeView(Vues::m_window);
 std::vector<ZoneView> Vues::m_zoneViews;
 IHMView Vues::m_IHMView(Vues::m_window);
 std::vector<PersonnagesView*> Vues::m_personnagesViewParZone;
+ObjetsView Vues::m_objetsView;
 CinematiqueView Vues::m_cinematiqueViewIntro;
 CinematiqueView Vues::m_cinematiqueViewFin;
 
@@ -44,6 +45,7 @@ void Vues::draw()
     else
     {
         m_royaumeView.draw();
+        m_objetsView.draw();
         int z = Modeles::getNumZoneCourant();
         m_personnagesViewParZone.at(z)->draw();
         m_royaumeView.drawPremierPlan();

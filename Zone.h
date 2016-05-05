@@ -4,6 +4,7 @@
 #include <vector>
 #include "Case.h"
 class Monstre;
+class Objet;
 
 class Zone
 {
@@ -14,12 +15,13 @@ class Zone
 
     public:
 		 std::vector<Monstre*> m_monstres;
+		 std::vector<Objet*> m_objet;
 
 	public:
 		Zone(int x, int y);
 		virtual ~Zone();
 
-		void chargerFichier();
+		//void chargerFichier();
 
 		Case& get(int i, int j);
 		const Case& get(int i, int j) const;

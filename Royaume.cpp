@@ -55,6 +55,11 @@ void Royaume::placerPersonnage(int i, int j, Personnage* p)
     get(i, j).setPersonnage(p);
 }
 
+void Royaume::placerObjet(int i, int j, Objet* o)
+{
+    get(i, j).setObjet(o);
+}
+
 void Royaume::retirerMonstresMorts()
 {
     Zone* zone = getZoneCourante();
@@ -70,6 +75,23 @@ void Royaume::retirerMonstresMorts()
             zone->m_monstres.erase(zone->m_monstres.begin()+i);
         }
     }
+}
+
+//sans delete
+void Royaume::retirerObjet(int x, int y, Objet* o)
+{
+    std::vector<Objet*>& listeObjs = getZoneCourante()->m_objet;
+    std::vector<Objet*>::iterator it;
+    bool encore(true);
+    for(it=listeObjs.begin(); encore && it!=listeObjs.end(); it++)
+    {
+        if((*it) == o)
+        {
+            listeObjs.erase(it);
+            encore = false;
+        }
+    }
+    placerObjet(x, y, 00);
 }
 
 

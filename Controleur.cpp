@@ -115,6 +115,11 @@ void Controleur::pollEvent(sf::Event& event)
                 {
                     Modeles::m_joueur.setAction(ATTAQUER);
                 }
+                else if(caseCible.getObjet() != 00)
+                {
+                    //mur avec objet => actionner
+                    Modeles::m_joueur.setAction(ACTIONNER);
+                }
                 Modeles::m_joueur.setCaseCible(&caseCible);
                 ////todo direction
                 joueurAgit = true;

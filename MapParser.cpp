@@ -3,15 +3,20 @@
 #include "Vues.h"
 #include "ZoneView.h"
 #include "Monstre.h"
+#include "Objet.h"
+#include "ObjetsView.h"
 #include "Cinematique.h"
 #include "CinematiqueView.h"
 #include <sstream>
 
 const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
-{ {sf::Color(255, 255, 255).toInteger(), Mur  },
-  {sf::Color(0, 0, 0).toInteger(), Vide  },
+{ {sf::Color(255, 255, 255).toInteger(), Vide  },
+  {sf::Color(0, 0, 0).toInteger(), Mur  },
   {sf::Color(1, 1, 1).toInteger(), Joueur  },
-  {sf::Color(255, 0, 0).toInteger(), Monstre1  } };
+  {sf::Color(255, 0, 0).toInteger(), Monstre1  },
+  {sf::Color(100, 0, 0).toInteger(), Objet0  },
+  {sf::Color(100, 0, 50).toInteger(), Objet1  },
+  {sf::Color(100, 0, 100).toInteger(), Objet2  } };
 
 std::map<sf::Uint32, std::pair<Destination, Destination> > MapParser::m_portails;
 
@@ -55,6 +60,15 @@ void MapParser::initZonesFromFiles()
     // CINEMATIQUES
     initCinematique(&Modeles::m_cinematiqueIntro, &Vues::m_cinematiqueViewIntro, "./intro");
     initCinematique(&Modeles::m_cinematiqueFin, &Vues::m_cinematiqueViewFin, "./fin");
+
+    //TEXTURES OBJETS
+    std::string texFichiers[] = { "sante.png", "arme.png", "bouton.png" };
+    std::string objRacine("./objets/");
+    for(int i=0; i<Objet::NB_OBJETS_ID; i++)
+    {
+        Objet::ObjetID id = (Objet::ObjetID) i;
+        Vues::m_objetsView.addTexture(id, objRacine + texFichiers[i]);
+    }
 }
 
 void MapParser::parseAndInit(const std::string& cheminZone,
@@ -99,27 +113,23 @@ void MapParser::parseAndInit(const std::string& cheminZone,
 
 void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 {
-	Monstre* monstreACreer;
+    Case* caseACreer = 00;
+	Monstre* monstreACreer = 00;
+	Objet* objetACreer = 00;
 	switch(type)
 	{
 	case Vide:
-		zone->set(x, y, new Case(false,    // no navigable
-		                         nullptr, // no personnage
-                                 x,
-                                 y));
+	    caseACreer = new Case(true,    // no navigable
+                             nullptr, // no personnage
+                             x,
+                             y);
 		break;
 	case Mur:
-		zone->set(x, y, new Case(true,       // navigable
-                                 nullptr,   // no personnage
-                                 x,
-                                 y));
+	    caseACreer = new Case(false, nullptr, x, y);
 		break;
 	case Joueur:
 		Modeles::m_joueur.setPosition(x, y);
-		zone->set(x, y, new Case(true,
-                                 &Modeles::m_joueur,
-                                 x,
-                                 y));
+		caseACreer = new Case(true, &Modeles::m_joueur, x, y);
         //désigner la zone courante comme la zone de départ du jeu :
         Modeles::m_royaume.m_zoneCourante = Modeles::m_royaume.m_zones.size();
 		break;
@@ -127,15 +137,33 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 		std::cout << "Ajout d'un monstre" << std::endl;
 		monstreACreer = new Monstre("monstre1", x, y);
 		zone->m_monstres.push_back(monstreACreer);
-		zone->set(x, y, new Case(true,
-                                 monstreACreer,
-                                 x,
-                                 y));
+		caseACreer = new Case(true, monstreACreer, x, y);
+		break;
+	case Objet0:
+		std::cout << "Ajout d'un Objet0" << std::endl;
+		objetACreer = new Objet(Objet::BIDON_DEBUG_0, x, y, zone);
+		caseACreer = new Case(true, 00, x, y, objetACreer);
+		zone->m_objet.push_back(objetACreer);
+		break;
+	case Objet1:
+		std::cout << "Ajout d'un Objet1" << std::endl;
+		objetACreer = new Objet(Objet::BIDON_DEBUG_1, x, y, zone);
+		caseACreer = new Case(true, 00, x, y, objetACreer);
+		zone->m_objet.push_back(objetACreer);
+		break;
+	case Objet2:
+		std::cout << "Ajout d'un Objet2" << std::endl;
+		objetACreer = new Objet(Objet::BIDON_DEBUG_LEVIER_1, x, y, zone);
+		caseACreer = new Case(false, 00, x, y, objetACreer);
+		zone->m_objet.push_back(objetACreer);
+		Objet::m_bidonLevier2 = objetACreer;
 		break;
 	default:
 		std::cerr << "Erreur : Type de case inconnue." << std::endl;
 		break;
 	}
+
+    zone->set(x, y, caseACreer);
 }
 
 void MapParser::initCasePortail(Zone* zone, sf::Uint32 colorCode, unsigned x, unsigned y)
@@ -191,7 +219,7 @@ void MapParser::initCinematique(Cinematique* cinematique, CinematiqueView* cinem
     {
         tinydir_file file;
         tinydir_readfile(&dir, &file);
-        if (!file.is_dir)
+        if (!file.is_dir && file.name[0]!='T')
         {
             nbImages++;
         }

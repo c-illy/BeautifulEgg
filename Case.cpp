@@ -2,18 +2,16 @@
 #include "Personnage.h"
 #include "Monstre.h"
 
-Case::Case( bool navigable, Personnage* personnage, int x, int y/*, Objet* objet*/) :
+Case::Case( bool navigable, Personnage* personnage, int x, int y, Objet* objet) :
     m_destination(00),
-    m_navigable(navigable), m_personnage(personnage)
+    m_navigable(navigable), m_personnage(personnage), m_objet(objet)
 {
     m_position.setPositionX(x);
     m_position.setPositionY(y);
-    //ctor
 }
 
 Case::~Case()
 {
-    //dtor
 }
 
 
@@ -53,15 +51,21 @@ Personnage* Case::getPersonnage() const
     return m_personnage;
 }
 
-/*Objet& Case::getObjet()
+Objet* Case::getObjet() const
 {
-    return *m_objet;
+    return m_objet;
 }
-*/
+
 
 void Case::setPersonnage(Personnage* personnage)
 {
     m_personnage = personnage;
+}
+
+
+void Case::setObjet(Objet* objet)
+{
+    m_objet = objet;
 }
 
 

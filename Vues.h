@@ -6,6 +6,7 @@
 #include "RoyaumeView.h"
 #include "IHMView.h"
 #include "PersonnagesView.h"
+#include "ObjetsView.h"
 #include "ZoneView.h"
 #include "CinematiqueView.h"
 
@@ -24,6 +25,7 @@ class Vues
         static std::vector<ZoneView> m_zoneViews;
         static IHMView m_IHMView;
         static std::vector<PersonnagesView*> m_personnagesViewParZone;//1 instance par zone
+        static ObjetsView m_objetsView;
         static CinematiqueView m_cinematiqueViewIntro;
         static CinematiqueView m_cinematiqueViewFin;
 

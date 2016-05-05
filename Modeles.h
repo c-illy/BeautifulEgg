@@ -7,6 +7,7 @@
 #include "Personnage.h"
 #include "Cinematique.h"
 class Monstre;
+class Objet;
 //#include "Objet.h"
 
 
@@ -27,6 +28,7 @@ class Modeles
         static void init();
 
         static std::vector<Monstre*>& getMonstres();
+        static std::vector<Objet*>& getObjets();
         static int getNumZoneCourant();
 
         static void updatePhasePret();
