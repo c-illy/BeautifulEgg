@@ -210,7 +210,7 @@ void MapParser::initCasePortail(Zone* zone, sf::Uint32 colorCode, unsigned x, un
     zone->set(x, y, newCase);
 }
 
-void MapParser::initCinematique(Cinematique* cinematique, CinematiqueView* cinematiqueView, char* dossier)
+void MapParser::initCinematique(Cinematique* cinematique, CinematiqueView* cinematiqueView, const char* dossier)
 {
     tinydir_dir dir;
     tinydir_open(&dir, dossier);

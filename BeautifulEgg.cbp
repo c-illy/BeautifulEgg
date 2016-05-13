@@ -58,6 +58,8 @@
 		<Unit filename="Case.h" />
 		<Unit filename="Cinematique.cpp" />
 		<Unit filename="Cinematique.h" />
+		<Unit filename="CinematiqueView.cpp" />
+		<Unit filename="CinematiqueView.h" />
 		<Unit filename="Controleur.cpp" />
 		<Unit filename="Controleur.h" />
 		<Unit filename="IHMView.cpp" />
@@ -68,6 +70,10 @@
 		<Unit filename="Modeles.h" />
 		<Unit filename="Monstre.cpp" />
 		<Unit filename="Monstre.h" />
+		<Unit filename="Objet.cpp" />
+		<Unit filename="Objet.h" />
+		<Unit filename="ObjetsView.cpp" />
+		<Unit filename="ObjetsView.h" />
 		<Unit filename="Personnage.cpp" />
 		<Unit filename="Personnage.h" />
 		<Unit filename="PersonnagesView.cpp" />
@@ -87,6 +93,7 @@
 		<Unit filename="ZoneView.cpp" />
 		<Unit filename="ZoneView.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="tinydir.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
