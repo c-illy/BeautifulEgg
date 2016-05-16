@@ -55,6 +55,30 @@ void Personnage::interagir()
 void Personnage::setCaseCible(const Case *caseCible)
 {
     m_caseCible=caseCible;
+    m_directionActuelle = getDirectionFromCase(caseCible);
+    std::cout << m_nom << ": " << m_directionActuelle << std::endl;
+}
+
+Direction Personnage::getDirectionFromCase(const Case *caseCible) const
+{
+    Direction d;
+    if(m_position.getPositionX() < caseCible->getPosition().getPositionX())
+    {
+        d = DROITE;
+    }
+    else if(m_position.getPositionX() > caseCible->getPosition().getPositionX())
+    {
+        d = GAUCHE;
+    }
+    else if(m_position.getPositionY() < caseCible->getPosition().getPositionY())
+    {
+        d = BAS;
+    }
+    else
+    {
+        d = HAUT;
+    }
+    return d;
 }
 
 

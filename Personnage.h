@@ -54,6 +54,7 @@ class Personnage
         void perdreSante(int degats);
         void attaquer(Personnage &autre);
         void interagir();
+        Direction getDirectionFromCase(const Case *caseCible) const;
 
         std::string m_nom;
         int m_sante;
