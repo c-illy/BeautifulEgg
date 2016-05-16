@@ -56,7 +56,6 @@ void Personnage::setCaseCible(const Case *caseCible)
 {
     m_caseCible=caseCible;
     m_directionActuelle = getDirectionFromCase(caseCible);
-    std::cout << m_nom << ": " << m_directionActuelle << std::endl;
 }
 
 Direction Personnage::getDirectionFromCase(const Case *caseCible) const

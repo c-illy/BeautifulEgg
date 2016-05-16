@@ -42,6 +42,7 @@ void Modeles::updatePhasePret()
 
 void Modeles::updatePhasePJ()
 {
+    m_joueur.setPosition(m_joueur.getPosition().getPositionX(), m_joueur.getPosition().getPositionY());
     if (m_phaseDeltaTempsMs >= DUREE_ACTION_PJ_MS)
     {
         m_joueur.executerAction();

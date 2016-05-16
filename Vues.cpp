@@ -61,7 +61,7 @@ sf::Vector2f Vues::positionToVect2f(const Position& position)
     return sf::Vector2f(position.getPositionX() * TAILLE_CASE_X, position.getPositionY() * TAILLE_CASE_Y);
 }
 
-Position Vues::vect2fToPosition(const sf::Vector2f& vect)
+/*Position Vues::vect2fToPosition(const sf::Vector2f& vect)
 {
-    return Position(vect.x / TAILLE_CASE_X, vect.y * TAILLE_CASE_Y);
-}
+    return Position(vect.x / TAILLE_CASE_X, vect.y / TAILLE_CASE_Y);
+}*/

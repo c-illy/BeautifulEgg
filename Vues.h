@@ -18,7 +18,7 @@ class Vues
         static void draw();
 
         static sf::Vector2f positionToVect2f(const Position& position);
-        static Position vect2fToPosition(const sf::Vector2f& vect);
+//        static Position vect2fToPosition(const sf::Vector2f& vect);
 
     public:
         static RoyaumeView m_royaumeView;
