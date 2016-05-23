@@ -7,13 +7,18 @@ std::vector<PersonnagesView*> Vues::m_personnagesViewParZone;
 ObjetsView Vues::m_objetsView;
 CinematiqueView Vues::m_cinematiqueViewIntro;
 CinematiqueView Vues::m_cinematiqueViewFin;
+sf::Music Vues::m_musique;
+const std::map<Musique, std::string> Vues::m_nomsMusiques =
+{ {PRINCIPALE, "test.ogg"  } };
+std::map<Son, sf::Sound> Vues::m_sons;
 
 sf::RenderWindow Vues::m_window(sf::VideoMode(TAILLE_FENETRE_X, TAILLE_FENETRE_Y), "EGG");
 
 void Vues::init()
 {
     m_window.setFramerateLimit(60);
-    //m_personnagesView.init();//cf. MapParser
+    jouerMusique(PRINCIPALE);
+    ///TODO initialiser la map des sons
 }
 
 void Vues::update(sf::Time deltaTemps)
@@ -85,3 +90,19 @@ sf::Vector2f Vues::getPersonnageSFPosition(const Personnage& personnage)
 {
     return Position(vect.x / TAILLE_CASE_X, vect.y / TAILLE_CASE_Y);
 }*/
+
+void Vues::jouerMusique(Musique musique)
+{
+    m_musique.stop();
+    std::string nom = m_nomsMusiques.at(musique);
+    if(!m_musique.openFromFile(nom))
+    {
+        //Erreur
+    }
+    m_musique.play();
+}
+
+void Vues::jouerSon(Son son)
+{
+    m_sons.at(son).play();
+}
