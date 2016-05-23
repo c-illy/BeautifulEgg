@@ -58,7 +58,7 @@ void Animation::update(sf::Time deltaTemps)
         m_animationCourante = animationSuivante;
     }
 
-    sf::Vector2f vect = Vues::positionToVect2f(m_personnage.getPosition());
+    sf::Vector2f vect = Vues::getPersonnageSFPosition(m_personnage);
     vect.x += TAILLE_CASE_X - m_spriteLargeur;
     vect.y += TAILLE_CASE_Y - m_spriteHauteur;
     m_sprite.setPosition(vect);

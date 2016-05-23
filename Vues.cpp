@@ -29,8 +29,7 @@ void Vues::draw()
     m_window.clear();
 
     sf::View view = m_window.getDefaultView();
-    const Position& posJoueur = Modeles::m_joueur.getPosition();
-    view.setCenter(positionToVect2f(posJoueur));
+    view.setCenter(getPersonnageSFPosition(Modeles::m_joueur));
     //view.zoom(2.f);
     m_window.setView(view);
 
@@ -59,6 +58,27 @@ void Vues::draw()
 sf::Vector2f Vues::positionToVect2f(const Position& position)
 {
     return sf::Vector2f(position.getPositionX() * TAILLE_CASE_X, position.getPositionY() * TAILLE_CASE_Y);
+}
+
+sf::Vector2f Vues::getPersonnageSFPosition(const Personnage& personnage)
+{
+    sf::Vector2f vect = positionToVect2f(personnage.getPosition());
+
+    if(personnage.getActionCourante() == DEPLACER)
+    {
+        int direction = personnage.getDirection();
+        float deplacement = (float)Modeles::m_phaseDeltaTempsMs / Modeles::DUREE_ACTION_PJ_MS;
+        if(direction == HAUT)
+            vect.y -= deplacement * TAILLE_CASE_Y;
+        if(direction == BAS)
+            vect.y += deplacement * TAILLE_CASE_Y;
+        if(direction == GAUCHE)
+            vect.x -= deplacement * TAILLE_CASE_X;
+        if(direction == DROITE)
+            vect.x += deplacement * TAILLE_CASE_X;
+    }
+
+    return vect;
 }
 
 /*Position Vues::vect2fToPosition(const sf::Vector2f& vect)

@@ -55,8 +55,6 @@ void Monstre::appliquerIA()
 	Position p = getPosition();
 	double dist = p.distance(jp);
 
-
-	std::cout << "x:" << p.getPositionX() << "; y:" << p.getPositionY() << std::endl;
 	if (dist == 1)
 	{
 		setCaseCible(joueur);
