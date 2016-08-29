@@ -40,6 +40,7 @@ class Personnage
         void deplacer();
         std::string getNom() const;
         void setCaseCible(const Case *caseCible);
+        const Case* getCaseCible() const {return m_caseCible;};
         void setPosition(int x, int y);
         Position getPosition() const;
         bool isCaseCible(const Case* autre) const;

@@ -47,6 +47,7 @@ class Modeles
         static int m_phaseDeltaTempsMs;///millisecondes depuis dernier changement de phase
         static const int DUREE_ACTION_PJ_MS;///millisecondes
         static const int DUREE_ACTION_PNJ_MS;///millisecondes
+        static const int IMAGE_PARTIE2_CINEMATIQUE_FIN;
 
        // static std::vector<Objet*> m_objets;
 

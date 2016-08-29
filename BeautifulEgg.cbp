@@ -90,6 +90,8 @@
 		<Unit filename="Vue.h" />
 		<Unit filename="Vues.cpp" />
 		<Unit filename="Vues.h" />
+		<Unit filename="VuesAudio.cpp" />
+		<Unit filename="VuesAudio.h" />
 		<Unit filename="Zone.cpp" />
 		<Unit filename="Zone.h" />
 		<Unit filename="ZoneView.cpp" />
