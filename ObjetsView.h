@@ -19,8 +19,8 @@ public:
 private:
     static std::map<Objet::ObjetID, sf::Texture> m_texturesObjets;
     static std::map<Objet::ObjetID, sf::Sprite> m_spritesObjets;
-    static const int m_spriteLargeur;
-    static const int m_spriteHauteur;
+    //const int m_spriteLargeur;
+    //const int m_spriteHauteur;
 };
 
 #endif // OBJETSVIEW_H

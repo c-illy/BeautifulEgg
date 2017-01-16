@@ -11,8 +11,8 @@ class Objet
 {
 public:
     enum ObjetID{
-        BIDON_DEBUG_0,
-        BIDON_DEBUG_1,
+        SANTE,
+        BONUS_DEGATS,
         BIDON_DEBUG_LEVIER_1,
         NB_OBJETS_ID};
 

@@ -14,8 +14,8 @@ const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
   {sf::Color(0, 0, 0).toInteger(), Mur  },
   {sf::Color(1, 1, 1).toInteger(), Joueur  },
   {sf::Color(255, 0, 0).toInteger(), Monstre1  },
-  {sf::Color(100, 0, 0).toInteger(), Objet0  },
-  {sf::Color(100, 0, 50).toInteger(), Objet1  },
+  {sf::Color(100, 0, 0).toInteger(), ObjetSante  },
+  {sf::Color(100, 0, 50).toInteger(), BonusDegats  },
   {sf::Color(100, 0, 100).toInteger(), Objet2  } };
 
 std::map<sf::Uint32, std::pair<Destination, Destination> > MapParser::m_portails;
@@ -139,15 +139,15 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 		zone->m_monstres.push_back(monstreACreer);
 		caseACreer = new Case(true, monstreACreer, x, y);
 		break;
-	case Objet0:
+	case ObjetSante:
 		std::cout << "Ajout d'un Objet0" << std::endl;
-		objetACreer = new Objet(Objet::BIDON_DEBUG_0, x, y, zone);
+		objetACreer = new Objet(Objet::SANTE, x, y, zone);
 		caseACreer = new Case(true, 00, x, y, objetACreer);
 		zone->m_objet.push_back(objetACreer);
 		break;
-	case Objet1:
+	case BonusDegats:
 		std::cout << "Ajout d'un Objet1" << std::endl;
-		objetACreer = new Objet(Objet::BIDON_DEBUG_1, x, y, zone);
+		objetACreer = new Objet(Objet::BONUS_DEGATS, x, y, zone);
 		caseACreer = new Case(true, 00, x, y, objetACreer);
 		zone->m_objet.push_back(objetACreer);
 		break;

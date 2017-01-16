@@ -16,8 +16,8 @@ public:
 		Mur,
 		Joueur,
 		Monstre1,
-		Objet0,
-		Objet1,
+		ObjetSante,
+		BonusDegats,
 		Objet2
 	};
 

@@ -46,8 +46,10 @@ class Personnage
         bool isCaseCible(const Case* autre) const;
         int getSante() const;
         int getSanteMax() const;
+        void soignerSante(int soin);
         bool getVivant() const;
         bool getMourant() const;
+        void ameliorerDegats(int bonus);
         Action getActionCourante() const {return m_actionCourante;};
         Direction getDirection() const {return m_directionActuelle;};
 

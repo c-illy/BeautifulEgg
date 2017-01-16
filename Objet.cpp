@@ -1,4 +1,5 @@
 #include "Objet.h"
+#include "Modeles.h"
 #include <iostream>
 
 Objet* Objet::m_bidonLevier2 = 00;
@@ -16,11 +17,13 @@ void Objet::utiliser()
 {
     switch(m_id)
     {
-    case BIDON_DEBUG_0:
+    case SANTE:
         std::cout << "Utilisation Objet id=" << m_id << std::endl;
+        Modeles::m_joueur.soignerSante(25);//changer la valeur du soin ici si besoin
         break;
-    case BIDON_DEBUG_1:
+    case BONUS_DEGATS:
         std::cout << "Utilisation Objet id=" << m_id << std::endl;
+        Modeles::m_joueur.ameliorerDegats(20);//changer la valeur du soin ici si besoin
         break;
     case BIDON_DEBUG_LEVIER_1:
         std::cout << "Utilisation Objet id=" << m_id << std::endl;

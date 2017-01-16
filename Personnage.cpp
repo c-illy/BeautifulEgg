@@ -32,6 +32,17 @@ void Personnage::perdreSante(int degats)
     }
 }
 
+void Personnage::soignerSante(int soin)
+{
+    int oldSante = m_sante;
+     m_sante += soin;
+
+    if (m_sante > m_santeMax)
+    {
+        m_sante = m_santeMax;
+    }
+    std::cout << "soin : " << oldSante << " => " << m_sante << std::endl;
+}
 
 
 void Personnage::attaquer(Personnage &autre)
@@ -44,10 +55,11 @@ void Personnage::attaquer(Personnage &autre)
 
 void Personnage::interagir()
 {
-    m_caseCible->getObjet()->utiliser();
+    Objet* objet = m_caseCible->getObjet();
     int x = m_caseCible->getPosition().getPositionX();
     int y = m_caseCible->getPosition().getPositionY();
     Modeles::m_royaume.retirerObjet(x, y, m_caseCible->getObjet());
+    objet->utiliser();
     //faire le delete à un autre niveau, si besoin
 }
 
@@ -145,6 +157,12 @@ bool Personnage::getMourant() const
     return m_mourant;
 }
 
+void Personnage::ameliorerDegats(int bonus)
+{
+    int oldDg = m_degats;
+    m_degats += bonus;
+    std::cout << "bonus degats : " << oldDg << " => " << m_degats << std::endl;
+}
 
 void Personnage::setAction(Action action)
 {

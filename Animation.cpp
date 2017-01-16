@@ -77,6 +77,10 @@ AnimationRessource* Animation::getRessource(const Personnage& personnage)
     std::string directionName = m_directions[personnage.getDirection()];
     std::string animationCourante = personnage.getNom() + "_" +
         actionName + "_" + directionName;
+    if(personnage.getMourant() && Modeles::m_phase != Modeles::GAME_OVER)
+    {
+        animationCourante = "dead";
+    }
 
     std::map<std::string, AnimationRessource>::iterator it =
         m_ressourcesMap.find(animationCourante);
@@ -92,7 +96,7 @@ AnimationRessource* Animation::getRessource(const Personnage& personnage)
     //spécifique (faudrait charger ça selon les ressources)
     if(personnage.getActionCourante() == RIEN)
     {
-        res->m_tempsIntervalle = sf::milliseconds(300);
+        res->m_tempsIntervalle = sf::milliseconds(900);
     }
     std::cout << "animations chargées : " << m_ressourcesMap.size() << std::endl;
     return res;
@@ -104,6 +108,10 @@ void Animation::loadAnimation()
     std::string directionName = m_directions[m_personnage.getDirection()];
     m_animationCourante = m_personnage.getNom() + "_" +
         actionName + "_" + directionName;
+    if(m_personnage.getMourant())
+    {
+        m_animationCourante = "dead";
+    }
 
     m_animationRessource = getRessource(m_personnage);
     m_sprite.setTexture(m_animationRessource->m_texture);
@@ -114,6 +122,7 @@ void Animation::loadAnimation()
 void Animation::demarrer()
 {
     m_clock.restart();
+    m_frameCourante = -1;
 }
 
 void Animation::update(sf::Time deltaTemps)
@@ -122,6 +131,10 @@ void Animation::update(sf::Time deltaTemps)
     animationSuivante += m_personnage.getNom();
     animationSuivante += "_" + actionToString(m_personnage.getActionCourante());
     animationSuivante += "_" + directionToString(m_personnage.getDirection());
+    if(m_personnage.getMourant())
+    {
+        animationSuivante = "dead";
+    }
     if(m_animationCourante != animationSuivante)
     {
         loadAnimation();
@@ -133,9 +146,12 @@ void Animation::update(sf::Time deltaTemps)
     vect.y += (TAILLE_CASE_Y - m_animationRessource->m_spriteHauteur) / 2;
     m_sprite.setPosition(vect);
 
-    sf::Time tempsDepuisDebut = m_clock.getElapsedTime();
+    sf::Int32 tempsDepuisDebut = m_clock.getElapsedTime().asMilliseconds();
 
-    int prochaineFrame = ((int)(tempsDepuisDebut / m_animationRessource->m_tempsIntervalle)) % m_animationRessource->m_totalFrames;
+    int prochaineFrame = ((int)(tempsDepuisDebut * m_animationRessource->m_totalFrames)
+                           / m_animationRessource->m_tempsIntervalle.asMilliseconds());
+    prochaineFrame = prochaineFrame % m_animationRessource->m_totalFrames;
+
     if(m_frameCourante != prochaineFrame)
     {
         m_frameCourante = prochaineFrame;

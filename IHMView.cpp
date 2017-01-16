@@ -20,9 +20,9 @@ IHMView::IHMView(sf::RenderWindow& window) :
     m_tex_barreDeVieVariable.setSmooth(true);
     m_tex_barreDeVie.setSmooth(true);
     m_tex_gameOver.setSmooth(true);
-    m_fond.setSize(sf::Vector2f(m_tex_barreDeVie.getSize().x, m_tex_barreDeVie.getSize().y));
-    m_fond.setFillColor(sf::Color::Green);
-    m_fond.setPosition(POS_BARRE_X, POS_BARRE_Y);
+    //m_fond.setSize(sf::Vector2f(m_tex_barreDeVie.getSize().x, m_tex_barreDeVie.getSize().y));
+    //m_fond.setFillColor(sf::Color::Green);
+    //m_fond.setPosition(POS_BARRE_X, POS_BARRE_Y);
 }
 
 IHMView::~IHMView()
@@ -32,8 +32,8 @@ IHMView::~IHMView()
 
 void IHMView::update(sf::Time deltaTemps)
 {
-    sf::Vector2f posJoueur = Vues::positionToVect2f(Modeles::m_joueur.getPosition());
-    m_fond.setPosition(POS_BARRE_X + posJoueur.x, POS_BARRE_Y + posJoueur.y);
+    //sf::Vector2f posJoueur = Vues::getPersonnageSFPosition(Modeles::m_joueur);//Vues::positionToVect2f(Modeles::m_joueur.getPosition());
+    //m_fond.setPosition(POS_BARRE_X + posJoueur.x, POS_BARRE_Y + posJoueur.y);
 }
 
 void IHMView::draw() const
@@ -46,12 +46,13 @@ void IHMView::draw() const
     sf::Sprite barreDeVieVariable(m_tex_barreDeVieVariable, sf::IntRect(0, 0, largeurBarreDeVieVariable, m_tex_barreDeVieVariable.getSize().y));
     sf::Sprite barreDeVie(m_tex_barreDeVie);
 
-    sf::Vector2f posJoueur = Vues::positionToVect2f(Modeles::m_joueur.getPosition());
+    sf::Vector2f posJoueur = //Vues::positionToVect2f(Modeles::m_joueur.getPosition());
+        Vues::getPersonnageSFPosition(Modeles::m_joueur);
 
     barreDeVieVariable.setPosition(POS_BARRE_X + posJoueur.x, POS_BARRE_Y + posJoueur.y);
     barreDeVie.setPosition(POS_BARRE_X + posJoueur.x, POS_BARRE_Y + posJoueur.y);
 
-    m_window.draw(m_fond);
+    //m_window.draw(m_fond);
     m_window.draw(barreDeVieVariable);
     m_window.draw(barreDeVie);
 
