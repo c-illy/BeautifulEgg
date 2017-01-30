@@ -10,8 +10,8 @@ Cinematique Modeles::m_cinematiqueFin;
 Modeles::Phase Modeles::m_phase(INTRO);
 bool Modeles::m_nouvellePhase(true);///si la phase vient juste de changer
 int Modeles::m_phaseDeltaTempsMs(0);///millisecondes depuis dernier changement de phase
-const int Modeles::DUREE_ACTION_PJ_MS(300);///millisecondes
-const int Modeles::DUREE_ACTION_PNJ_MS(300);///millisecondes
+const int Modeles::DUREE_ACTION_PJ_MS(400);///millisecondes
+const int Modeles::DUREE_ACTION_PNJ_MS(400);///millisecondes
 const int Modeles::IMAGE_PARTIE2_CINEMATIQUE_FIN(1);
 
 void Modeles::init()
