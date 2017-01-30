@@ -17,7 +17,7 @@ public:
         NB_OBJETS_ID};
 
 
-    Objet(ObjetID id, int x, int y, Zone* zoneParente);
+    Objet(ObjetID id, int x, int y, Zone* zoneParente, bool estObstacle=false);
     virtual ~Objet();
 
     virtual void utiliser();
@@ -27,6 +27,7 @@ public:
     const ObjetID m_id;
     const Position m_position;
     Zone* m_zoneParente;
+    bool m_estObstacle;
 
     static Objet* m_bidonLevier2;
 };

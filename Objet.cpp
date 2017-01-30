@@ -4,8 +4,10 @@
 
 Objet* Objet::m_bidonLevier2 = 00;
 
-Objet::Objet(ObjetID id, int x, int y, Zone* zoneParente) :
-    m_id(id), m_position(x,y), m_zoneParente(zoneParente)
+Objet::Objet(ObjetID id, int x, int y, Zone* zoneParente, bool estObstacle) :
+    m_id(id), m_position(x,y),
+    m_zoneParente(zoneParente),
+    m_estObstacle(estObstacle)
 {
 }
 

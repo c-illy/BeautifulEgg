@@ -39,10 +39,12 @@ void Controleur::jouer()
         }
         if (Modeles::m_phase == Modeles::ACTION_PJ)
         {
+            pollEventIgnore(event);
             Modeles::updatePhasePJ();
         }
         if (Modeles::m_phase == Modeles::ACTION_PNJ)
         {
+            pollEventIgnore(event);
             Modeles::updatePhasePNJ();
         }
         if (Modeles::m_phase == Modeles::FIN)
@@ -115,7 +117,7 @@ void Controleur::pollEvent(sf::Event& event)
                 {
                     Modeles::m_joueur.setAction(ATTAQUER);
                 }
-                else if(caseCible.getObjet() != 00)
+                else if(caseCible.getObjet() != 00 && !(caseCible.getObjet()->m_estObstacle))
                 {
                     //mur avec objet => actionner
                     Modeles::m_joueur.setAction(ACTIONNER);
@@ -177,6 +179,18 @@ void Controleur::pollFinEvent(sf::Event& event)
                 Vues::m_window.close();
             }
         }
+    }
+}
+
+void Controleur::pollEventIgnore(sf::Event& event)
+{
+    if(Vues::m_window.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+        {
+            Vues::m_window.close();
+        }
+        //else : ignore event
     }
 }
 

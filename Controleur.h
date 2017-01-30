@@ -13,6 +13,7 @@ class Controleur
         static void pollEvent(sf::Event& event);
         static void pollIntroEvent(sf::Event& event);
         static void pollFinEvent(sf::Event& event);
+        static void pollEventIgnore(sf::Event& event);
 };
 
 #endif // CONTROLEUR_H
