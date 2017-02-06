@@ -16,6 +16,8 @@ class Zone
     public:
 		 std::vector<Monstre*> m_monstres;
 		 std::vector<Objet*> m_objet;
+		 bool m_secretZone;
+		 bool m_bossZone;
 
 	public:
 		Zone(int x, int y);

@@ -1,6 +1,7 @@
 #include "Zone.h"
 
-Zone::Zone(int x, int y) : m_cases(x, std::vector<Case*>(y))
+Zone::Zone(int x, int y) : m_cases(x, std::vector<Case*>(y)),
+m_secretZone(false), m_bossZone(false)
 {
 
 }

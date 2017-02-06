@@ -68,9 +68,18 @@ void VuesAudio::draw()
     switch(Modeles::m_phase)
     {
     case Modeles::PRET:
-            //TODO cas boss => jouerMusique(BOSS);
-            //TODO cas passage secret => jouerMusique(PASSAGE_SECRET);
-            jouerMusique(EXPLOR);
+            if(Modeles::m_royaume.getZoneCourante()->m_bossZone)
+            {
+                jouerMusique(BOSS);
+            }
+            else if(Modeles::m_royaume.getZoneCourante()->m_secretZone)
+            {
+                jouerMusique(PASSAGE_SECRET);
+            }
+            else
+            {
+                jouerMusique(EXPLOR);
+            }
         break;
 
     case Modeles::ACTION_PJ:

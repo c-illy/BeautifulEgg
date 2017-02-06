@@ -8,6 +8,7 @@
 #include "Cinematique.h"
 #include "CinematiqueView.h"
 #include <sstream>
+#include <fstream>
 
 const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
 { {sf::Color(255, 255, 255).toInteger(), Vide  },
@@ -84,6 +85,10 @@ void MapParser::parseAndInit(const std::string& cheminZone,
 	unsigned nLine   = grid.getSize().x / width;
 	unsigned nColumn = grid.getSize().y / height;
 	Zone* zone = new Zone(nLine, nColumn);
+	std::ifstream bossCheck(cheminZone + "/" + "boss");
+	zone->m_bossZone = bossCheck.good();
+	std::ifstream secretCheck(cheminZone + "/" + "secret");
+	zone->m_secretZone = secretCheck.good();
 
 	for(unsigned j=0; j<nColumn; ++j) {
 		for(unsigned i=0; i<nLine; ++i) {
