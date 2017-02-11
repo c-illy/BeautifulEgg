@@ -2,9 +2,11 @@
 #include "Personnage.h"
 #include "Monstre.h"
 
-Case::Case( bool navigable, Personnage* personnage, int x, int y, Objet* objet) :
+Case::Case( bool navigable, Personnage* personnage, int x, int y,
+           Objet* objet, bool finJeu) :
     m_destination(00),
-    m_navigable(navigable), m_personnage(personnage), m_objet(objet)
+    m_navigable(navigable), m_personnage(personnage), m_objet(objet),
+    m_finJeu(finJeu)
 {
     m_position.setPositionX(x);
     m_position.setPositionY(y);

@@ -51,28 +51,37 @@ void Modeles::updatePhasePJ()
         int joueurX = m_joueur.getPosition().getPositionX();
         int joueurY = m_joueur.getPosition().getPositionY();
         Case& caseJoueur = m_royaume.get(joueurX, joueurY);
-        Destination* d = caseJoueur.m_destination;
-        if(d != 00)
+        if(caseJoueur.m_finJeu)
         {
-            //changement de zone
-            m_royaume.placerPersonnage(joueurX, joueurY, 00);
-            m_royaume.m_zoneCourante = d->m_numZone;
-            m_joueur.setPosition(d->m_x, d->m_y);
-            m_royaume.placerPersonnage(d->m_x, d->m_y, &m_joueur);
+            Modeles::m_phase = Modeles::FIN;
+            Modeles::m_nouvellePhase = true;
+            Modeles::m_phaseDeltaTempsMs = 0;
+        }
+        else
+            {
+            Destination* d = caseJoueur.m_destination;
+            if(d != 00)
+            {
+                //changement de zone
+                m_royaume.placerPersonnage(joueurX, joueurY, 00);
+                m_royaume.m_zoneCourante = d->m_numZone;
+                m_joueur.setPosition(d->m_x, d->m_y);
+                m_royaume.placerPersonnage(d->m_x, d->m_y, &m_joueur);
 
-            //ne pas laisser les PNJ agir, retourner en phase PRET
-            m_phase = PRET;
+                //ne pas laisser les PNJ agir, retourner en phase PRET
+                m_phase = PRET;
+                m_nouvellePhase = true;
+                m_phaseDeltaTempsMs = 0;
+                return;
+            }
+            for(unsigned int i=0; i<getMonstres().size(); i++)
+            {
+                getMonstres().at(i)->appliquerIA();
+            }
+            m_phase = ACTION_PNJ;
             m_nouvellePhase = true;
             m_phaseDeltaTempsMs = 0;
-            return;
         }
-        for(unsigned int i=0; i<getMonstres().size(); i++)
-        {
-            getMonstres().at(i)->appliquerIA();
-        }
-        m_phase = ACTION_PNJ;
-        m_nouvellePhase = true;
-        m_phaseDeltaTempsMs = 0;
     }
 }
 

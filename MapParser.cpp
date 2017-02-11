@@ -17,7 +17,8 @@ const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
   {sf::Color(255, 0, 0).toInteger(), Monstre1  },
   {sf::Color(100, 0, 0).toInteger(), ObjetSante  },
   {sf::Color(100, 0, 50).toInteger(), BonusDegats  },
-  {sf::Color(100, 0, 100).toInteger(), Objet2  } };
+  {sf::Color(100, 0, 100).toInteger(), Objet2  },
+  {sf::Color(0, 255, 0).toInteger(), FinJeu  } };
 
 std::map<sf::Uint32, std::pair<Destination, Destination> > MapParser::m_portails;
 
@@ -124,7 +125,7 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 	switch(type)
 	{
 	case Vide:
-	    caseACreer = new Case(true,    // no navigable
+	    caseACreer = new Case(true,    // navigable
                              nullptr, // no personnage
                              x,
                              y);
@@ -162,6 +163,14 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 		caseACreer = new Case(false, 00, x, y, objetACreer);
 		zone->m_objet.push_back(objetACreer);
 		Objet::m_bidonLevier2 = objetACreer;
+		break;
+	case FinJeu:
+	    caseACreer = new Case(true,    // navigable
+                             nullptr, // no personnage
+                             x,
+                             y,
+                             nullptr,
+                             true);
 		break;
 	default:
 		std::cerr << "Erreur : Type de case inconnue." << std::endl;

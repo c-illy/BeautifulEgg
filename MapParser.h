@@ -18,7 +18,8 @@ public:
 		Monstre1,
 		ObjetSante,
 		BonusDegats,
-		Objet2
+		Objet2,
+		FinJeu
 	};
 
 	static void initZonesFromFiles();

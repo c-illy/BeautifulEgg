@@ -18,7 +18,8 @@ public:
 class Case
 {
     public:
-        Case(bool navigable, Personnage* personnage, int x, int y, Objet* objet=00);
+        Case(bool navigable, Personnage* personnage, int x, int y,
+             Objet* objet=00, bool finJeu=false);
 
         virtual ~Case();
 
@@ -34,6 +35,7 @@ class Case
     public:
         ///nul par défaut, non nul ssi portail
         Destination* m_destination;
+        bool m_finJeu;
 
     private:
         bool m_navigable;
