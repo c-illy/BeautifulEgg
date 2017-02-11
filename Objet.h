@@ -14,6 +14,7 @@ public:
         SANTE,
         BONUS_DEGATS,
         BIDON_DEBUG_LEVIER_1,
+        OBSTACLE_0,
         NB_OBJETS_ID};
 
 
@@ -30,6 +31,7 @@ public:
     bool m_estObstacle;
 
     static Objet* m_bidonLevier2;
+    static Objet* m_obstacle0;
 };
 
 #endif // OBJET_H

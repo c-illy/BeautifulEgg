@@ -19,6 +19,7 @@ public:
 		ObjetSante,
 		BonusDegats,
 		Objet2,
+		Obstacle0,
 		FinJeu
 	};
 

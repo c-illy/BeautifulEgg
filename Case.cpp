@@ -5,8 +5,8 @@
 Case::Case( bool navigable, Personnage* personnage, int x, int y,
            Objet* objet, bool finJeu) :
     m_destination(00),
-    m_navigable(navigable), m_personnage(personnage), m_objet(objet),
-    m_finJeu(finJeu)
+    m_finJeu(finJeu),
+    m_navigable(navigable), m_personnage(personnage), m_objet(objet)
 {
     m_position.setPositionX(x);
     m_position.setPositionY(y);
@@ -68,6 +68,12 @@ void Case::setPersonnage(Personnage* personnage)
 void Case::setObjet(Objet* objet)
 {
     m_objet = objet;
+}
+
+
+void Case::setNavigable(bool navigable)
+{
+    m_navigable = navigable;
 }
 
 

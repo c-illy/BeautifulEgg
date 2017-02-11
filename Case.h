@@ -31,6 +31,7 @@ class Case
 
         void setPersonnage(Personnage* personnage);
         void setObjet(Objet* objet);
+        void setNavigable(bool navigable);
 
     public:
         ///nul par défaut, non nul ssi portail

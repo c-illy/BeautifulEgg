@@ -18,6 +18,7 @@ const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
   {sf::Color(100, 0, 0).toInteger(), ObjetSante  },
   {sf::Color(100, 0, 50).toInteger(), BonusDegats  },
   {sf::Color(100, 0, 100).toInteger(), Objet2  },
+  {sf::Color(100, 0, 120).toInteger(), Obstacle0  },
   {sf::Color(0, 255, 0).toInteger(), FinJeu  } };
 
 std::map<sf::Uint32, std::pair<Destination, Destination> > MapParser::m_portails;
@@ -64,7 +65,7 @@ void MapParser::initZonesFromFiles()
     initCinematique(&Modeles::m_cinematiqueFin, &Vues::m_cinematiqueViewFin, "./fin");
 
     //TEXTURES OBJETS
-    std::string texFichiers[] = { "sante.png", "arme.png", "bouton.png" };
+    std::string texFichiers[] = { "sante.png", "arme.png", "bouton.png", "obstacle0.png"};
     std::string objRacine("./objets/");
     for(int i=0; i<Objet::NB_OBJETS_ID; i++)
     {
@@ -163,6 +164,13 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 		caseACreer = new Case(false, 00, x, y, objetACreer);
 		zone->m_objet.push_back(objetACreer);
 		Objet::m_bidonLevier2 = objetACreer;
+		break;
+	case Obstacle0:
+		std::cout << "Ajout d'un Obstacle0" << std::endl;
+		objetACreer = new Objet(Objet::OBSTACLE_0, x, y, zone, true);
+		caseACreer = new Case(false, 00, x, y, objetACreer);
+		zone->m_objet.push_back(objetACreer);
+		Objet::m_obstacle0 = objetACreer;
 		break;
 	case FinJeu:
 	    caseACreer = new Case(true,    // navigable

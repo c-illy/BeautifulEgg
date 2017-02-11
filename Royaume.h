@@ -21,7 +21,8 @@ class Royaume
 
         void placerPersonnage(int i, int j, Personnage* p);
         void retirerMonstresMorts();
-        void placerObjet(int i, int j, Objet* o);
+        void placerObjet(int i, int j, Objet* o, Zone* zone);
+        void retirerObjet(int x, int y, Objet* o, Zone* zone);//sans delete
         void retirerObjet(int x, int y, Objet* o);//sans delete
 
     public:
