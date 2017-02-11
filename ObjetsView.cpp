@@ -20,8 +20,7 @@ ObjetsView::~ObjetsView()
 void ObjetsView::addTexture(Objet::ObjetID id, const std::string& fichier)
 {
     sf::Texture& tex = m_texturesObjets[id];//ajout implicite de id=>tex dans la map
-    tex.loadFromFile(fichier);
-    tex.setSmooth(true);
+    Vues::loadFromFile(tex, fichier);
     sf::Sprite& sprite = m_spritesObjets[id];
     sprite.setTexture(tex);
 }

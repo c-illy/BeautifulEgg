@@ -81,7 +81,7 @@ void MapParser::parseAndInit(const std::string& cheminZone,
     unsigned int nouvNumZone = Modeles::m_royaume.m_zones.size();
 
     sf::Image grid;
-    grid.loadFromFile(cheminZone + "/" + "grid.png");
+    Vues::loadFromFile(grid, cheminZone + "/" + "grid.png");
 	unsigned x = width  / 2;
 	unsigned y = height / 2;
 	unsigned nLine   = grid.getSize().x / width;
@@ -257,7 +257,7 @@ void MapParser::initCinematique(Cinematique* cinematique, CinematiqueView* cinem
         s << dossier << "/" << i << ".png";
 
         cinematiqueView->m_tex_images.push_back(sf::Texture());
-        cinematiqueView->m_tex_images.at(i).loadFromFile(s.str());
+        Vues::loadFromFile(cinematiqueView->m_tex_images.at(i), s.str());
     }
 }
 

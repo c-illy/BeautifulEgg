@@ -30,16 +30,12 @@ void AnimationRessource::load(const std::string& animationCourante)
     std::string nomFichier = "animations/" + animationCourante;// + ".png";
     sf::Image image;
     //pour avoir largeur de frame, pas optimal mais peu casse-pied pour les graphistes
-    if(image.loadFromFile(RESSOURCES + nomFichier + ".gif"))
+    if(Vues::loadFromFile(image, RESSOURCES + nomFichier + ".gif"))
     {
         m_spriteLargeur = image.getSize().x;
     }
-    else
-    {
-        std::cout << "Erreur ouverture du fichier " << nomFichier << ".gif" << std::endl;
-    }
 
-    if(image.loadFromFile(RESSOURCES + nomFichier + ".png"))
+    if(Vues::loadFromFile(image, RESSOURCES + nomFichier + ".png"))
     {
         m_texture.loadFromImage(image);
         m_texture.setSmooth(true);
@@ -47,10 +43,6 @@ void AnimationRessource::load(const std::string& animationCourante)
         sf::Vector2u textureSize(image.getSize());
         m_spriteHauteur = textureSize.y;
         m_totalFrames = textureSize.x / m_spriteLargeur;
-    }
-    else
-    {
-        std::cout << "Erreur ouverture du fichier " << nomFichier << ".png" << std::endl;
     }
 }
 

@@ -5,21 +5,9 @@
 IHMView::IHMView(sf::RenderWindow& window) :
     Vue(window)
 {
-    if (!m_tex_barreDeVieVariable.loadFromFile(RESSOURCES "barre_variable.png"))
-    {
-        // erreur...
-    }
-    if (!m_tex_barreDeVie.loadFromFile(RESSOURCES "barre.png"))
-    {
-        // erreur...
-    }
-    if (!m_tex_gameOver.loadFromFile(RESSOURCES "game_over.png"))
-    {
-        // erreur...
-    }
-    m_tex_barreDeVieVariable.setSmooth(true);
-    m_tex_barreDeVie.setSmooth(true);
-    m_tex_gameOver.setSmooth(true);
+    Vues::loadFromFile(m_tex_barreDeVieVariable, RESSOURCES "barre_variable.png");
+    Vues::loadFromFile(m_tex_barreDeVie, RESSOURCES "barre.png");
+    Vues::loadFromFile(m_tex_gameOver, RESSOURCES "game_over.png");
     //m_fond.setSize(sf::Vector2f(m_tex_barreDeVie.getSize().x, m_tex_barreDeVie.getSize().y));
     //m_fond.setFillColor(sf::Color::Green);
     //m_fond.setPosition(POS_BARRE_X, POS_BARRE_Y);

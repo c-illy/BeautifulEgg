@@ -21,6 +21,9 @@ class Vues
         static sf::Vector2f getPersonnageSFPosition(const Personnage& personnage);
 //        static Position vect2fToPosition(const sf::Vector2f& vect);
 
+        static bool loadFromFile(sf::Image& im, const std::string& chemin);
+        static bool loadFromFile(sf::Texture& t, const std::string& chemin);
+
     public:
         static RoyaumeView m_royaumeView;
         static std::vector<ZoneView> m_zoneViews;

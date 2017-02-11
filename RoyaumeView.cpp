@@ -6,14 +6,8 @@
 RoyaumeView::RoyaumeView(sf::RenderWindow& window) :
     Vue(window)
 {
-    if (!m_tex_caseNavigable.loadFromFile(RESSOURCES "test.png"))
-    {
-        // erreur...
-    }
-    if (!m_tex_caseNonNavigable.loadFromFile(RESSOURCES "test2.png"))
-    {
-        // erreur...
-    }
+    Vues::loadFromFile(m_tex_caseNavigable, RESSOURCES "test.png");
+    Vues::loadFromFile(m_tex_caseNonNavigable, RESSOURCES "test2.png");
 }
 
 RoyaumeView::~RoyaumeView()

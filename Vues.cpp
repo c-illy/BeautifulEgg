@@ -87,3 +87,30 @@ sf::Vector2f Vues::getPersonnageSFPosition(const Personnage& personnage)
 {
     return Position(vect.x / TAILLE_CASE_X, vect.y / TAILLE_CASE_Y);
 }*/
+
+bool Vues::loadFromFile(sf::Image& im, const std::string& chemin)
+{
+    if(im.loadFromFile(chemin))
+    {
+        return true;
+    }
+    else
+    {
+        std::cout << "erreur chargement image : " << chemin << std::endl;
+        return false;
+    }
+}
+
+bool Vues::loadFromFile(sf::Texture& t, const std::string& chemin)
+{
+    if(t.loadFromFile(chemin))
+    {
+        t.setSmooth(true);
+        return true;
+    }
+    else
+    {
+        std::cout << "erreur chargement texture : " << chemin << std::endl;
+        return false;
+    }
+}
