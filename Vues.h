@@ -33,6 +33,10 @@ class Vues
         static CinematiqueView m_cinematiqueViewIntro;
         static CinematiqueView m_cinematiqueViewFin;
 
+        static sf::RenderStates mulRenderStates;
+        static sf::Sprite spriteEffetParchemin;
+        static sf::Texture textureParchemin;
+
         static sf::RenderWindow m_window;
 };
 
