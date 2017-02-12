@@ -45,8 +45,8 @@ void Vues::draw()
 
     sf::Vector2f posJoueur = getPersonnageSFPosition(Modeles::m_joueur);
     spriteEffetParchemin.setPosition(
-        posJoueur.x - (m_window.getSize().x /2),
-        posJoueur.y - (m_window.getSize().y /2));
+        posJoueur.x - (view.getSize().x /2),
+        posJoueur.y - (view.getSize().y /2));
 
     if(Modeles::m_phase == Modeles::INTRO)
     {
