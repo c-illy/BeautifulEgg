@@ -15,6 +15,7 @@ const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
   {sf::Color(0, 0, 0).toInteger(), Mur  },
   {sf::Color(1, 1, 1).toInteger(), Joueur  },
   {sf::Color(255, 0, 0).toInteger(), Monstre1  },
+  {sf::Color(255, 0, 50).toInteger(), Boss  },
   {sf::Color(100, 0, 0).toInteger(), ObjetSante  },
   {sf::Color(100, 0, 50).toInteger(), BonusDegats  },
   {sf::Color(100, 0, 100).toInteger(), Objet2  },
@@ -143,6 +144,13 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 	case Monstre1:
 		std::cout << "Ajout d'un monstre" << std::endl;
 		monstreACreer = new Monstre("monstre1", x, y);
+		zone->m_monstres.push_back(monstreACreer);
+		caseACreer = new Case(true, monstreACreer, x, y);
+		break;
+	case Boss:
+		std::cout << "Ajout d'un boss" << std::endl;
+		monstreACreer = new Monstre("boss", x, y);
+		monstreACreer->setBoss();
 		zone->m_monstres.push_back(monstreACreer);
 		caseACreer = new Case(true, monstreACreer, x, y);
 		break;

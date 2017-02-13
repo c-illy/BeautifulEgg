@@ -2,14 +2,31 @@
 #include "Modeles.h"
 #include "Position.h"
 
-Monstre::Monstre(std::string nom, int x, int y) : Personnage(nom, x, y), m_rayonIA(20)
+Monstre::Monstre(std::string nom, int x, int y) :
+    Personnage(nom, x, y), m_rayonIA(20),
+    m_isBoss(false)
 {
     m_sante = 40;//debug!
+    m_santeMax = 40;//debug!
+    m_degats = 10;//debug!
+}
+
+void Monstre::setBoss()
+{
+    m_isBoss = true;
+    m_sante = 300;//debug!
+    m_santeMax = 300;//debug!
     m_degats = 10;//debug!
 }
 
 Action Monstre::choisirDeplacement(const Position* direction)
 {
+    if(m_isBoss)
+    {
+        //arbitraire : le boss ne se déplace pas
+        return RIEN;
+    }
+
 	const Royaume& royaume = (Modeles::m_royaume);
 
 	int resX = getPosition().getPositionX();

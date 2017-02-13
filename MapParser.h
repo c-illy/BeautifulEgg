@@ -16,6 +16,7 @@ public:
 		Mur,
 		Joueur,
 		Monstre1,
+		Boss,
 		ObjetSante,
 		BonusDegats,
 		Objet2,

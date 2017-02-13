@@ -36,8 +36,6 @@ void Vues::update(sf::Time deltaTemps)
 
 void Vues::draw()
 {
-    m_window.clear();
-
     sf::View view = m_window.getDefaultView();
     view.setCenter(getPersonnageSFPosition(Modeles::m_joueur));
     //view.zoom(2.f);
@@ -50,16 +48,19 @@ void Vues::draw()
 
     if(Modeles::m_phase == Modeles::INTRO)
     {
+        m_window.clear();
         m_cinematiqueViewIntro.draw();
         m_window.draw(spriteEffetParchemin, mulRenderStates);
     }
     else if(Modeles::m_phase == Modeles::FIN)
     {
+        m_window.clear();
         m_cinematiqueViewFin.draw();
         m_window.draw(spriteEffetParchemin, mulRenderStates);
     }
     else
     {
+        m_window.clear(sf::Color(255,255,255));
         m_royaumeView.draw();
         m_objetsView.draw();
         int z = Modeles::getNumZoneCourant();
