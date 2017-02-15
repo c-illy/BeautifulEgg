@@ -10,6 +10,8 @@ class RoyaumeView : public Vue
         RoyaumeView(sf::RenderWindow& window);
         virtual ~RoyaumeView();
 
+        sf::Vector2u getTailleDecor() const;
+
         void update(sf::Time deltaTemps);
         void draw() const;
         void drawPremierPlan() const;

@@ -9,9 +9,9 @@ ObjetsView Vues::m_objetsView;
 CinematiqueView Vues::m_cinematiqueViewIntro;
 CinematiqueView Vues::m_cinematiqueViewFin;
 
-sf::RenderStates Vues::mulRenderStates(sf::BlendMultiply);
-sf::Sprite Vues::spriteEffetParchemin;
-sf::Texture Vues::textureParchemin;
+sf::RenderStates Vues::m_mulRenderStates(sf::BlendMultiply);
+sf::Sprite Vues::m_spriteEffetParchemin;
+sf::Texture Vues::m_textureParchemin;
 
 sf::RenderWindow Vues::m_window(sf::VideoMode(TAILLE_FENETRE_X, TAILLE_FENETRE_Y), "EGG");
 
@@ -19,11 +19,11 @@ void Vues::init()
 {
     m_window.setFramerateLimit(60);
     VuesAudio::init();
-    loadFromFile(textureParchemin, RESSOURCES "textureParchemin.jpg");
-    spriteEffetParchemin.setTexture(textureParchemin);
-    spriteEffetParchemin.scale(
-        (float)m_window.getSize().x / textureParchemin.getSize().x,
-        (float)m_window.getSize().y / textureParchemin.getSize().y);
+    loadFromFile(m_textureParchemin, RESSOURCES "textureParchemin.jpg");
+    m_spriteEffetParchemin.setTexture(m_textureParchemin);
+//    spriteEffetParchemin.scale(
+//        (float)m_window.getSize().x / textureParchemin.getSize().x,
+//        (float)m_window.getSize().y / textureParchemin.getSize().y);
 }
 
 void Vues::update(sf::Time deltaTemps)
@@ -41,22 +41,22 @@ void Vues::draw()
     //view.zoom(2.f);
     m_window.setView(view);
 
-    sf::Vector2f posJoueur = getPersonnageSFPosition(Modeles::m_joueur);
-    spriteEffetParchemin.setPosition(
-        posJoueur.x - (view.getSize().x /2),
-        posJoueur.y - (view.getSize().y /2));
+//    sf::Vector2f posJoueur = getPersonnageSFPosition(Modeles::m_joueur);
+//    m_spriteEffetParchemin.setPosition(
+//        posJoueur.x - (view.getSize().x /2),
+//        posJoueur.y - (view.getSize().y /2));
 
     if(Modeles::m_phase == Modeles::INTRO)
     {
         m_window.clear();
         m_cinematiqueViewIntro.draw();
-        m_window.draw(spriteEffetParchemin, mulRenderStates);
+        m_window.draw(m_spriteEffetParchemin, m_mulRenderStates);
     }
     else if(Modeles::m_phase == Modeles::FIN)
     {
         m_window.clear();
         m_cinematiqueViewFin.draw();
-        m_window.draw(spriteEffetParchemin, mulRenderStates);
+        m_window.draw(m_spriteEffetParchemin, m_mulRenderStates);
     }
     else
     {
@@ -66,7 +66,7 @@ void Vues::draw()
         int z = Modeles::getNumZoneCourant();
         m_personnagesViewParZone.at(z)->draw();
         m_royaumeView.drawPremierPlan();
-        m_window.draw(spriteEffetParchemin, mulRenderStates);
+        m_window.draw(m_spriteEffetParchemin, m_mulRenderStates);
         m_IHMView.draw();
 
     }

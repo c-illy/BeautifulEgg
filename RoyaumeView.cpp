@@ -15,6 +15,11 @@ RoyaumeView::~RoyaumeView()
     //dtor
 }
 
+sf::Vector2u RoyaumeView::getTailleDecor() const
+{
+    return m_texPremierPlan.getSize();
+}
+
 void RoyaumeView::update(sf::Time deltaTemps)
 {
     int zoneCourante = Modeles::m_royaume.m_zoneCourante;
@@ -27,6 +32,12 @@ void RoyaumeView::update(sf::Time deltaTemps)
         Vues::loadFromFile(m_texDernierPlan, zview.m_dossier + "/dernierPlan.png");
         m_spritePremierPlan.setTexture(m_texPremierPlan);
         m_spriteDernierPlan.setTexture(m_texDernierPlan);
+
+        sf::Vector2u tailleDecor = getTailleDecor();
+        sf::Vector2u tailleParch = Vues::m_textureParchemin.getSize();
+        Vues::m_spriteEffetParchemin.setScale(
+            tailleDecor.x * 1.2 / tailleParch.x,
+            tailleDecor.y * 1.2 / tailleParch.y);
     }
 }
 
