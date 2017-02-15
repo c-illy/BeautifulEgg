@@ -17,6 +17,13 @@ class RoyaumeView : public Vue
     private:
         sf::Texture m_tex_caseNavigable;
         sf::Texture m_tex_caseNonNavigable;
+
+        sf::Texture m_texPremierPlan;
+        sf::Texture m_texDernierPlan;
+        sf::Sprite m_spritePremierPlan;
+        sf::Sprite m_spriteDernierPlan;
+
+        int m_zoneChargee;
 };
 
 #endif // ROYAUMEVIEW_H

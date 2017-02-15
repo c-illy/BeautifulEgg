@@ -15,8 +15,7 @@ class ZoneView
     protected:
 
     public:
-        sf::Texture m_tex_premierPlan;
-        sf::Texture m_tex_dernierPlan;
+        std::string m_dossier;
 };
 
 #endif // ZONEVIEW_H

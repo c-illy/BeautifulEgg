@@ -11,9 +11,6 @@ ZoneView::~ZoneView()
 
 void ZoneView::init(const std::string& nomDossier)
 {
-    std::string pp = nomDossier + "/premierPlan.png";
-    std::string dp = nomDossier + "/dernierPlan.png";
-    Vues::loadFromFile(m_tex_premierPlan, pp);
-    Vues::loadFromFile(m_tex_dernierPlan, dp);
+    m_dossier = nomDossier;
 }
 

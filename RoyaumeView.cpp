@@ -4,10 +4,10 @@
 #include "ZoneView.h"
 
 RoyaumeView::RoyaumeView(sf::RenderWindow& window) :
-    Vue(window)
+    Vue(window), m_zoneChargee(-1)
 {
-    Vues::loadFromFile(m_tex_caseNavigable, RESSOURCES "test.png");
-    Vues::loadFromFile(m_tex_caseNonNavigable, RESSOURCES "test2.png");
+//    Vues::loadFromFile(m_tex_caseNavigable, RESSOURCES "test.png");
+//    Vues::loadFromFile(m_tex_caseNonNavigable, RESSOURCES "test2.png");
 }
 
 RoyaumeView::~RoyaumeView()
@@ -17,20 +17,25 @@ RoyaumeView::~RoyaumeView()
 
 void RoyaumeView::update(sf::Time deltaTemps)
 {
+    int zoneCourante = Modeles::m_royaume.m_zoneCourante;
+    if(zoneCourante != m_zoneChargee)
+    {
+        m_zoneChargee = zoneCourante;
+        ZoneView& zview = Vues::m_zoneViews.at(zoneCourante);
 
+        Vues::loadFromFile(m_texPremierPlan, zview.m_dossier + "/premierPlan.png");
+        Vues::loadFromFile(m_texDernierPlan, zview.m_dossier + "/dernierPlan.png");
+        m_spritePremierPlan.setTexture(m_texPremierPlan);
+        m_spriteDernierPlan.setTexture(m_texDernierPlan);
+    }
 }
+
 void RoyaumeView::draw() const
 {
-    int zoneCourante = Modeles::m_royaume.m_zoneCourante;
-    ZoneView& zview = Vues::m_zoneViews.at(zoneCourante);
-    sf::Sprite spriteDernierPlan(zview.m_tex_dernierPlan);
-    m_window.draw(spriteDernierPlan);
+    m_window.draw(m_spriteDernierPlan);
 }
 
 void RoyaumeView::drawPremierPlan() const
 {
-    int zoneCourante = Modeles::m_royaume.m_zoneCourante;
-    ZoneView& zview = Vues::m_zoneViews.at(zoneCourante);
-    sf::Sprite spritePremierPlan(zview.m_tex_premierPlan);
-    m_window.draw(spritePremierPlan);
+    m_window.draw(m_spritePremierPlan);
 }
