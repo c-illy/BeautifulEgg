@@ -32,7 +32,7 @@ class Personnage
 {
     public:
         Personnage(std::string nom="joueur", int x=0, int y=0);
-        ~Personnage();
+        virtual ~Personnage();
 
         void afficher();
         void setAction(Action action);
@@ -54,7 +54,7 @@ class Personnage
         Direction getDirection() const {return m_directionActuelle;};
 
     protected:
-        void perdreSante(int degats);
+        virtual void perdreSante(int degats);
         void attaquer(Personnage &autre);
         void interagir();
         Direction getDirectionFromCase(const Case *caseCible) const;

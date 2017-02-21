@@ -10,6 +10,8 @@
 #include <sstream>
 #include <fstream>
 
+int MapParser::m_pourcentageApparitionMonstre(4);
+
 const std::map<sf::Uint32, MapParser::CaseType> MapParser::code =
 { {sf::Color(255, 255, 255).toInteger(), Vide  },
   {sf::Color(0, 0, 0).toInteger(), Mur  },
@@ -124,13 +126,26 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
     Case* caseACreer = 00;
 	Monstre* monstreACreer = 00;
 	Objet* objetACreer = 00;
+	int random = rand() % 100;
 	switch(type)
 	{
 	case Vide:
-	    caseACreer = new Case(true,    // navigable
+	    if(!zone->m_secretZone &&
+            !zone->m_bossZone &&
+            random < m_pourcentageApparitionMonstre)
+        {
+            std::cout << "Ajout d'un monstre aleatoire" << std::endl;
+            monstreACreer = new Monstre("monstre1", x, y);
+            zone->m_monstres.push_back(monstreACreer);
+            caseACreer = new Case(true, monstreACreer, x, y);
+        }
+        else
+        {
+            caseACreer = new Case(true,    // navigable
                              nullptr, // no personnage
                              x,
                              y);
+        }
 		break;
 	case Mur:
 	    caseACreer = new Case(false, nullptr, x, y);
@@ -155,13 +170,13 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 		caseACreer = new Case(true, monstreACreer, x, y);
 		break;
 	case ObjetSante:
-		std::cout << "Ajout d'un Objet0" << std::endl;
+		std::cout << "Ajout d'un SANTE" << std::endl;
 		objetACreer = new Objet(Objet::SANTE, x, y, zone);
 		caseACreer = new Case(true, 00, x, y, objetACreer);
 		zone->m_objet.push_back(objetACreer);
 		break;
 	case BonusDegats:
-		std::cout << "Ajout d'un Objet1" << std::endl;
+		std::cout << "Ajout d'un BONUS_DEGATS" << std::endl;
 		objetACreer = new Objet(Objet::BONUS_DEGATS, x, y, zone);
 		caseACreer = new Case(true, 00, x, y, objetACreer);
 		zone->m_objet.push_back(objetACreer);

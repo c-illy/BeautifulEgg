@@ -1,6 +1,8 @@
 #include "Monstre.h"
 #include "Modeles.h"
 #include "Position.h"
+#include "Objet.h"
+#include <stdlib.h>
 
 Monstre::Monstre(std::string nom, int x, int y) :
     Personnage(nom, x, y), m_rayonIA(20),
@@ -9,6 +11,10 @@ Monstre::Monstre(std::string nom, int x, int y) :
     m_sante = 40;//debug!
     m_santeMax = 40;//debug!
     m_degats = 10;//debug!
+}
+
+Monstre::~Monstre()
+{
 }
 
 void Monstre::setBoss()
@@ -55,6 +61,27 @@ Action Monstre::choisirDeplacement(const Position* direction)
 		return DEPLACER;
 	}
     return RIEN;
+}
+
+void Monstre::perdreSante(int degats)
+{
+    Personnage::perdreSante(degats);
+
+    //loot éventuel
+    if(m_mourant)
+    {
+        int x = m_position.getPositionX();
+        int y = m_position.getPositionY();
+        Case& c = Modeles::m_royaume.get(x, y);
+        Zone* zone = Modeles::m_royaume.getZoneCourante();
+        int r = rand() % 100;
+        if(c.getObjet() == 00 && r<30)
+        {
+            Objet* objetACreer = new Objet(Objet::SANTE, x, y, zone);
+            c.setObjet(objetACreer);
+            zone->m_objet.push_back(objetACreer);
+        }
+    }
 }
 
 void Monstre::appliquerIA()

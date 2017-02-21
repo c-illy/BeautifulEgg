@@ -23,6 +23,7 @@ public:
 		Obstacle0,
 		FinJeu
 	};
+	static int m_pourcentageApparitionMonstre;
 
 	static void initZonesFromFiles();
 

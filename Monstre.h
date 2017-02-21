@@ -10,18 +10,22 @@ class Position;
 
 class Monstre: public Personnage
 {
-    public:
-      Monstre(std::string nom, int x=0, int y=0);
-      void setBoss();
-      void appliquerIA();
-      bool isBoss() const { return m_isBoss; };
+public:
+    Monstre(std::string nom, int x=0, int y=0);
+    virtual ~Monstre();
+    void setBoss();
+    void appliquerIA();
+    bool isBoss() const { return m_isBoss; };
 
-    private:
-      Action choisirDeplacement(const Position* direction);
+private:
+    Action choisirDeplacement(const Position* direction);
 
-    private:
-      double m_rayonIA;
-      bool m_isBoss;
+protected:
+    virtual void perdreSante(int degats);
+
+private:
+    double m_rayonIA;
+    bool m_isBoss;
 
 };
 
