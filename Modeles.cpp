@@ -58,7 +58,7 @@ void Modeles::updatePhasePJ()
             Modeles::m_phaseDeltaTempsMs = 0;
         }
         else
-            {
+        {
             Destination* d = caseJoueur.m_destination;
             if(d != 00)
             {
@@ -74,11 +74,18 @@ void Modeles::updatePhasePJ()
                 m_phaseDeltaTempsMs = 0;
                 return;
             }
-            for(unsigned int i=0; i<getMonstres().size(); i++)
+            if(getMonstres().size() > 0)
             {
-                getMonstres().at(i)->appliquerIA();
+                for(unsigned int i=0; i<getMonstres().size(); i++)
+                {
+                    getMonstres().at(i)->appliquerIA();
+                }
+                m_phase = ACTION_PNJ;
             }
-            m_phase = ACTION_PNJ;
+            else
+            {
+                m_phase = PRET;
+            }
             m_nouvellePhase = true;
             m_phaseDeltaTempsMs = 0;
         }

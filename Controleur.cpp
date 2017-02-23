@@ -39,8 +39,15 @@ void Controleur::jouer()
         }
         if (Modeles::m_phase == Modeles::ACTION_PJ)
         {
-            pollEventIgnore(event);
             Modeles::updatePhasePJ();
+            if (Modeles::m_phase == Modeles::PRET)//éviter le flash idle
+            {
+                pollEvent(event);
+            }
+            else
+            {
+                pollEventIgnore(event);
+            }
         }
         if (Modeles::m_phase == Modeles::ACTION_PNJ)
         {
