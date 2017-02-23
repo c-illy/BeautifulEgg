@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "Personnage.h"
 #include "Objet.h"
 
@@ -9,6 +10,13 @@ Personnage::Personnage(std::string nom, int x, int y) :
     m_directionActuelle(DROITE), m_caseCible(NULL), m_vivant(true), m_mourant(false),
     m_actionCourante(RIEN)
 {
+    std::ifstream cheatCheck("cheat");
+	if(cheatCheck.good())
+    {
+        m_santeMax = 2000;
+        m_sante = 2000;
+        m_degats = 100;
+    }
 }
 
 Personnage::~Personnage()

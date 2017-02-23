@@ -1,5 +1,6 @@
 #include "Modeles.h"
 #include "Monstre.h"
+#include <fstream>
 
 Royaume Modeles::m_royaume;
 Personnage Modeles::m_joueur("joueur");
@@ -10,8 +11,9 @@ Cinematique Modeles::m_cinematiqueFin;
 Modeles::Phase Modeles::m_phase(INTRO);
 bool Modeles::m_nouvellePhase(true);///si la phase vient juste de changer
 int Modeles::m_phaseDeltaTempsMs(0);///millisecondes depuis dernier changement de phase
-const int Modeles::DUREE_ACTION_PJ_MS(500);///millisecondes
-const int Modeles::DUREE_ACTION_PNJ_MS(500);///millisecondes
+const bool Modeles::OPTION_FAST((std::ifstream("fast")).good());
+const int Modeles::DUREE_ACTION_PJ_MS(OPTION_FAST? 200 : 500);///millisecondes
+const int Modeles::DUREE_ACTION_PNJ_MS(OPTION_FAST? 200 : 500);///millisecondes
 const int Modeles::IMAGE_PARTIE2_CINEMATIQUE_FIN(1);
 
 void Modeles::init()

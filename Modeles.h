@@ -45,6 +45,7 @@ class Modeles
         static Phase m_phase;///phase courante
         static bool m_nouvellePhase;///si la phase vient juste de changer
         static int m_phaseDeltaTempsMs;///millisecondes depuis dernier changement de phase
+        static const bool OPTION_FAST;
         static const int DUREE_ACTION_PJ_MS;///millisecondes
         static const int DUREE_ACTION_PNJ_MS;///millisecondes
         static const int IMAGE_PARTIE2_CINEMATIQUE_FIN;

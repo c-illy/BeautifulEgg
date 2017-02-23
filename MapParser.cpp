@@ -28,6 +28,17 @@ std::map<sf::Uint32, std::pair<Destination, Destination> > MapParser::m_portails
 
 void MapParser::initZonesFromFiles()
 {
+    if(Modeles::OPTION_FAST)
+    {
+        m_pourcentageApparitionMonstre = 2;
+    }
+    std::ifstream hardCheck("hard");
+	if(hardCheck.good())
+    {
+        m_pourcentageApparitionMonstre = 7;
+    }
+    hardCheck.close();
+
     std::string racineZones("./zones");
 
     std::cout << "ouverture dossier zones" << std::endl;
