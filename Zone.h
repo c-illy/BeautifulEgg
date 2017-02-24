@@ -32,6 +32,8 @@ class Zone
 
 		int getLargeur() const;
 		int getHauteur() const;
+
+		const Case* cheminVersCentre(int x0, int y0) const;
 };
 
 #endif // ZONE_H

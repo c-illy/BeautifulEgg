@@ -1,6 +1,7 @@
 #include "Modeles.h"
 #include "Monstre.h"
 #include <fstream>
+#include <stdlib.h>
 
 Royaume Modeles::m_royaume;
 Personnage Modeles::m_joueur("joueur");
@@ -67,8 +68,14 @@ void Modeles::updatePhasePJ()
                 //changement de zone
                 m_royaume.placerPersonnage(joueurX, joueurY, 00);
                 m_royaume.m_zoneCourante = d->m_numZone;
-                m_joueur.setPosition(d->m_x, d->m_y);
-                m_royaume.placerPersonnage(d->m_x, d->m_y, &m_joueur);
+
+                const Zone* nouvZone = m_royaume.getZoneCourante();
+                //avancer une case après destination
+                const Case* caseDestination = nouvZone->cheminVersCentre(d->m_x, d->m_y);
+                int nouvX = caseDestination->getPosition().getPositionX();
+                int nouvY = caseDestination->getPosition().getPositionY();
+                m_joueur.setPosition(nouvX, nouvY);
+                m_royaume.placerPersonnage(nouvX, nouvY, &m_joueur);
 
                 //ne pas laisser les PNJ agir, retourner en phase PRET
                 m_phase = PRET;
@@ -115,3 +122,45 @@ void Modeles::updatePhasePNJ()
         }
     }
 }
+
+const Case* Modeles::chemin(const Position& depart, const Position& direction, const Zone* zone)
+{
+    int x0 = depart.getPositionX();
+    int y0 = depart.getPositionY();
+	int dirX = direction.getPositionX();
+	int dirY = direction.getPositionY();
+	int resDX = 1;
+	int resDY = 1;
+	bool plutotX = abs(dirX) >= abs(dirY);
+
+    if(dirX < 0)
+    {
+        resDX = -1;
+    }
+    if(dirY < 0)
+    {
+        resDY = -1;
+    }
+
+	if(plutotX)
+	{
+	    if(zone->get(x0+resDX,y0).navigableEtLibre())
+            return &(zone->get(x0+resDX, y0));
+	    if(zone->get(x0, y0+resDY).navigableEtLibre())
+            return &(zone->get(x0, y0+resDY));
+	    if(zone->get(x0, y0-resDY).navigableEtLibre())
+            return &(zone->get(x0, y0-resDY));
+	}
+	else //plutôt y
+    {
+        if(zone->get(x0, y0+resDY).navigableEtLibre())
+            return &(zone->get(x0, y0+resDY));
+        if(zone->get(x0+resDX, y0).navigableEtLibre())
+            return &(zone->get(x0+resDX, y0));
+        if(zone->get(x0-resDX, y0).navigableEtLibre())
+            return &(zone->get(x0-resDX, y0));
+    }
+
+    return 00;
+}
+

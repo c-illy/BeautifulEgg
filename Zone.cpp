@@ -1,4 +1,5 @@
 #include "Zone.h"
+#include "Modeles.h"
 
 Zone::Zone(int x, int y) : m_cases(x, std::vector<Case*>(y)),
 m_secretZone(false), m_bossZone(false)
@@ -59,5 +60,17 @@ int Zone::getHauteur() const
 	if(m_cases.size() > 0)
 		return m_cases.at(0).size();
 	return 0;
+}
+
+const Case* Zone::cheminVersCentre(int x0, int y0) const
+{
+    Position p0(x0, y0);
+    Position dir((getLargeur()/2)-x0, (getHauteur()/2)-y0);
+    const Case* res = Modeles::chemin(p0, dir, this);
+    if(res == 00)
+    {
+        res = &get(x0, y0);//pas pu avancer, on reste sur place
+    }
+    return res;
 }
 

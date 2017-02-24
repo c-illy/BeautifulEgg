@@ -35,6 +35,9 @@ class Modeles
         static void updatePhasePJ();
         static void updatePhasePNJ();
 
+        /** case à prendre pour suivre un chemin selon direction souhaitée */
+        static const Case* chemin(const Position& depart, const Position& direction, const Zone* zone);
+
         static Royaume m_royaume;
         static Personnage m_joueur;
         //static std::vector<Monstre*> m_monstres;//cf. Zone.h

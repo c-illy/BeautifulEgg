@@ -33,33 +33,13 @@ Action Monstre::choisirDeplacement(const Position* direction)
         return RIEN;
     }
 
-	const Royaume& royaume = (Modeles::m_royaume);
-
-	int resX = getPosition().getPositionX();
-	int resY = getPosition().getPositionY();
-	int dirX = direction->getPositionX();
-	int dirY = direction->getPositionY();
-
-	if ((dirX > 0) and (royaume.get(resX+1,resY).navigableEtLibre()))
-	{
-		setCaseCible(&(royaume.get(resX+1,resY)));
-		return DEPLACER;
-	}
-	if ((dirX < 0) and (royaume.get(resX-1, resY).navigableEtLibre()))
-	{
-		setCaseCible(&(royaume.get(resX-1,resY)));
-		return DEPLACER;
-	}
-	if ((dirY > 0) and (royaume.get(resX, resY+1).navigableEtLibre()))
-	{
-		setCaseCible(&(royaume.get(resX,resY+1)));
-		return DEPLACER;
-	}
-	if ((dirY < 0) and (royaume.get(resX, resY-1).navigableEtLibre()))
-	{
-		setCaseCible(&(royaume.get(resX,resY-1)));
-		return DEPLACER;
-	}
+    const Case* nouvCaseCible = Modeles::chemin(
+        m_position, *direction, Modeles::m_royaume.getZoneCourante());
+    if(nouvCaseCible != 00)
+    {
+        setCaseCible(nouvCaseCible);
+        return DEPLACER;
+    }
     return RIEN;
 }
 

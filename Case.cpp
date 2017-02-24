@@ -32,19 +32,18 @@ bool Case::navigableEtLibre() const
             return false;
         }
     }
-    else
+
+    for(Monstre* monstre : Modeles::getMonstres())
     {
-        for(Monstre* monstre : Modeles::getMonstres())
+        if(
+            (monstre->getActionCourante() == DEPLACER) &&
+            (monstre->isCaseCible(this))
+           )
         {
-            if(
-                (monstre->getActionCourante() == DEPLACER) &&
-                (monstre->isCaseCible(this))
-               )
-            {
-               return false;
-            }
+           return false;
         }
     }
+
     return true;
 }
 
