@@ -71,7 +71,14 @@ AnimationRessource* Animation::getRessource(const Personnage& personnage)
         actionName + "_" + directionName;
     if(personnage.getMourant() && Modeles::m_phase != Modeles::GAME_OVER)
     {
-        animationCourante = "dead";
+        if(personnage.getNom() == "boss")
+        {
+            animationCourante = "boss_dead";
+        }
+        else
+        {
+            animationCourante = "dead";
+        }
     }
 
     std::map<std::string, AnimationRessource>::iterator it =
@@ -88,7 +95,18 @@ AnimationRessource* Animation::getRessource(const Personnage& personnage)
     //spécifique (faudrait charger ça selon les ressources)
     if(personnage.getActionCourante() == RIEN)
     {
-        res->m_tempsIntervalle = sf::milliseconds(900);
+        if(personnage.getNom() == "boss")
+        {
+            res->m_tempsIntervalle = sf::milliseconds(4000);
+        }
+        else
+        {
+            res->m_tempsIntervalle = sf::milliseconds(900);
+        }
+    }
+    else if(personnage.getMourant() && personnage.getNom() == "boss")
+    {
+        res->m_tempsIntervalle = sf::milliseconds(8000);
     }
     std::cout << "animations chargées : " << m_ressourcesMap.size() << std::endl;
     return res;

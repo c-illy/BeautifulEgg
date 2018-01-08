@@ -20,8 +20,8 @@ Monstre::~Monstre()
 void Monstre::setBoss()
 {
     m_isBoss = true;
-    m_sante = 300;//debug!
-    m_santeMax = 300;//debug!
+    m_sante = 70;//debug!
+    m_santeMax = 70;//debug!
     m_degats = 10;//debug!
 }
 

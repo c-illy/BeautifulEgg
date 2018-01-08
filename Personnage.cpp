@@ -13,9 +13,9 @@ Personnage::Personnage(std::string nom, int x, int y) :
     std::ifstream cheatCheck("cheat");
 	if(cheatCheck.good())
     {
-        m_santeMax = 2000;
-        m_sante = 2000;
-        m_degats = 100;
+        m_santeMax = 600;
+        m_sante = m_santeMax;
+        //m_degats = 50;
     }
 }
 
