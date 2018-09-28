@@ -1,0 +1,98 @@
+ Des pêcheurs découvrirent un oeuf dans leur filet.
+Ils le ramenèrent sur les berges pour le donner à la princesse Adalia.
+La princesse a pour mission de ramener cet oeuf intact sur la place du marché.
+
+Durant le voyage, la princesse rencontre de nombreux ennemis qui veulent garder l'oeuf que pour eux
+
+
+
+Début :
+
+Lors d'une nuit de pleine lune, des pêcheurs ont trouvé un oeuf étrange dans leurs filets
+[Image : Oeuf dans les filets (bateau)]
+
+Surpris de leur pêche miraculeuse, ils prévenirent immédiatement le roi de leur découverte.
+[Image : pêcheurs surpris]
+
+Celui-ci reconnu l'oeuf légendaire d'une créature mystique qui n'apparaissait que tous les mille ans.
+[Image : Fresque mystique]
+
+Un tel trésor ne pouvait être porté que par la princesse elle-même.
+[Image : fresque avec princesse (pas la notre) qui tient oeuf]
+
+C'est donc à la princesse Adalya que fut remise la tâche d'amener l'oeuf à la fontaine sacrée où il pourrait éclore.
+[Image : Adalya arrive sur la plage près des deux pêcheurs (aube)]
+
+Pour cela, un seul chemin : passer par la forêt. Mais une telle route n'est guère sûre, et c'est armée de son [arme] qu'elle se lance dans sa noble quête.
+[Image : Image forêt]
+
+Eventuellement :
+Le chemin le plus court, pris à l'aller, est désormais bloqué par un [monstre] endormi : nul autre choix que de s'enfoncer dans les profondeurs de la forêt...
+[Image : blob endormi qui bloque le passage]
+
+
+Fin : 
+
+[Image : princesse qui se déplace dans village vers fontaine avec foule de gens]
+[Image : princesse qui se place sur fontaine devant la foule]
+[Image : princesse qui met oeuf dans fontaine]
+[Image : Oeuf qui commence à éclore]
+[Image : KRAKEN]
+[Image : il mange la princesse]
+[Image : il met le chaos dans la ville]
+
+
+
+
+
+
+
+Commencer 30 PVs
+Possiblité de game over
+
+Monstre 1  		1 monstre 	(-1 dégat)
+
+Salle bonus n°1		+1 dégat augmente les dégats de l'arme (baton ou spectre)
+
+Monstre 2 		1 monstre 	(-2 dégats)
+                       
+Salle bonus n°2		+10 PVs 
+
+Monstre 3 		1 monstre 	(-2 dégats)
+			1 monstre 	(-1 dégat)
+
+Monstre 3 bis 		2 monstres 	(-1 dégat)
+
+Salle bonus n°3		+1 dégat arme (CASCADE)
+
+Monstre 4 		3 monstres 	(-1 dégat)
+
+Monstre 4 bis 		2 monstres 	(-1 dégat)
+			1 monstre 	(-2 dégats)
+
+Monstre 5 		3 monstres 	(-2 dégats)
+
+Salle bonus n°4		+10 PVs 
+
+Monstre 6 		3 monstres	(-2 dégats)
+
+Monstre 7 		2 monstres 	(-1 dégat)
+			2 monstres	(-2 dégats)
+
+Monstre 8 		3 monstres 	(-2 dégats)
+			1 monstre	(-1 dégat)
+
+Salle bonus n°5		+20 PVs
+
+Monstre 9		2 monstres 	(-1 dégat)
+			3 monstres 	(-2 dégats)
+
+Salle bonus n°6		+2 dégats arme
+
+Monstre 10 (BOSS)	1 monstre 	(-5 dégats)
+			2 monstres 	(-1 dégat)
+
+
+Monstre 1 dégat 	3PVs
+Monstre 2 dégats 	5PVs
+Monstre BOSS 		25 PVs
