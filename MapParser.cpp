@@ -99,6 +99,8 @@ void MapParser::parseAndInit(const std::string& cheminZone,
 	unsigned x = width  / 2;
 	unsigned y = height / 2;
 	unsigned nLine   = grid.getSize().x / width;
+	//confusion : width devrait correspondre au nombre de colonnes
+	//tant pis, déjà compensé dans le reste du code... TPCM!
 	unsigned nColumn = grid.getSize().y / height;
 	Zone* zone = new Zone(nLine, nColumn);
 	std::ifstream bossCheck(cheminZone + "/" + "boss");
@@ -120,43 +122,45 @@ void MapParser::parseAndInit(const std::string& cheminZone,
             }
             else
             {
-                //std::cout << "Couleur de portail (" << (int)color.r << ", " << (int)color.g << ", " << (int)color.b << ")" << std::endl;
+                std::cout << "Ajout d'un portail colorCode(" << colorCode << ") = RGB(" << //color << ") " <<
+                    ((int)color.r) << ", " << ((int)color.g)<< ", " << ((int)color.b) << ") " <<
+                    "pos(" << i << ", " << j <<  ")" << std::endl;
                 initCasePortail(zone, colorCode, i, j);
             }
 		}
 	}
+    //zone->debug();
+
+	//deuxième passe pour peupler monstres
+    if(!zone->m_secretZone && !zone->m_bossZone)
+    {
+        for(x=1; x<nLine-1; x++)//erreur plus haut nLine est en fait largeur
+        {
+            for(y=1; y<nColumn-1; y++)//erreur plus haut nLine est en fait hauteur
+            {
+                popMonstre(zone, x, y);
+            }
+        }
+    }
+
 	Modeles::m_royaume.ajouterZone(zone);
 	Vues::m_zoneViews.push_back(ZoneView());
 	Vues::m_zoneViews.at(nouvNumZone).init(cheminZone);
     Vues::m_personnagesViewParZone.push_back(new PersonnagesView());
     Vues::m_personnagesViewParZone.at(nouvNumZone)->init(zone);
 }
-
 void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
 {
     Case* caseACreer = 00;
 	Monstre* monstreACreer = 00;
 	Objet* objetACreer = 00;
-	int random = rand() % 100;
 	switch(type)
 	{
 	case Vide:
-	    if(!zone->m_secretZone &&
-            !zone->m_bossZone &&
-            random < m_pourcentageApparitionMonstre)
-        {
-            std::cout << "Ajout d'un monstre aleatoire" << std::endl;
-            monstreACreer = new Monstre("monstre1", x, y);
-            zone->m_monstres.push_back(monstreACreer);
-            caseACreer = new Case(true, monstreACreer, x, y);
-        }
-        else
-        {
-            caseACreer = new Case(true,    // navigable
-                             nullptr, // no personnage
-                             x,
-                             y);
-        }
+        caseACreer = new Case(true,    // navigable
+                         nullptr, // no personnage
+                         x,
+                         y);
 		break;
 	case Mur:
 	    caseACreer = new Case(false, nullptr, x, y);
@@ -222,6 +226,20 @@ void MapParser::initCase(Zone* zone, CaseType type, unsigned x, unsigned y)
     zone->set(x, y, caseACreer);
 }
 
+void MapParser::popMonstre(Zone* zone, unsigned x, unsigned y)
+{
+	int random = rand() % 100;
+    if(random < m_pourcentageApparitionMonstre &&
+        zone->monstrePopable(x, y))
+    {
+        //std::cout << "Ajout d'un monstre aleatoire" << std::endl;
+        Monstre* monstreACreer = new Monstre("monstre1", x, y);
+        zone->m_monstres.push_back(monstreACreer);
+        Case& caseCible = zone->get(x,y);
+        caseCible.setPersonnage(monstreACreer);
+    }
+}
+
 void MapParser::initCasePortail(Zone* zone, sf::Uint32 colorCode, unsigned x, unsigned y)
 {
     Case* newCase = new Case(true,    // no navigable
@@ -234,6 +252,10 @@ void MapParser::initCasePortail(Zone* zone, sf::Uint32 colorCode, unsigned x, un
     here.m_numZone = Modeles::m_royaume.m_zones.size();
     here.m_x = x;
     here.m_y = y;
+
+    newCase->m_destination = &here;//temporairement, la vraie valeur sera
+    //remplie plus tard (nécessaire pour popMonstres)
+
     if(it != m_portails.end())
     {
         std::pair<Destination, Destination>& portail = it->second;

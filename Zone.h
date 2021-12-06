@@ -34,6 +34,10 @@ class Zone
 		int getHauteur() const;
 
 		const Case* cheminVersCentre(int x0, int y0) const;
+        bool monstrePopable(int x, int y) const;
+
+        void debug() const;
+
 };
 
 #endif // ZONE_H

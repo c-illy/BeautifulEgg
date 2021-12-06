@@ -37,6 +37,7 @@ private:
                           unsigned width,
                           unsigned height);
 	static void initCase(Zone* zone, CaseType type, unsigned x, unsigned y);
+	static void popMonstre(Zone* zone, unsigned x, unsigned y);
 	static void initCasePortail(Zone* zone, sf::Uint32 colorCode, unsigned x, unsigned y);
 	static void initCinematique(Cinematique* cinematique, CinematiqueView* cinematiqueView, const char* dossier);
 
