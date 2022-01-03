@@ -24,6 +24,18 @@ void CinematiqueView::draw() const
     sf::Vector2f posJoueur = Vues::positionToVect2f(Modeles::m_joueur.getPosition());
     int l = sprite.getTextureRect().width;
     int h = sprite.getTextureRect().height;
-    sprite.setPosition(posJoueur.x - (l/2), posJoueur.y - (h/2));
+    float proportionX = TAILLE_FENETRE_X / ((float)l);
+    float proportionY = TAILLE_FENETRE_Y / ((float)h);
+    float scale;
+    if(proportionX < proportionY)
+    {
+        scale = (proportionX) * .7;
+    }
+    else
+    {
+        scale = (proportionY) * .7;
+    }
+    sprite.scale(scale, scale);
+    sprite.setPosition(posJoueur.x - (l*scale/2), posJoueur.y - (h*scale/2));
     m_window.draw(sprite);
 }
