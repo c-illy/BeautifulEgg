@@ -21,7 +21,7 @@ void Controleur::jouer()
         {
             if((event.type == sf::Event::Closed) ||
                 (
-                    (Modeles::m_phaseDeltaTempsMs >= Modeles::DUREE_ACTION_PJ_MS) &&
+                    (Modeles::m_phaseDeltaTempsMs >= 6 * Modeles::DUREE_ACTION_PJ_MS) &&
                     Vues::m_window.pollEvent(event) &&
                     (event.type == sf::Event::KeyPressed)
                  ))
