@@ -50,11 +50,17 @@ Animation::Animation(sf::RenderWindow& window, const Personnage& personnage) :
     Vue(window),
     m_animationRessource(00),
     m_animationCourante(personnage.getNom() + "_marche_bas"),
+    m_echelle(1.),
     m_frameCourante(0),
     m_personnage(personnage)
 {
     loadAnimation();
     demarrer();
+    if(personnage.getNom() == "joueur")
+    {
+        m_echelle = .8;
+        m_sprite.scale(m_echelle, m_echelle);
+    }
 }
 
 Animation::~Animation()
@@ -152,8 +158,8 @@ void Animation::update(sf::Time deltaTemps)
     }
 
     sf::Vector2f vect = Vues::getPersonnageSFPosition(m_personnage);
-    vect.x += (TAILLE_CASE_X - m_animationRessource->m_spriteLargeur) / 2;
-    vect.y += (TAILLE_CASE_Y - m_animationRessource->m_spriteHauteur) / 2;
+    vect.x += (TAILLE_CASE_X - (m_animationRessource->m_spriteLargeur * m_echelle)) / 2;
+    vect.y += (TAILLE_CASE_Y - (m_animationRessource->m_spriteHauteur * m_echelle)) / 2;
     m_sprite.setPosition(vect);
 
     sf::Int32 tempsDepuisDebut = m_clock.getElapsedTime().asMilliseconds();

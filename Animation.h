@@ -60,6 +60,7 @@ class Animation : public Vue
         AnimationRessource* m_animationRessource;
         std::string m_animationCourante;
         sf::Sprite m_sprite;
+        float m_echelle;
         sf::Clock m_clock;
         int m_frameCourante;
 
