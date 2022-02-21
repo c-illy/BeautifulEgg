@@ -6,7 +6,7 @@
 
 
 Personnage::Personnage(std::string nom, int x, int y) :
-    m_nom(nom), m_sante(100), m_santeMax(100), m_degats(20), m_position(x,y),
+    m_nom(nom), m_sante(100), m_santeMax(100), m_degats(15), m_position(x,y),
     m_directionActuelle(DROITE), m_caseCible(NULL), m_vivant(true), m_mourant(false),
     m_actionCourante(RIEN)
 {

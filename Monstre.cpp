@@ -8,9 +8,9 @@ Monstre::Monstre(std::string nom, int x, int y) :
     Personnage(nom, x, y), m_rayonIA(20),
     m_isBoss(false)
 {
-    m_sante = 40;//debug!
-    m_santeMax = 40;//debug!
-    m_degats = 10;//debug!
+    m_sante = 40;
+    m_santeMax = 40;
+    m_degats = 10;
 }
 
 Monstre::~Monstre()
@@ -20,9 +20,16 @@ Monstre::~Monstre()
 void Monstre::setBoss()
 {
     m_isBoss = true;
-    m_sante = 70;//debug!
-    m_santeMax = 70;//debug!
-    m_degats = 10;//debug!
+    m_sante = 200;
+    m_santeMax = 200;
+    m_degats = 10;
+}
+
+void Monstre::setTuto()
+{
+    m_sante = 20;
+    m_santeMax = 20;
+    m_degats = 10;
 }
 
 Action Monstre::choisirDeplacement(const Position* direction)

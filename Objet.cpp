@@ -30,7 +30,7 @@ void Objet::utiliser()
         break;
     case BONUS_DEGATS:
         std::cout << "Utilisation Objet id=" << m_id << std::endl;
-        Modeles::m_joueur.ameliorerDegats(20);//changer la valeur du soin ici si besoin
+        Modeles::m_joueur.ameliorerDegats(15);//changer la valeur du soin ici si besoin
         break;
     case BIDON_DEBUG_LEVIER_1:
         std::cout << "Utilisation Objet id=" << m_id << std::endl;

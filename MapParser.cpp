@@ -134,11 +134,28 @@ void MapParser::parseAndInit(const std::string& cheminZone,
 	//deuxième passe pour peupler monstres
     if(!zone->m_secretZone && !zone->m_bossZone)
     {
+        bool dansTuto = (cheminZone == "./zones/Map 1");
         for(x=1; x<nLine-1; x++)//erreur plus haut nLine est en fait largeur
         {
             for(y=1; y<nColumn-1; y++)//erreur plus haut nLine est en fait hauteur
             {
                 popMonstre(zone, x, y);
+
+                //première zone = ~tuto, pas trop d'ennemis
+                if(dansTuto && zone->m_monstres.size() == 2)
+                {
+                    //quitter les for
+                    y = nColumn;
+                    x = nLine;
+                }
+            }
+        }
+        if(dansTuto)
+        {
+            //baisser points de vie des monstres
+            for(unsigned int m=0; m<zone->m_monstres.size(); m++)
+            {
+                zone->m_monstres[m]->setTuto();
             }
         }
     }

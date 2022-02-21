@@ -14,6 +14,7 @@ public:
     Monstre(std::string nom, int x=0, int y=0);
     virtual ~Monstre();
     void setBoss();
+    void setTuto();
     void appliquerIA();
     bool isBoss() const { return m_isBoss; };
 
